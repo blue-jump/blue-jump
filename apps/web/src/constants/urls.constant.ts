@@ -9,7 +9,6 @@ export const URLS = {
       LOGOUT: "/api/auth/logout",
       GOOGLE: "/api/auth/google",
       NAVER: "/api/auth/naver",
-      KAKAO: "/api/auth/kakao",
       OAUTH: (providerId: string) => `/api/auth/${providerId}`,
       OAUTH_CALLBACK: (providerId: string) => `/api/auth/${providerId}/callback`,
     },

@@ -1,7 +1,6 @@
+import type { AppError } from "@blue-jump/core/errors";
 import type { User, UserOAuthAccount } from "@prisma/client";
 import { beforeEach, describe, expect, it, vi } from "vitest";
-
-import type { AppError } from "@blue-jump/core/errors";
 
 import {
   findOrCreateOAuthUserService,
@@ -301,9 +300,9 @@ describe("user.service", () => {
       const createdUser = createMockUser({
         id: "new-user-id",
         email: "new-user@example.com",
-        name: "Kakao User",
-        avatarUrl: "https://example.com/kakao.png",
-        nickname: "kakao_generated_hash",
+        name: "Naver User",
+        avatarUrl: "https://example.com/naver.png",
+        nickname: "naver_generated_hash",
       });
 
       oauthAccountRepositoryMock.findUserOAuthAccountWithUserRepository.mockResolvedValue(null);
@@ -311,23 +310,23 @@ describe("user.service", () => {
       repositoryMock.createUserRepository.mockResolvedValue(createdUser);
 
       const result = await findOrCreateOAuthUserService({
-        provider: "KAKAO",
-        providerUserId: "kakao-user-id",
+        provider: "NAVER",
+        providerUserId: "naver-user-id",
         email: "new-user@example.com",
-        name: "Kakao User",
-        avatarUrl: "https://example.com/kakao.png",
+        name: "Naver User",
+        avatarUrl: "https://example.com/naver.png",
       });
 
       expect(repositoryMock.createUserRepository).toHaveBeenCalledWith({
         email: "new-user@example.com",
-        name: "Kakao User",
-        avatarUrl: "https://example.com/kakao.png",
-        nickname: expect.stringMatching(/^kakao_[a-f0-9]{16}$/),
+        name: "Naver User",
+        avatarUrl: "https://example.com/naver.png",
+        nickname: expect.stringMatching(/^naver[a-f0-9]{16}$/),
         oauthAccounts: {
           create: {
             email: "new-user@example.com",
-            provider: "KAKAO",
-            providerUserId: "kakao-user-id",
+            provider: "NAVER",
+            providerUserId: "naver-user-id",
           },
         },
       });
@@ -341,7 +340,7 @@ describe("user.service", () => {
 
       expect(loggerMock.info).toHaveBeenCalledWith("user.oauth_user_created.succeeded", {
         userId: "new-user-id",
-        provider: "KAKAO",
+        provider: "NAVER",
       });
     });
 

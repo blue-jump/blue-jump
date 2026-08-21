@@ -1,8 +1,8 @@
-export const OAuthProviderIds = ["google", "naver", "kakao"] as const;
+export const OAuthProviderIds = ["google", "naver"] as const;
 
 export type OAuthProviderId = (typeof OAuthProviderIds)[number];
 
-export type OAuthAuthProvider = "GOOGLE" | "NAVER" | "KAKAO";
+export type OAuthAuthProvider = "GOOGLE" | "NAVER";
 
 export interface OAuthProviderConfig {
   id: OAuthProviderId;
@@ -20,11 +20,6 @@ export const OAuthProviderConfigMap = {
     id: "naver",
     authProvider: "NAVER",
     label: "Naver",
-  },
-  kakao: {
-    id: "kakao",
-    authProvider: "KAKAO",
-    label: "Kakao",
   },
 } as const satisfies Record<OAuthProviderId, OAuthProviderConfig>;
 

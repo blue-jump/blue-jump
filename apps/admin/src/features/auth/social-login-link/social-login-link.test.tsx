@@ -18,9 +18,9 @@ describe("SocialLoginLink", () => {
   });
 
   it("providerId에 따라 제공자 이름을 렌더링한다", () => {
-    render(<SocialLoginLink providerId="kakao" href={URLS.API.AUTH.KAKAO} />);
+    render(<SocialLoginLink providerId="naver" href={URLS.API.AUTH.NAVER} />);
 
-    expect(screen.getByRole("link", { name: "카카오로 로그인" })).toBeInTheDocument();
-    expect(screen.getByText("카카오 계정으로 계속 진행합니다.")).toBeInTheDocument();
+    expect(screen.getByRole("link", { name: "네이버로 로그인" })).toBeInTheDocument();
+    expect(screen.getByText("네이버 계정으로 계속 진행합니다.")).toBeInTheDocument();
   });
 });

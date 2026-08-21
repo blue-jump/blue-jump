@@ -1,11 +1,10 @@
 import "server-only";
 
-import { z } from "zod";
-
 import {
   serverEnv as commonServerEnv,
   type ServerEnv as CommonServerEnv,
 } from "@blue-jump/env/server";
+import { z } from "zod";
 
 const httpUrl = z.url({
   protocol: /^https?$/,

@@ -17,10 +17,6 @@ describe("SocialLoginButtons", () => {
       "href",
       URLS.API.AUTH.NAVER,
     );
-    expect(screen.getByRole("link", { name: "카카오로 로그인" })).toHaveAttribute(
-      "href",
-      URLS.API.AUTH.KAKAO,
-    );
   });
 
   it("providers를 전달하면 해당 로그인 링크만 렌더링한다", () => {

@@ -217,9 +217,6 @@ GOOGLE_CLIENT_SECRET=dummy-google-client-secret
 
 NAVER_CLIENT_ID=dummy-naver-client-id
 NAVER_CLIENT_SECRET=dummy-naver-client-secret
-
-KAKAO_CLIENT_ID=dummy-kakao-client-id
-KAKAO_CLIENT_SECRET=dummy-kakao-client-secret
 ```
 
 `CI`는 로컬 `.env.e2e.local`에 넣지 않습니다.

@@ -8,8 +8,12 @@ import { serverEnv } from "@/config/server-env";
 
 export const metadata: Metadata = {
   metadataBase: new URL(serverEnv.WEB_APP_URL),
-  title: "Web",
-  description: "Service application",
+  applicationName: "BLUE JUMP",
+  title: {
+    default: "BLUE JUMP",
+    template: "%s | BLUE JUMP",
+  },
+  description: "버튜버와 팬의 활동, 창작, 프로젝트와 기록을 연결하는 블루점프 팬 커뮤니티입니다.",
 };
 
 export default function RootLayout({
