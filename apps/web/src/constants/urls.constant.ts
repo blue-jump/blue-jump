@@ -2,10 +2,6 @@ export const URLS = {
   CLIENT: {
     HOME: "/",
     LOGIN: "/login",
-    CONTENTS: "/contents",
-    CREATE_CONTENT: "/contents/create",
-    CONTENTS_DETAIL: (contentId: string) => `/contents/${contentId}`,
-    MY_PAGE: "/me",
   },
 
   API: {

@@ -81,7 +81,7 @@ describe("Web OAuth Callback Route", () => {
     });
 
     expect(response.status).toBe(307);
-    expect(response.headers.get("location")).toBe(`${webAppUrl}${URLS.CLIENT.MY_PAGE}`);
+    expect(response.headers.get("location")).toBe(`${webAppUrl}${URLS.CLIENT.HOME}`);
   });
 
   it("x-forwarded-for가 없으면 x-real-ip를 전달한다", async () => {
