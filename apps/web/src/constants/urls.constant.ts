@@ -1,6 +1,13 @@
 export const URLS = {
   CLIENT: {
     HOME: "/",
+    COMMUNITY: "/community",
+    CREATIVE: "/creative",
+    PROJECTS: "/projects",
+    GATHERINGS: "/gatherings",
+    ARCHIVE: "/archive",
+    TALENTS: "/talents",
+    PROFILE: "/profile",
     LOGIN: "/login",
   },
 

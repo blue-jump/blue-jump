@@ -5,6 +5,7 @@ import type { Metadata } from "next";
 import type { ReactNode } from "react";
 
 import { serverEnv } from "@/config/server-env";
+import { Layout } from "@/shared/layouts";
 
 export const metadata: Metadata = {
   metadataBase: new URL(serverEnv.WEB_APP_URL),
@@ -25,7 +26,9 @@ export default function RootLayout({
 
   return (
     <html lang="ko" data-ds-theme="web" data-ds-mode="light">
-      <body {...(isDev ? { suppressHydrationWarning: true } : {})}>{children}</body>
+      <body {...(isDev ? { suppressHydrationWarning: true } : {})}>
+        <Layout>{children}</Layout>
+      </body>
     </html>
   );
 }
