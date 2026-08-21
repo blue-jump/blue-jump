@@ -6,8 +6,8 @@ import {
   TableHead,
   TableHeader,
   TableRow,
-} from "@repo/design-system/admin";
-import type { ContentResponse } from "@repo/domain/content/client";
+} from "@blue-jump/design-system/admin";
+import type { ContentResponse } from "@blue-jump/domain/content/client";
 
 import { URLS } from "@/constants";
 

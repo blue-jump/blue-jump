@@ -51,7 +51,7 @@ function withoutSeedKeyAndId<TData extends { id: string; key: string }>(
 
 loadEnv();
 
-const { disconnectScriptPrisma, scriptPrisma } = await import("@repo/database/script-client");
+const { disconnectScriptPrisma, scriptPrisma } = await import("@blue-jump/database/script-client");
 
 const prisma = scriptPrisma;
 

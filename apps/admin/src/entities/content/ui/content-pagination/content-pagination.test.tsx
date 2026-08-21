@@ -1,7 +1,7 @@
 import { render, screen } from "@testing-library/react";
 import { describe, expect, it } from "vitest";
 
-import type { PaginationMeta } from "@repo/core/pagination";
+import type { PaginationMeta } from "@blue-jump/core/pagination";
 
 import { URLS } from "@/constants";
 

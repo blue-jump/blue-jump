@@ -1,6 +1,6 @@
 import type { ReactNode } from "react";
 
-import { Container } from "@repo/design-system/admin";
+import { Container } from "@blue-jump/design-system/admin";
 
 export interface MainProps {
   children: ReactNode;

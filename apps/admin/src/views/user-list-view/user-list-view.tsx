@@ -1,5 +1,5 @@
-import { Alert, AlertDescription, AlertTitle, Card } from "@repo/design-system/admin";
-import type { UserListQueryInput, UserListResponse } from "@repo/domain/user/client";
+import { Alert, AlertDescription, AlertTitle, Card } from "@blue-jump/design-system/admin";
+import type { UserListQueryInput, UserListResponse } from "@blue-jump/domain/user/client";
 
 import { UserEmpty, UserListPagination, UserTable } from "@/entities/user";
 import { UserFilterForm } from "@/features/user";

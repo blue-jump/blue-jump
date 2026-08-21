@@ -4,11 +4,11 @@ import { useRouter } from "next/navigation";
 
 import { useActionState, useEffect } from "react";
 
-import type { ActionResult } from "@repo/core/action";
-import { getFormError } from "@repo/design-system/form";
-import { toastActionResult } from "@repo/design-system/toast";
-import { Alert, AlertDescription } from "@repo/design-system/web";
-import type { ContentDetailResponse } from "@repo/domain/content/client";
+import type { ActionResult } from "@blue-jump/core/action";
+import { getFormError } from "@blue-jump/design-system/form";
+import { toastActionResult } from "@blue-jump/design-system/toast";
+import { Alert, AlertDescription } from "@blue-jump/design-system/web";
+import type { ContentDetailResponse } from "@blue-jump/domain/content/client";
 
 import { DeleteContentSubmitButton } from "../delete-content-submit-button";
 

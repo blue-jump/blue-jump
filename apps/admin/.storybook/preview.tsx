@@ -1,5 +1,5 @@
-import { ToastProvider } from "@repo/design-system/toast";
-import basePreview from "@repo/storybook-config/preview";
+import { ToastProvider } from "@blue-jump/design-system/toast";
+import basePreview from "@blue-jump/storybook-config/preview";
 
 import "../src/app/globals.css";
 

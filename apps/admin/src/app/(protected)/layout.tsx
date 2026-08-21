@@ -2,8 +2,8 @@ import { redirect } from "next/navigation";
 
 import type { ReactNode } from "react";
 
-import { AUTH_ERROR_CODE, requireAdmin } from "@repo/auth/server";
-import type { AppError } from "@repo/core/errors";
+import { AUTH_ERROR_CODE, requireAdmin } from "@blue-jump/auth/server";
+import type { AppError } from "@blue-jump/core/errors";
 
 import { URLS } from "@/constants";
 import { LogoutButton } from "@/features/auth";

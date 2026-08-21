@@ -5,15 +5,15 @@ import { revalidatePath } from "next/cache";
 import type { Prisma } from "@prisma/client";
 import { afterAll, afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 
-import { requireUser } from "@repo/auth/server";
-import { prisma } from "@repo/database/client";
-import { CONTENT_ERROR_CODE } from "@repo/domain/content/server";
+import { requireUser } from "@blue-jump/auth/server";
+import { prisma } from "@blue-jump/database/client";
+import { CONTENT_ERROR_CODE } from "@blue-jump/domain/content/server";
 
 import { URLS } from "@/constants";
 
 import { createContentAction } from "../create-content.action";
 
-vi.mock("@repo/auth/server", () => ({
+vi.mock("@blue-jump/auth/server", () => ({
   requireUser: vi.fn(),
 }));
 

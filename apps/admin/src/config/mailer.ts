@@ -1,5 +1,5 @@
-import { serverEnv } from "@repo/env/server";
-import { createConsoleMailerProvider, createResendMailerProvider } from "@repo/mailer/server";
+import { serverEnv } from "@blue-jump/env/server";
+import { createConsoleMailerProvider, createResendMailerProvider } from "@blue-jump/mailer/server";
 
 export const mailer =
   serverEnv.MAIL_PROVIDER === "resend"

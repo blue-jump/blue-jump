@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 
-import { revokeCurrentAuthSession } from "@repo/auth/server";
+import { revokeCurrentAuthSession } from "@blue-jump/auth/server";
 
 import { serverEnv } from "@/config/server-env";
 import { URLS } from "@/constants";

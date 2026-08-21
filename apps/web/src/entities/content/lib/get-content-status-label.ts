@@ -1,4 +1,4 @@
-import type { ContentStatus } from "@repo/domain/content/client";
+import type { ContentStatus } from "@blue-jump/domain/content/client";
 
 const CONTENT_STATUS_LABELS = {
   PUBLISHED: "공개",

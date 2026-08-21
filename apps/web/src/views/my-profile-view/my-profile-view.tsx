@@ -1,7 +1,7 @@
-import type { AppError } from "@repo/core/errors";
-import type { Result } from "@repo/core/result";
-import { Alert, AlertDescription, AlertTitle, LinkButton } from "@repo/design-system/web";
-import type { UserDetailResponse } from "@repo/domain/user/client";
+import type { AppError } from "@blue-jump/core/errors";
+import type { Result } from "@blue-jump/core/result";
+import { Alert, AlertDescription, AlertTitle, LinkButton } from "@blue-jump/design-system/web";
+import type { UserDetailResponse } from "@blue-jump/domain/user/client";
 
 import { deleteMyAccountAction } from "@/actions/user";
 import { URLS } from "@/constants";

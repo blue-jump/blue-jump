@@ -1,4 +1,4 @@
-import nodeConfig from "@repo/eslint-config/node";
+import nodeConfig from "@blue-jump/eslint-config/node";
 
 /** @type {import("eslint").Linter.Config[]} */
 export default [
@@ -16,7 +16,7 @@ export default [
             },
             {
               regex:
-                "^@repo/(auth|auth-next|database|design-system|domain|env|storage|analytics|feature-flags|observability|rate-limit|audit-log|queue)(?:/|$)",
+                "^@blue-jump/(auth|auth-next|database|design-system|domain|env|storage|analytics|feature-flags|observability|rate-limit|audit-log|queue)(?:/|$)",
               message:
                 "packages/mailer는 메일 발송 인프라 패키지이므로 앱/도메인/DB/UI/환경변수 패키지에 의존할 수 없습니다. 필요한 값은 provider 생성 시 주입하세요.",
             },

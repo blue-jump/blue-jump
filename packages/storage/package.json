@@ -1,5 +1,5 @@
 {
-  "name": "@repo/storage",
+  "name": "@blue-jump/storage",
   "version": "0.0.0",
   "private": true,
   "type": "module",
@@ -20,9 +20,9 @@
     "server-only": "catalog:"
   },
   "devDependencies": {
-    "@repo/eslint-config": "workspace:*",
-    "@repo/typescript-config": "workspace:*",
-    "@repo/vitest-config": "workspace:*",
+    "@blue-jump/eslint-config": "workspace:*",
+    "@blue-jump/typescript-config": "workspace:*",
+    "@blue-jump/vitest-config": "workspace:*",
     "eslint": "catalog:",
     "typescript": "catalog:",
     "vitest": "catalog:"

@@ -3,7 +3,7 @@ import { beforeEach, describe, expect, it, vi } from "vitest";
 
 import type * as ReactModule from "react";
 
-import type { ActionResult } from "@repo/core/action";
+import type { ActionResult } from "@blue-jump/core/action";
 
 import DeleteMyAccountForm, { type DeleteMyAccountFormAction } from "./delete-my-account-form";
 

@@ -20,7 +20,7 @@ vi.mock("@/actions/content", () => ({
   deleteMyContentAction: vi.fn(),
 }));
 
-vi.mock("@repo/design-system/toast", () => ({
+vi.mock("@blue-jump/design-system/toast", () => ({
   toastActionResult: vi.fn(),
 }));
 

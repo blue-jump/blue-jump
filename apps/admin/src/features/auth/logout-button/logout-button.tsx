@@ -1,6 +1,6 @@
 import type { ReactNode } from "react";
 
-import { Button } from "@repo/design-system/admin";
+import { Button } from "@blue-jump/design-system/admin";
 
 import { URLS } from "@/constants";
 

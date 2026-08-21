@@ -1,4 +1,4 @@
-import { Container } from "@repo/design-system/admin";
+import { Container } from "@blue-jump/design-system/admin";
 
 export default function Footer() {
   return (

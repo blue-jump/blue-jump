@@ -1,6 +1,6 @@
-import type { PaginationMeta } from "@repo/core/pagination";
-import type { UserListQueryInput } from "@repo/domain/user/client";
-import type { Meta, StoryObj } from "@repo/storybook-config/nextjs";
+import type { PaginationMeta } from "@blue-jump/core/pagination";
+import type { UserListQueryInput } from "@blue-jump/domain/user/client";
+import type { Meta, StoryObj } from "@blue-jump/storybook-config/nextjs";
 
 import UserListPagination from "./user-list-pagination";
 

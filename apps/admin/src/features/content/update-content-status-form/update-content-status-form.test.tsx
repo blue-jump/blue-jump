@@ -4,9 +4,9 @@ import { beforeEach, describe, expect, it, vi } from "vitest";
 import * as React from "react";
 import type * as ReactModule from "react";
 
-import type { ActionResult } from "@repo/core/action";
-import { toastActionResult } from "@repo/design-system/toast";
-import type { ContentDetailResponse } from "@repo/domain/content/client";
+import type { ActionResult } from "@blue-jump/core/action";
+import { toastActionResult } from "@blue-jump/design-system/toast";
+import type { ContentDetailResponse } from "@blue-jump/domain/content/client";
 
 import UpdateContentStatusForm from "./update-content-status-form";
 
@@ -34,7 +34,7 @@ vi.mock("next/navigation", () => ({
   }),
 }));
 
-vi.mock("@repo/design-system/toast", () => ({
+vi.mock("@blue-jump/design-system/toast", () => ({
   toastActionResult: vi.fn(),
 }));
 

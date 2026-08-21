@@ -1,6 +1,6 @@
 import type { ReactNode } from "react";
 
-import { SidebarLayout } from "@repo/design-system/admin";
+import { SidebarLayout } from "@blue-jump/design-system/admin";
 
 import { Footer } from "@/shared/footer";
 import { Header } from "@/shared/header";

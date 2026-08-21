@@ -2,9 +2,9 @@ import { render, screen, waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { beforeEach, describe, expect, it, vi } from "vitest";
 
-import type { ActionResult } from "@repo/core/action";
-import { toastActionResult } from "@repo/design-system/toast";
-import { CONTENT, type ContentDetailResponse } from "@repo/domain/content/client";
+import type { ActionResult } from "@blue-jump/core/action";
+import { toastActionResult } from "@blue-jump/design-system/toast";
+import { CONTENT, type ContentDetailResponse } from "@blue-jump/domain/content/client";
 
 import UpdateContentForm, {
   type UpdateContentFormAction,
@@ -24,7 +24,7 @@ vi.mock("next/navigation", () => ({
   }),
 }));
 
-vi.mock("@repo/design-system/toast", () => ({
+vi.mock("@blue-jump/design-system/toast", () => ({
   toastActionResult: vi.fn(),
 }));
 

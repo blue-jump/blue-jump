@@ -6,8 +6,8 @@ import {
   DataListValue,
   LinkButton,
   Separator,
-} from "@repo/design-system/admin";
-import type { ContentDetailResponse } from "@repo/domain/content/client";
+} from "@blue-jump/design-system/admin";
+import type { ContentDetailResponse } from "@blue-jump/domain/content/client";
 
 import { URLS } from "@/constants";
 

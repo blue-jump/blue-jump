@@ -1,8 +1,8 @@
-# @repo/auth
+# @blue-jump/auth
 
 Next.js App Router 기반 애플리케이션에서 공통으로 사용하는 인증/인가 패키지입니다.
 
-`@repo/auth`는 Google, Naver, Kakao OAuth 로그인, DB 세션, 세션 쿠키, 현재 사용자 조회, 사용자/관리자 접근 제어를 담당합니다.
+`@blue-jump/auth`는 Google, Naver, Kakao OAuth 로그인, DB 세션, 세션 쿠키, 현재 사용자 조회, 사용자/관리자 접근 제어를 담당합니다.
 
 이 패키지는 Next.js 서버 런타임 전용 패키지입니다.
 
@@ -11,7 +11,7 @@ Next.js App Router 기반 애플리케이션에서 공통으로 사용하는 인
 ## 역할
 
 ```txt
-@repo/auth
+@blue-jump/auth
   OAuth authorize URL 생성
   OAuth state cookie 생성/검증
   Google / Naver / Kakao OAuth token 교환
@@ -24,9 +24,9 @@ Next.js App Router 기반 애플리케이션에서 공통으로 사용하는 인
   requireAdmin
 ```
 
-`User` 생성, OAuth 계정 연결, 사용자 상태 검증 같은 비즈니스 규칙은 `@repo/domain`의 `user` 도메인 서비스가 담당합니다.
+`User` 생성, OAuth 계정 연결, 사용자 상태 검증 같은 비즈니스 규칙은 `@blue-jump/domain`의 `user` 도메인 서비스가 담당합니다.
 
-`UserSession` 생성/조회/폐기 같은 DB 접근은 `@repo/database`의 repository가 담당합니다.
+`UserSession` 생성/조회/폐기 같은 DB 접근은 `@blue-jump/database`의 repository가 담당합니다.
 
 ---
 
@@ -36,30 +36,30 @@ Next.js App Router 기반 애플리케이션에서 공통으로 사용하는 인
 apps/web
 apps/admin
   ↓
-@repo/auth
+@blue-jump/auth
   ↓
-@repo/domain
+@blue-jump/domain
   ↓
-@repo/database
+@blue-jump/database
   ↓
-@repo/core
+@blue-jump/core
 
-@repo/auth
+@blue-jump/auth
   ↓
-@repo/env
+@blue-jump/env
 ```
 
 금지 방향은 다음과 같습니다.
 
 ```txt
-@repo/domain → @repo/auth
-@repo/database → @repo/auth
-@repo/core → @repo/auth
-@repo/auth → apps/*
+@blue-jump/domain → @blue-jump/auth
+@blue-jump/database → @blue-jump/auth
+@blue-jump/core → @blue-jump/auth
+@blue-jump/auth → apps/*
 ```
 
 `domain`은 인증 패키지를 알면 안 됩니다.
-OAuth provider 응답은 `@repo/auth`에서 정규화하고, 정규화된 입력만 `@repo/domain`으로 전달합니다.
+OAuth provider 응답은 `@blue-jump/auth`에서 정규화하고, 정규화된 입력만 `@blue-jump/domain`으로 전달합니다.
 
 ---
 
@@ -114,20 +114,20 @@ packages/auth/
 현재 클라이언트 공개 API는 없습니다.
 
 ```ts
-import {} from "@repo/auth/client";
+import {} from "@blue-jump/auth/client";
 ```
 
 서버 전용 API는 아래 경로에서 사용합니다.
 
 ```ts
-import { requireUser } from "@repo/auth/server";
+import { requireUser } from "@blue-jump/auth/server";
 ```
 
 ---
 
 ## 환경 변수
 
-`@repo/auth`는 `@repo/env/server`를 통해 아래 환경변수를 사용합니다.
+`@blue-jump/auth`는 `@blue-jump/env/server`를 통해 아래 환경변수를 사용합니다.
 
 ```env
 # App
@@ -135,7 +135,7 @@ WEB_APP_URL=http://localhost:3000
 ADMIN_APP_URL=http://localhost:3001
 
 # Auth Session
-AUTH_SESSION_COOKIE_NAME=boilerplate_session
+AUTH_SESSION_COOKIE_NAME=blue_jump_session
 AUTH_SESSION_MAX_AGE_SECONDS=2592000
 
 # Google OAuth
@@ -206,8 +206,8 @@ http://localhost:3001/api/auth/kakao/callback
 // apps/web/app/api/auth/[provider]/route.ts
 import { type NextRequest, NextResponse } from "next/server";
 
-import { createOAuthAuthorizeUrl, parseOAuthProviderId } from "@repo/auth/server";
-import { serverEnv } from "@repo/env/server";
+import { createOAuthAuthorizeUrl, parseOAuthProviderId } from "@blue-jump/auth/server";
+import { serverEnv } from "@blue-jump/env/server";
 
 export const runtime = "nodejs";
 
@@ -248,8 +248,8 @@ export async function GET(
 // apps/web/app/api/auth/[provider]/callback/route.ts
 import { type NextRequest, NextResponse } from "next/server";
 
-import { handleOAuthCallback, parseOAuthProviderId } from "@repo/auth/server";
-import { serverEnv } from "@repo/env/server";
+import { handleOAuthCallback, parseOAuthProviderId } from "@blue-jump/auth/server";
+import { serverEnv } from "@blue-jump/env/server";
 
 export const runtime = "nodejs";
 
@@ -350,8 +350,8 @@ export function SocialLoginButtons() {
 // apps/web/app/api/auth/logout/route.ts
 import { NextResponse } from "next/server";
 
-import { revokeCurrentAuthSession } from "@repo/auth/server";
-import { serverEnv } from "@repo/env/server";
+import { revokeCurrentAuthSession } from "@blue-jump/auth/server";
+import { serverEnv } from "@blue-jump/env/server";
 
 export const runtime = "nodejs";
 
@@ -383,7 +383,7 @@ UI에서는 다음처럼 호출합니다.
 ### 현재 세션 조회
 
 ```ts
-import { getCurrentSession } from "@repo/auth/server";
+import { getCurrentSession } from "@blue-jump/auth/server";
 
 const session = await getCurrentSession();
 ```
@@ -393,7 +393,7 @@ const session = await getCurrentSession();
 ### 로그인 사용자 필수
 
 ```ts
-import { requireUser } from "@repo/auth/server";
+import { requireUser } from "@blue-jump/auth/server";
 
 const session = await requireUser();
 ```
@@ -403,7 +403,7 @@ const session = await requireUser();
 ### 관리자 필수
 
 ```ts
-import { requireAdmin } from "@repo/auth/server";
+import { requireAdmin } from "@blue-jump/auth/server";
 
 const session = await requireAdmin();
 ```
@@ -418,7 +418,7 @@ const session = await requireAdmin();
 ```tsx
 import { redirect } from "next/navigation";
 
-import { requireUser } from "@repo/auth/server";
+import { requireUser } from "@blue-jump/auth/server";
 
 async function getRequiredUserSession() {
   try {
@@ -445,7 +445,7 @@ export default async function MyPage() {
 ```tsx
 import { redirect } from "next/navigation";
 
-import { AUTH_ERROR_CODE, requireAdmin } from "@repo/auth/server";
+import { AUTH_ERROR_CODE, requireAdmin } from "@blue-jump/auth/server";
 
 function isAuthError(error: unknown): error is { code: string } {
   return (
@@ -481,7 +481,7 @@ export default async function AdminHomePage() {
 
 ## 세션 정책
 
-`@repo/auth`는 JWT 세션이 아니라 DB 세션을 사용합니다.
+`@blue-jump/auth`는 JWT 세션이 아니라 DB 세션을 사용합니다.
 
 ```txt
 브라우저 cookie
@@ -555,11 +555,11 @@ OAuth 실패 → /login?error=oauth_failed
 
 ## 테스트
 
-`@repo/auth`는 Vitest node 환경에서 테스트합니다.
+`@blue-jump/auth`는 Vitest node 환경에서 테스트합니다.
 
 ```bash
-pnpm --filter @repo/auth test
-pnpm --filter @repo/auth test:watch
+pnpm --filter @blue-jump/auth test
+pnpm --filter @blue-jump/auth test:watch
 ```
 
 현재 테스트 대상은 다음과 같습니다.
@@ -595,11 +595,11 @@ oauth-callback.test.ts
 ## 스크립트
 
 ```bash
-pnpm --filter @repo/auth lint
-pnpm --filter @repo/auth lint:fix
-pnpm --filter @repo/auth check-types
-pnpm --filter @repo/auth test
-pnpm --filter @repo/auth test:watch
+pnpm --filter @blue-jump/auth lint
+pnpm --filter @blue-jump/auth lint:fix
+pnpm --filter @blue-jump/auth check-types
+pnpm --filter @blue-jump/auth test
+pnpm --filter @blue-jump/auth test:watch
 ```
 
 ---
@@ -608,14 +608,14 @@ pnpm --filter @repo/auth test:watch
 
 ### 1. 이 패키지는 서버 전용이다
 
-`@repo/auth/server`는 `next/headers`, `server-only`, DB repository, server env를 사용합니다.
+`@blue-jump/auth/server`는 `next/headers`, `server-only`, DB repository, server env를 사용합니다.
 
 클라이언트 컴포넌트에서 import하면 안 됩니다.
 
 ```tsx
 "use client";
 
-import { requireUser } from "@repo/auth/server"; // 금지
+import { requireUser } from "@blue-jump/auth/server"; // 금지
 ```
 
 ### 2. OAuth token은 저장하지 않는다
@@ -628,7 +628,7 @@ OAuth token은 로그인 순간 provider profile을 조회하는 데만 사용�
 
 Google, Naver, Kakao 응답 형식은 서로 다릅니다.
 
-`@repo/auth`는 이를 아래 공통 형식으로 변환합니다.
+`@blue-jump/auth`는 이를 아래 공통 형식으로 변환합니다.
 
 ```ts
 export interface OAuthProfile {
@@ -642,9 +642,9 @@ export interface OAuthProfile {
 
 ### 4. 사용자 생성/연결 규칙은 domain이 담당한다
 
-`@repo/auth`는 `findOrCreateOAuthUserService()`를 호출할 뿐입니다.
+`@blue-jump/auth`는 `findOrCreateOAuthUserService()`를 호출할 뿐입니다.
 
-사용자 상태 검증, 기존 이메일 사용자 연결, 신규 사용자 생성, OAuth 계정 연결 규칙은 `@repo/domain/user`에 둡니다.
+사용자 상태 검증, 기존 이메일 사용자 연결, 신규 사용자 생성, OAuth 계정 연결 규칙은 `@blue-jump/domain/user`에 둡니다.
 
 ### 5. 앱 route에서 callbackPath를 실제 경로와 맞춰야 한다
 

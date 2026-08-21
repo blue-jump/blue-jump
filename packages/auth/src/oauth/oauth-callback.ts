@@ -1,7 +1,7 @@
 import "server-only";
 
-import type { AppError } from "@repo/core/errors";
-import { findOrCreateOAuthUserService } from "@repo/domain/user/server";
+import type { AppError } from "@blue-jump/core/errors";
+import { findOrCreateOAuthUserService } from "@blue-jump/domain/user/server";
 
 import { createOAuthInvalidStateError, createOAuthMissingCodeError } from "../auth.error";
 import { createAuthSession } from "../session";

@@ -1,6 +1,6 @@
 # Codex Guide
 
-이 문서는 `boilerplate-turborepo`에서 Codex CLI와 VS Code Codex IDE Extension을 사용할 때 제공되는 프로젝트 설정과 기본 사용 방법을 설명합니다.
+이 문서는 `blue-jump`에서 Codex CLI와 VS Code Codex IDE Extension을 사용할 때 제공되는 프로젝트 설정과 기본 사용 방법을 설명합니다.
 
 Codex 관련 파일은 프로젝트 Architecture나 Convention을 별도로 정의하지 않습니다.
 

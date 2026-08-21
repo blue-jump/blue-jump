@@ -1,4 +1,4 @@
-import baseConfig, { type StorybookConfig } from "@repo/storybook-config/react";
+import baseConfig, { type StorybookConfig } from "@blue-jump/storybook-config/react";
 
 const config: StorybookConfig = {
   ...baseConfig,

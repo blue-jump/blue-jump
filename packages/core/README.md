@@ -1,6 +1,6 @@
-# @repo/core
+# @blue-jump/core
 
-`@repo/core`는 Repository에서 가장 아래에 위치하는 도메인 독립 공통 기반 Package입니다.
+`@blue-jump/core`는 Repository에서 가장 아래에 위치하는 도메인 독립 공통 기반 Package입니다.
 
 특정 Domain, Database, Auth, Design System, App 또는 외부 Provider를 알지 않으며 여러 Workspace에서 재사용할 수 있는 순수 기반만 제공합니다.
 
@@ -121,17 +121,17 @@ libs
 ## Public API
 
 ```txt
-@repo/core/action
-@repo/core/errors
-@repo/core/format
-@repo/core/input
-@repo/core/logger
-@repo/core/pagination
-@repo/core/parse
-@repo/core/query
-@repo/core/resolve
-@repo/core/result
-@repo/core/validation
+@blue-jump/core/action
+@blue-jump/core/errors
+@blue-jump/core/format
+@blue-jump/core/input
+@blue-jump/core/logger
+@blue-jump/core/pagination
+@blue-jump/core/parse
+@blue-jump/core/query
+@blue-jump/core/resolve
+@blue-jump/core/result
+@blue-jump/core/validation
 ```
 
 Package 내부 `src/*` 경로를 다른 Workspace에서 직접 Import하지 않습니다.
@@ -139,7 +139,7 @@ Package 내부 `src/*` 경로를 다른 Workspace에서 직접 Import하지 않�
 ## Action
 
 ```ts
-import { executeFormAction } from "@repo/core/action";
+import { executeFormAction } from "@blue-jump/core/action";
 ```
 
 `executeFormAction`은 Form 기반 Server Action에서 반복되는 다음 흐름을 공통 처리합니다.
@@ -168,7 +168,7 @@ const result = await executeFormAction({
 ```
 
 ```ts
-import { parseJsonFormDataValues } from "@repo/core/parse";
+import { parseJsonFormDataValues } from "@blue-jump/core/parse";
 
 const result = await executeFormAction({
   actionName: "order-claim.create",
@@ -185,7 +185,7 @@ const result = await executeFormAction({
 ## Errors
 
 ```ts
-import { COMMON_ERROR_CODE, type AppError, type FieldErrors } from "@repo/core/errors";
+import { COMMON_ERROR_CODE, type AppError, type FieldErrors } from "@blue-jump/core/errors";
 ```
 
 `AppError`는 Application 전반에서 사용하는 공통 오류 계약입니다.
@@ -194,7 +194,7 @@ Domain별 Error Code는 해당 Domain에서 정의합니다.
 ## Result
 
 ```ts
-import { failure, isFailure, isSuccess, success, type Result } from "@repo/core/result";
+import { failure, isFailure, isSuccess, success, type Result } from "@blue-jump/core/result";
 ```
 
 예상 가능한 성공과 실패를 Exception 없이 명시적으로 표현할 때 사용합니다.
@@ -212,16 +212,16 @@ import {
   optionalNumberSchema,
   optionalStringSchema,
   requiredStringSchema,
-} from "@repo/core/input";
+} from "@blue-jump/core/input";
 ```
 
 `input`은 외부 입력의 형태 정규화와 입력용 Schema Factory를 담당합니다.
-특정 Domain의 Business Validation은 `@repo/domain`에 둡니다.
+특정 Domain의 Business Validation은 `@blue-jump/domain`에 둡니다.
 
 ## Validation
 
 ```ts
-import { mapZodErrorToFieldErrors } from "@repo/core/validation";
+import { mapZodErrorToFieldErrors } from "@blue-jump/core/validation";
 ```
 
 Zod Validation Error를 공통 `FieldErrors` 형태로 변환합니다.
@@ -230,7 +230,7 @@ Server Action뿐 아니라 Client/Feature의 선행 Validation에서도 사용�
 ## Pagination
 
 ```ts
-import { buildPagination, buildPaginationMeta } from "@repo/core/pagination";
+import { buildPagination, buildPaginationMeta } from "@blue-jump/core/pagination";
 ```
 
 ```ts
@@ -254,7 +254,7 @@ import {
   getSearchParam,
   type ListQuery,
   type SortDirection,
-} from "@repo/core/query";
+} from "@blue-jump/core/query";
 ```
 
 Search Params 처리와 범용 목록 Query 계약을 제공합니다.
@@ -270,7 +270,7 @@ import {
   formatKoreanPhoneNumber,
   formatNumber,
   formatPercentage,
-} from "@repo/core/format";
+} from "@blue-jump/core/format";
 ```
 
 기본 사용 예:
@@ -289,7 +289,7 @@ Formatter는 출력 표현만 담당합니다. 입력 정규화나 Domain 규칙
 ## Parse
 
 ```ts
-import { parseJsonFormDataValue, parseJsonFormDataValues } from "@repo/core/parse";
+import { parseJsonFormDataValue, parseJsonFormDataValues } from "@blue-jump/core/parse";
 ```
 
 `FormData` 등의 Raw Input을 구조화된 값으로 해석합니다.
@@ -298,7 +298,7 @@ JSON으로 해석할 수 없는 문자열과 File 값은 원본을 유지합니�
 ## Resolve
 
 ```ts
-import { resolveErrorMessage } from "@repo/core/resolve";
+import { resolveErrorMessage } from "@blue-jump/core/resolve";
 ```
 
 ```ts
@@ -311,7 +311,7 @@ const message = resolveErrorMessage(error, "요청을 처리하지 못했습니�
 ## Logger
 
 ```ts
-import { logger } from "@repo/core/logger";
+import { logger } from "@blue-jump/core/logger";
 
 logger.info("content.create.succeeded");
 logger.warn("content.create.failed", {
@@ -324,7 +324,7 @@ logger.error("content.create.unexpected_error", {
 
 ## 추가 기준
 
-`@repo/core`에 새로운 기능을 추가할 때는 다음을 확인합니다.
+`@blue-jump/core`에 새로운 기능을 추가할 때는 다음을 확인합니다.
 
 ```txt
 특정 Domain을 몰라도 되는가?
@@ -359,9 +359,9 @@ Raw Input 해석
 ## 검증
 
 ```bash
-pnpm --filter @repo/core lint
-pnpm --filter @repo/core check-types
-pnpm --filter @repo/core test
+pnpm --filter @blue-jump/core lint
+pnpm --filter @blue-jump/core check-types
+pnpm --filter @blue-jump/core test
 ```
 
 Repository 전체 변경이 포함되었다면:

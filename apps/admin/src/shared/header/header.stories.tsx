@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from "@repo/storybook-config/nextjs";
+import type { Meta, StoryObj } from "@blue-jump/storybook-config/nextjs";
 
 import Header from "./header";
 

@@ -1,6 +1,6 @@
 import { beforeEach, describe, expect, it, vi } from "vitest";
 
-import type { AppError } from "@repo/core/errors";
+import type { AppError } from "@blue-jump/core/errors";
 
 import { updateContentStatusAction } from "../update-content-status.action";
 
@@ -28,11 +28,11 @@ const nextCacheMock = vi.hoisted(() => ({
   revalidatePath: vi.fn(),
 }));
 
-vi.mock("@repo/auth/server", () => authMock);
+vi.mock("@blue-jump/auth/server", () => authMock);
 
-vi.mock("@repo/core/action", () => actionMock);
+vi.mock("@blue-jump/core/action", () => actionMock);
 
-vi.mock("@repo/domain/content/server", () => contentServiceMock);
+vi.mock("@blue-jump/domain/content/server", () => contentServiceMock);
 
 vi.mock("next/cache", () => nextCacheMock);
 

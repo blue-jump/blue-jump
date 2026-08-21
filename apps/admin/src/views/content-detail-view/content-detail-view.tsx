@@ -1,5 +1,5 @@
-import { Card, LinkButton } from "@repo/design-system/admin";
-import type { ContentDetailResponse } from "@repo/domain/content/client";
+import { Card, LinkButton } from "@blue-jump/design-system/admin";
+import type { ContentDetailResponse } from "@blue-jump/domain/content/client";
 
 import { deleteContentAction, updateContentStatusAction } from "@/actions/content";
 import { URLS } from "@/constants";

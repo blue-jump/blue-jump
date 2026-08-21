@@ -1,5 +1,5 @@
 {
-  "name": "@repo/env",
+  "name": "@blue-jump/env",
   "version": "0.0.0",
   "type": "module",
   "private": true,
@@ -19,8 +19,8 @@
     "zod": "catalog:"
   },
   "devDependencies": {
-    "@repo/eslint-config": "workspace:*",
-    "@repo/typescript-config": "workspace:*",
+    "@blue-jump/eslint-config": "workspace:*",
+    "@blue-jump/typescript-config": "workspace:*",
     "eslint": "catalog:",
     "typescript": "catalog:"
   }

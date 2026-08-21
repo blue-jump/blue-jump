@@ -1,4 +1,4 @@
-# @repo/database
+# @blue-jump/database
 
 Prisma 기반 데이터베이스 접근 패키지입니다.
 
@@ -28,18 +28,18 @@ Repository
 ## Export
 
 ```ts
-import { prisma } from "@repo/database/client";
-import { transaction } from "@repo/database/transaction";
-import { mapPrismaError } from "@repo/database/errors";
+import { prisma } from "@blue-jump/database/client";
+import { transaction } from "@blue-jump/database/transaction";
+import { mapPrismaError } from "@blue-jump/database/errors";
 
-import { findUserByIdRepository } from "@repo/database/user";
-import { findContentByIdRepository } from "@repo/database/content";
+import { findUserByIdRepository } from "@blue-jump/database/user";
+import { findContentByIdRepository } from "@blue-jump/database/content";
 ```
 
 ## Prisma Client
 
 ```ts
-import { prisma } from "@repo/database/client";
+import { prisma } from "@blue-jump/database/client";
 
 const user = await prisma.user.findUnique({
   where: {
@@ -53,7 +53,7 @@ const user = await prisma.user.findUnique({
 ## Repository 사용 예시
 
 ```ts
-import { findUserByIdRepository } from "@repo/database/user";
+import { findUserByIdRepository } from "@blue-jump/database/user";
 
 const user = await findUserByIdRepository(userId);
 
@@ -67,7 +67,7 @@ if (!user) {
 여러 DB 작업을 하나의 트랜잭션으로 묶을 때 사용합니다.
 
 ```ts
-import { transaction } from "@repo/database/transaction";
+import { transaction } from "@blue-jump/database/transaction";
 
 await transaction(async (database) => {
   const user = await database.user.create({
@@ -94,8 +94,8 @@ await transaction(async (database) => {
 Repository와 함께 사용할 경우에는 repository가 `database` 인자를 받을 수 있도록 확장할 수 있습니다.
 
 ```ts
-import { transaction } from "@repo/database/transaction";
-import { createUserRepository, updateUserRepository } from "@repo/database/user";
+import { transaction } from "@blue-jump/database/transaction";
+import { createUserRepository, updateUserRepository } from "@blue-jump/database/user";
 
 await transaction(async (database) => {
   const user = await createUserRepository(
@@ -123,7 +123,7 @@ await transaction(async (database) => {
 Prisma 에러는 외부 계층으로 그대로 노출하지 않습니다.
 
 ```ts
-import { mapPrismaError } from "@repo/database/errors";
+import { mapPrismaError } from "@blue-jump/database/errors";
 
 try {
   await prisma.user.create({
@@ -186,17 +186,17 @@ softDeleteUserRepository;
 ## 명령어
 
 ```bash
-pnpm --filter @repo/database db:generate
-pnpm --filter @repo/database db:push
-pnpm --filter @repo/database db:migrate
-pnpm --filter @repo/database db:studio
+pnpm --filter @blue-jump/database db:generate
+pnpm --filter @blue-jump/database db:push
+pnpm --filter @blue-jump/database db:migrate
+pnpm --filter @blue-jump/database db:studio
 ```
 
 검사 명령어:
 
 ```bash
-pnpm --filter @repo/database lint
-pnpm --filter @repo/database check-types
+pnpm --filter @blue-jump/database lint
+pnpm --filter @blue-jump/database check-types
 ```
 
 ## 주의사항

@@ -2,8 +2,8 @@ import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { beforeEach, describe, expect, it, vi } from "vitest";
 
-import type { ActionResult } from "@repo/core/action";
-import { USER, type UserDetailResponse } from "@repo/domain/user/client";
+import type { ActionResult } from "@blue-jump/core/action";
+import { USER, type UserDetailResponse } from "@blue-jump/domain/user/client";
 
 import UpdateMyProfileForm from "./update-my-profile-form";
 import type { UpdateMyProfileFormAction } from "./update-my-profile-form";
@@ -26,7 +26,7 @@ vi.mock("react", async () => {
   };
 });
 
-vi.mock("@repo/design-system/toast", () => toastMock);
+vi.mock("@blue-jump/design-system/toast", () => toastMock);
 
 vi.mock("@/constants", () => ({
   URLS: {

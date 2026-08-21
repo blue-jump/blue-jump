@@ -1,7 +1,7 @@
 import { render, screen } from "@testing-library/react";
 import { describe, expect, it, vi } from "vitest";
 
-import type { ContentDetailResponse } from "@repo/domain/content/client";
+import type { ContentDetailResponse } from "@blue-jump/domain/content/client";
 
 import { URLS } from "@/constants";
 
@@ -23,7 +23,7 @@ vi.mock("next/navigation", () => ({
   }),
 }));
 
-vi.mock("@repo/design-system/toast", () => ({
+vi.mock("@blue-jump/design-system/toast", () => ({
   toastActionResult: vi.fn(),
 }));
 

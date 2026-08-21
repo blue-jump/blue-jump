@@ -4,7 +4,7 @@ import { useRouter } from "next/navigation";
 
 import { useActionState, useEffect } from "react";
 
-import type { ActionResult } from "@repo/core/action";
+import type { ActionResult } from "@blue-jump/core/action";
 import {
   Alert,
   AlertDescription,
@@ -20,10 +20,10 @@ import {
   ConfirmDialogTitle,
   ConfirmDialogTrigger,
   FieldError,
-} from "@repo/design-system/admin";
-import { getFieldError, getFormError } from "@repo/design-system/form";
-import { toastActionResult } from "@repo/design-system/toast";
-import type { ContentDetailResponse } from "@repo/domain/content/client";
+} from "@blue-jump/design-system/admin";
+import { getFieldError, getFormError } from "@blue-jump/design-system/form";
+import { toastActionResult } from "@blue-jump/design-system/toast";
+import type { ContentDetailResponse } from "@blue-jump/domain/content/client";
 
 import { URLS } from "@/constants";
 

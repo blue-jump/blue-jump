@@ -87,7 +87,7 @@ export const baseConfig = [
               position: "after",
             },
             {
-              pattern: "@repo/**",
+              pattern: "@blue-jump/**",
               group: "internal",
               position: "before",
             },

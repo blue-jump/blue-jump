@@ -4,7 +4,7 @@ import { useFormStatus } from "react-dom";
 
 import type { ReactNode } from "react";
 
-import { Button, type ButtonProps } from "@repo/design-system/web";
+import { Button, type ButtonProps } from "@blue-jump/design-system/web";
 
 export interface UpdateMyProfileSubmitButtonProps extends Omit<ButtonProps, "children" | "type"> {
   children?: ReactNode;

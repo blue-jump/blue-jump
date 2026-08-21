@@ -1,6 +1,6 @@
 import { Prisma } from "@prisma/client";
 
-import type { AppError } from "@repo/core/errors";
+import type { AppError } from "@blue-jump/core/errors";
 
 export function mapPrismaError(error: unknown): AppError {
   if (error instanceof Prisma.PrismaClientKnownRequestError) {

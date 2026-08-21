@@ -1,6 +1,6 @@
 import "server-only";
 
-import { serverEnv } from "@repo/env/server";
+import { serverEnv } from "@blue-jump/env/server";
 
 import type { OAuthProviderId } from "./oauth-provider";
 import { createOAuthState, setOAuthStateCookie } from "./oauth-state";

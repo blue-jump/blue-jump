@@ -1,9 +1,9 @@
 import { render, screen } from "@testing-library/react";
 import { describe, expect, it, vi } from "vitest";
 
-import type { AppError } from "@repo/core/errors";
-import type { Result } from "@repo/core/result";
-import type { UserDetailResponse } from "@repo/domain/user/client";
+import type { AppError } from "@blue-jump/core/errors";
+import type { Result } from "@blue-jump/core/result";
+import type { UserDetailResponse } from "@blue-jump/domain/user/client";
 
 import UpdateMyProfileView from "./update-my-profile-view";
 

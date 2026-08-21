@@ -1,5 +1,5 @@
-import type { ContentListResponse } from "@repo/domain/content/client";
-import type { Meta, StoryObj } from "@repo/storybook-config/nextjs";
+import type { ContentListResponse } from "@blue-jump/domain/content/client";
+import type { Meta, StoryObj } from "@blue-jump/storybook-config/nextjs";
 
 import ContentPagination from "./content-pagination";
 

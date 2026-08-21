@@ -1,9 +1,9 @@
 import { createHash } from "node:crypto";
 
-import type { AppError } from "@repo/core/errors";
-import { logger } from "@repo/core/logger";
-import { buildPagination, buildPaginationMeta } from "@repo/core/pagination";
-import { failure, success, type Result } from "@repo/core/result";
+import type { AppError } from "@blue-jump/core/errors";
+import { logger } from "@blue-jump/core/logger";
+import { buildPagination, buildPaginationMeta } from "@blue-jump/core/pagination";
+import { failure, success, type Result } from "@blue-jump/core/result";
 import {
   createUserRepository,
   findUserByEmailRepository,
@@ -12,12 +12,12 @@ import {
   findUsersAndCountRepository,
   softDeleteUserRepository,
   updateUserRepository,
-} from "@repo/database/user";
+} from "@blue-jump/database/user";
 import {
   createUserOAuthAccountRepository,
   findUserOAuthAccountWithUserRepository,
-} from "@repo/database/user-oauth-account";
-import { revokeUserSessionsByUserIdRepository } from "@repo/database/user-session";
+} from "@blue-jump/database/user-oauth-account";
+import { revokeUserSessionsByUserIdRepository } from "@blue-jump/database/user-session";
 
 import type { UserDetailResponse, UserListResponse, UserResponse } from "./user.dto";
 import {

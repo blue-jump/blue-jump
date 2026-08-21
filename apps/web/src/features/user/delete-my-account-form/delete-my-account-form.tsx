@@ -2,8 +2,8 @@
 
 import { useActionState, useId, useState } from "react";
 
-import type { ActionResult } from "@repo/core/action";
-import { getFieldError } from "@repo/design-system/form";
+import type { ActionResult } from "@blue-jump/core/action";
+import { getFieldError } from "@blue-jump/design-system/form";
 import {
   Alert,
   AlertDescription,
@@ -14,7 +14,7 @@ import {
   FieldError,
   FieldLabel,
   Input,
-} from "@repo/design-system/web";
+} from "@blue-jump/design-system/web";
 
 import { DeleteMyAccountSubmitButton } from "../delete-my-account-submit-button";
 

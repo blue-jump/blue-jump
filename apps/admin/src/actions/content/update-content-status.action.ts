@@ -2,14 +2,14 @@
 
 import { revalidatePath } from "next/cache";
 
-import { requireAdmin } from "@repo/auth/server";
-import type { ActionResult } from "@repo/core/action";
-import { executeFormAction } from "@repo/core/action";
+import { requireAdmin } from "@blue-jump/auth/server";
+import type { ActionResult } from "@blue-jump/core/action";
+import { executeFormAction } from "@blue-jump/core/action";
 import {
   type ContentDetailResponse,
   UpdateContentStatusByIdRequest,
-} from "@repo/domain/content/client";
-import { updateContentStatusService } from "@repo/domain/content/server";
+} from "@blue-jump/domain/content/client";
+import { updateContentStatusService } from "@blue-jump/domain/content/server";
 
 import { URLS } from "@/constants";
 

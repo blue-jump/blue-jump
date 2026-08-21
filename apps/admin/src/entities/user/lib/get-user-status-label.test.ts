@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
 
-import type { UserListItemResponse } from "@repo/domain/user/client";
+import type { UserListItemResponse } from "@blue-jump/domain/user/client";
 
 import { getUserStatusLabel } from "./get-user-status-label";
 

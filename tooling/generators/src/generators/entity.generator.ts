@@ -310,7 +310,7 @@ function createStoryTemplate(params: {
 
   const domainName = toPascalCase(domain);
 
-  return `import type { Meta, StoryObj } from "@repo/storybook-config/nextjs";
+  return `import type { Meta, StoryObj } from "@blue-jump/storybook-config/nextjs";
 
 import ${componentName} from "./${entityName}";
 

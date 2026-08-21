@@ -1,4 +1,4 @@
-# `@repo/generators`
+# `@blue-jump/generators`
 
 Turborepo 보일러플레이트 내부에서 사용하는 코드 생성기 패키지입니다.
 
@@ -31,7 +31,7 @@ pnpm generate <type> <name> [options]
 실제 루트 스크립트는 다음 패키지 스크립트를 실행합니다.
 
 ```bash
-pnpm --filter @repo/generators generate
+pnpm --filter @blue-jump/generators generate
 ```
 
 ---
@@ -520,8 +520,8 @@ pnpm test
 특정 패키지만 확인하려면 filter를 사용합니다.
 
 ```bash
-pnpm --filter @repo/generators check-types
-pnpm --filter @repo/generators lint
+pnpm --filter @blue-jump/generators check-types
+pnpm --filter @blue-jump/generators lint
 ```
 
 앱 단위 테스트 예시입니다.
@@ -534,9 +534,9 @@ pnpm --filter admin test
 패키지 단위 테스트 예시입니다.
 
 ```bash
-pnpm --filter @repo/domain test
-pnpm --filter @repo/database test
-pnpm --filter @repo/design-system test
+pnpm --filter @blue-jump/domain test
+pnpm --filter @blue-jump/database test
+pnpm --filter @blue-jump/design-system test
 ```
 
 ---

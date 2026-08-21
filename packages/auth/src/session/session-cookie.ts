@@ -2,7 +2,7 @@ import "server-only";
 
 import { cookies } from "next/headers";
 
-import { serverEnv } from "@repo/env/server";
+import { serverEnv } from "@blue-jump/env/server";
 
 export async function getSessionCookieValue(): Promise<string | undefined> {
   const cookieStore = await cookies();

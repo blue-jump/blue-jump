@@ -1,4 +1,4 @@
-import { EmptyState } from "@repo/design-system/admin";
+import { EmptyState } from "@blue-jump/design-system/admin";
 
 export interface ContentEmptyProps {
   filtered?: boolean;

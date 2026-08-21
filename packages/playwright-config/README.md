@@ -1,4 +1,4 @@
-# `@repo/playwright-config`
+# `@blue-jump/playwright-config`
 
 Turborepo 보일러플레이트에서 사용하는 Playwright E2E 테스트 공용 설정 패키지입니다.
 
@@ -8,7 +8,7 @@ Turborepo 보일러플레이트에서 사용하는 Playwright E2E 테스트 공�
 
 # 목적
 
-`@repo/playwright-config`는 다음 목적을 위해 존재합니다.
+`@blue-jump/playwright-config`는 다음 목적을 위해 존재합니다.
 
 ```txt
 Playwright 설정 중복 제거
@@ -63,7 +63,7 @@ apps/admin/playwright.config.ts
 ```ts
 import { defineConfig } from "@playwright/test";
 
-import { createNextAppE2EConfig, loadPlaywrightEnv } from "@repo/playwright-config";
+import { createNextAppE2EConfig, loadPlaywrightEnv } from "@blue-jump/playwright-config";
 
 loadPlaywrightEnv();
 
@@ -125,7 +125,7 @@ mobile-chrome
 ```ts
 import { defineConfig } from "@playwright/test";
 
-import { createNextAppE2EConfig, loadPlaywrightEnv } from "@repo/playwright-config";
+import { createNextAppE2EConfig, loadPlaywrightEnv } from "@blue-jump/playwright-config";
 
 loadPlaywrightEnv();
 
@@ -148,7 +148,7 @@ export default defineConfig({
 ```ts
 import { defineConfig } from "@playwright/test";
 
-import { createNextAppE2EConfig, loadPlaywrightEnv } from "@repo/playwright-config";
+import { createNextAppE2EConfig, loadPlaywrightEnv } from "@blue-jump/playwright-config";
 
 loadPlaywrightEnv();
 
@@ -173,7 +173,7 @@ export default defineConfig({
 E2E 전용 환경변수는 루트의 `.env.e2e.local`에 둡니다.
 
 ```txt
-boilerplate-turborepo/
+blue-jump/
 ├─ .env.local
 ├─ .env.test.local
 └─ .env.e2e.local
@@ -195,8 +195,8 @@ boilerplate-turborepo/
 예:
 
 ```env
-DATABASE_URL="postgresql://postgres:postgres@localhost:5432/boilerplate_turborepo_e2e?schema=public"
-DIRECT_URL="postgresql://postgres:postgres@localhost:5432/boilerplate_turborepo_e2e?schema=public"
+DATABASE_URL="postgresql://postgres:postgres@localhost:5432/blue_jump_e2e?schema=public"
+DIRECT_URL="postgresql://postgres:postgres@localhost:5432/blue_jump_e2e?schema=public"
 
 WEB_APP_URL=http://localhost:3100
 ADMIN_APP_URL=http://localhost:3101
@@ -209,7 +209,7 @@ ADMIN_E2E_BASE_URL=http://localhost:3101
 
 E2E_AUTH_SECRET=replace-with-random-secret-at-least-32-chars
 
-AUTH_SESSION_COOKIE_NAME=boilerplate_session
+AUTH_SESSION_COOKIE_NAME=blue_jump_session
 AUTH_SESSION_MAX_AGE_SECONDS=2592000
 
 GOOGLE_CLIENT_ID=dummy-google-client-id
@@ -437,6 +437,6 @@ DB session 생성
 도메인 로직
 ```
 
-테스트 데이터 생성은 `@repo/scripts`가 담당합니다.
+테스트 데이터 생성은 `@blue-jump/scripts`가 담당합니다.
 
 앱별 인증 setup과 spec은 각 앱의 `e2e` 디렉터리가 담당합니다.

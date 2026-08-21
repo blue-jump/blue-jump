@@ -2,7 +2,7 @@ import { PrismaPg } from "@prisma/adapter-pg";
 import { PrismaClient } from "@prisma/client";
 import { Pool } from "pg";
 
-import { serverEnv } from "@repo/env/server";
+import { serverEnv } from "@blue-jump/env/server";
 
 const globalForPrisma = globalThis as unknown as {
   prisma?: PrismaClient;

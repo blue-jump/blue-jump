@@ -1,5 +1,5 @@
 {
-  "name": "@repo/generators",
+  "name": "@blue-jump/generators",
   "version": "0.0.0",
   "private": true,
   "type": "module",
@@ -11,8 +11,8 @@
     "clean": "rm -rf node_modules .turbo"
   },
   "devDependencies": {
-    "@repo/eslint-config": "workspace:*",
-    "@repo/typescript-config": "workspace:*",
+    "@blue-jump/eslint-config": "workspace:*",
+    "@blue-jump/typescript-config": "workspace:*",
     "eslint": "catalog:",
     "tsx": "catalog:",
     "typescript": "catalog:"

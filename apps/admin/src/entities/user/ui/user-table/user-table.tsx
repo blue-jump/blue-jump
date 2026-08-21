@@ -7,8 +7,8 @@ import {
   TableHead,
   TableHeader,
   TableRow,
-} from "@repo/design-system/admin";
-import type { UserListItemResponse } from "@repo/domain/user/client";
+} from "@blue-jump/design-system/admin";
+import type { UserListItemResponse } from "@blue-jump/domain/user/client";
 
 import { formatUserDate } from "../../lib";
 import { UserRoleBadge } from "../user-role-badge";

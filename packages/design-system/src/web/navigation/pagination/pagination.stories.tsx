@@ -1,5 +1,5 @@
-import type { PaginationMeta } from "@repo/core/pagination";
-import type { Meta, StoryObj } from "@repo/storybook-config/react";
+import type { PaginationMeta } from "@blue-jump/core/pagination";
+import type { Meta, StoryObj } from "@blue-jump/storybook-config/react";
 
 import Pagination, {
   PaginationButton,

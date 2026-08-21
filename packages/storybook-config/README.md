@@ -1,4 +1,4 @@
-# @repo/storybook-config
+# @blue-jump/storybook-config
 
 Turborepo 내부 패키지와 앱에서 공유하는 Storybook 설정 패키지입니다.
 
@@ -27,9 +27,9 @@ packages/storybook-config/
 ## Export
 
 ```ts
-import reactConfig from "@repo/storybook-config/react";
-import nextJsConfig from "@repo/storybook-config/nextjs";
-import preview from "@repo/storybook-config/preview";
+import reactConfig from "@blue-jump/storybook-config/react";
+import nextJsConfig from "@blue-jump/storybook-config/nextjs";
+import preview from "@blue-jump/storybook-config/preview";
 ```
 
 ## React 패키지에서 사용
@@ -39,7 +39,7 @@ import preview from "@repo/storybook-config/preview";
 ```ts
 import type { StorybookConfig } from "@storybook/react-vite";
 
-import baseConfig from "@repo/storybook-config/react";
+import baseConfig from "@blue-jump/storybook-config/react";
 
 const config = {
   ...baseConfig,
@@ -52,7 +52,7 @@ export default config;
 예: `packages/design-system/.storybook/preview.ts`
 
 ```ts
-export { default } from "@repo/storybook-config/preview";
+export { default } from "@blue-jump/storybook-config/preview";
 ```
 
 ## Next.js 앱에서 사용
@@ -62,7 +62,7 @@ export { default } from "@repo/storybook-config/preview";
 ```ts
 import type { StorybookConfig } from "@storybook/nextjs-vite";
 
-import baseConfig from "@repo/storybook-config/nextjs";
+import baseConfig from "@blue-jump/storybook-config/nextjs";
 
 const config = {
   ...baseConfig,
@@ -98,23 +98,23 @@ export const Default: Story = {};
 
 ```txt
 packages/design-system
-  → @repo/storybook-config/react
+  → @blue-jump/storybook-config/react
 
 apps/admin
 apps/web
-  → @repo/storybook-config/nextjs
+  → @blue-jump/storybook-config/nextjs
 ```
 
 ## 실행 예시
 
 ```bash
-pnpm --filter @repo/design-system storybook
+pnpm --filter @blue-jump/design-system storybook
 ```
 
 ## 빌드 예시
 
 ```bash
-pnpm --filter @repo/design-system build-storybook
+pnpm --filter @blue-jump/design-system build-storybook
 ```
 
 ## 원칙

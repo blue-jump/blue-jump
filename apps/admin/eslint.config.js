@@ -1,5 +1,5 @@
-import nextJsConfig from "@repo/eslint-config/nextjs";
-import testConfig from "@repo/eslint-config/test";
+import nextJsConfig from "@blue-jump/eslint-config/nextjs";
+import testConfig from "@blue-jump/eslint-config/test";
 
 /** @type {import("eslint").Linter.Config[]} */
 export default [
@@ -13,9 +13,9 @@ export default [
         {
           patterns: [
             {
-              regex: "^@repo/design-system/web(?:/|$)",
+              regex: "^@blue-jump/design-system/web(?:/|$)",
               message:
-                "apps/admin에서는 @repo/design-system/web을 import할 수 없습니다. admin UI는 @repo/design-system/admin을 사용하세요.",
+                "apps/admin에서는 @blue-jump/design-system/web을 import할 수 없습니다. admin UI는 @blue-jump/design-system/admin을 사용하세요.",
             },
           ],
         },

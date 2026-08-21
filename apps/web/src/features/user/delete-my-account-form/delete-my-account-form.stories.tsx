@@ -1,5 +1,5 @@
-import type { ActionResult } from "@repo/core/action";
-import type { Meta, StoryObj } from "@repo/storybook-config/nextjs";
+import type { ActionResult } from "@blue-jump/core/action";
+import type { Meta, StoryObj } from "@blue-jump/storybook-config/nextjs";
 
 import DeleteMyAccountForm, { type DeleteMyAccountFormAction } from "./delete-my-account-form";
 

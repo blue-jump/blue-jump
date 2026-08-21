@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 
-import { requireUser } from "@repo/auth/server";
+import { requireUser } from "@blue-jump/auth/server";
 
 import { CreateContentView } from "@/views/create-content-view";
 

@@ -1,5 +1,5 @@
 {
-  "name": "@repo/auth",
+  "name": "@blue-jump/auth",
   "version": "0.0.0",
   "private": true,
   "type": "module",
@@ -19,10 +19,10 @@
     "test:integration:watch": "vitest --config vitest.integration.config.ts"
   },
   "dependencies": {
-    "@repo/core": "workspace:*",
-    "@repo/database": "workspace:*",
-    "@repo/domain": "workspace:*",
-    "@repo/env": "workspace:*",
+    "@blue-jump/core": "workspace:*",
+    "@blue-jump/database": "workspace:*",
+    "@blue-jump/domain": "workspace:*",
+    "@blue-jump/env": "workspace:*",
     "server-only": "catalog:"
   },
   "peerDependencies": {
@@ -30,9 +30,9 @@
     "react": "^19.0.0"
   },
   "devDependencies": {
-    "@repo/eslint-config": "workspace:*",
-    "@repo/typescript-config": "workspace:*",
-    "@repo/vitest-config": "workspace:*",
+    "@blue-jump/eslint-config": "workspace:*",
+    "@blue-jump/typescript-config": "workspace:*",
+    "@blue-jump/vitest-config": "workspace:*",
     "eslint": "catalog:",
     "typescript": "catalog:"
   }

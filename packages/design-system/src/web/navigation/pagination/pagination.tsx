@@ -9,7 +9,7 @@ import {
   type ReactNode,
 } from "react";
 
-import type { PaginationMeta } from "@repo/core/pagination";
+import type { PaginationMeta } from "@blue-jump/core/pagination";
 
 import { cn } from "../../../utils";
 

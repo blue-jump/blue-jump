@@ -1,4 +1,4 @@
-import type { UserDetailResponse } from "@repo/domain/user/client";
+import type { UserDetailResponse } from "@blue-jump/domain/user/client";
 
 type UserRole = UserDetailResponse["role"];
 

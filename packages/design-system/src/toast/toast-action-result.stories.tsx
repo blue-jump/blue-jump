@@ -1,7 +1,7 @@
 "use client";
 
-import type { ActionResult } from "@repo/core/action";
-import type { Meta, StoryObj } from "@repo/storybook-config/react";
+import type { ActionResult } from "@blue-jump/core/action";
+import type { Meta, StoryObj } from "@blue-jump/storybook-config/react";
 
 import { toastActionResult } from "./toast-action-result";
 import ToastProvider from "./toast-provider";

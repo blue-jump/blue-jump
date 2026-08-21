@@ -1,6 +1,6 @@
 import { redirect } from "next/navigation";
 
-import { getCurrentAuthSession } from "@repo/auth/server";
+import { getCurrentAuthSession } from "@blue-jump/auth/server";
 
 import { URLS } from "@/constants";
 import { LoginView } from "@/views/login-view";

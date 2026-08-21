@@ -1,6 +1,6 @@
 import "server-only";
 
-import { serverEnv } from "@repo/env/server";
+import { serverEnv } from "@blue-jump/env/server";
 
 import {
   createOAuthInvalidProfileResponseError,

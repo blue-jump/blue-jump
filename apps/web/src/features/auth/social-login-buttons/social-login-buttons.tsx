@@ -1,6 +1,6 @@
 "use client";
 
-import { LinkButton } from "@repo/design-system/web";
+import { LinkButton } from "@blue-jump/design-system/web";
 
 import { URLS } from "@/constants";
 

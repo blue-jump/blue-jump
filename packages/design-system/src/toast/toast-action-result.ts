@@ -2,7 +2,7 @@
 
 import { toast, type ExternalToast } from "sonner";
 
-import type { ActionResult } from "@repo/core/action";
+import type { ActionResult } from "@blue-jump/core/action";
 
 export const DEFAULT_TOAST_SUCCESS_MESSAGE = "처리되었습니다.";
 export const DEFAULT_TOAST_ERROR_MESSAGE = "요청 처리에 실패했습니다.";

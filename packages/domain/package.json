@@ -1,5 +1,5 @@
 {
-  "name": "@repo/domain",
+  "name": "@blue-jump/domain",
   "version": "0.0.0",
   "private": true,
   "type": "module",
@@ -22,15 +22,15 @@
   },
   "dependencies": {
     "@prisma/client": "catalog:",
-    "@repo/core": "workspace:*",
-    "@repo/database": "workspace:*",
+    "@blue-jump/core": "workspace:*",
+    "@blue-jump/database": "workspace:*",
     "server-only": "catalog:",
     "zod": "catalog:"
   },
   "devDependencies": {
-    "@repo/eslint-config": "workspace:*",
-    "@repo/typescript-config": "workspace:*",
-    "@repo/vitest-config": "workspace:*",
+    "@blue-jump/eslint-config": "workspace:*",
+    "@blue-jump/typescript-config": "workspace:*",
+    "@blue-jump/vitest-config": "workspace:*",
     "eslint": "catalog:",
     "prisma": "catalog:",
     "typescript": "catalog:"

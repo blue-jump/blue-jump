@@ -1,4 +1,4 @@
-import { Alert, AlertDescription, AlertTitle, Card, Separator } from "@repo/design-system/web";
+import { Alert, AlertDescription, AlertTitle, Card, Separator } from "@blue-jump/design-system/web";
 
 import { SocialLoginButtons } from "@/features/auth";
 

@@ -1,7 +1,7 @@
 import { render, screen } from "@testing-library/react";
 import { describe, expect, it } from "vitest";
 
-import type { ContentListResponse } from "@repo/domain/content/client";
+import type { ContentListResponse } from "@blue-jump/domain/content/client";
 
 import ContentListView from "./content-list-view";
 

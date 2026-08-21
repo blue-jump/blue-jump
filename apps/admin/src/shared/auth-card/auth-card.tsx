@@ -1,6 +1,6 @@
 import type { ReactNode } from "react";
 
-import { Card, Separator } from "@repo/design-system/admin";
+import { Card, Separator } from "@blue-jump/design-system/admin";
 
 export interface AuthCardProps {
   title: string;

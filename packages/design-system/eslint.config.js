@@ -1,4 +1,4 @@
-import reactInternalConfig from "@repo/eslint-config/react-internal";
+import reactInternalConfig from "@blue-jump/eslint-config/react-internal";
 
 /** @type {import("eslint").Linter.Config[]} */
 export default [
@@ -11,7 +11,7 @@ export default [
         {
           patterns: [
             {
-              regex: "^@repo/(database|domain|auth|env|mailer)(?:/|$)",
+              regex: "^@blue-jump/(database|domain|auth|env|mailer)(?:/|$)",
               message:
                 "packages/design-system은 범용 UI 계층이므로 database, domain, auth, env, mailer를 import할 수 없습니다.",
             },

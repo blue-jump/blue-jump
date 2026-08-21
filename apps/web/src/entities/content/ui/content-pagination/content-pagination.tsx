@@ -1,5 +1,5 @@
-import { Pagination } from "@repo/design-system/web";
-import type { ContentListResponse } from "@repo/domain/content/client";
+import { Pagination } from "@blue-jump/design-system/web";
+import type { ContentListResponse } from "@blue-jump/domain/content/client";
 
 import { URLS } from "@/constants";
 

@@ -1,4 +1,4 @@
-import type { AppError } from "@repo/core/errors";
+import type { AppError } from "@blue-jump/core/errors";
 
 export const AUTH_ERROR_CODE = {
   UNAUTHORIZED: "AUTH_UNAUTHORIZED",

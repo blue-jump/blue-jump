@@ -1,7 +1,7 @@
 import { toast } from "sonner";
 import { beforeEach, describe, expect, it, vi } from "vitest";
 
-import type { ActionResult } from "@repo/core/action";
+import type { ActionResult } from "@blue-jump/core/action";
 
 import {
   DEFAULT_TOAST_ERROR_MESSAGE,

@@ -2,9 +2,9 @@ import { notFound } from "next/navigation";
 
 import type { Metadata } from "next";
 
-import { requireUser } from "@repo/auth/server";
-import { ContentIdParam } from "@repo/domain/content/client";
-import { canUpdateContent, getContentByIdService } from "@repo/domain/content/server";
+import { requireUser } from "@blue-jump/auth/server";
+import { ContentIdParam } from "@blue-jump/domain/content/client";
+import { canUpdateContent, getContentByIdService } from "@blue-jump/domain/content/server";
 
 import { UpdateContentView } from "@/views/update-content-view";
 

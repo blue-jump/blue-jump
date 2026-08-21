@@ -341,7 +341,7 @@ Business State Validation
 비즈니스 계산
 ```
 
-Prisma Query는 `@repo/database`의 Repository에서 처리합니다.
+Prisma Query는 `@blue-jump/database`의 Repository에서 처리합니다.
 
 다음 영역에서 Prisma를 직접 사용하지 않습니다.
 
@@ -427,20 +427,20 @@ Workspace Package
 
 ## Design System
 
-`@repo/design-system`에는 Domain에 독립적인 UI와 Interaction Infrastructure만 둡니다.
+`@blue-jump/design-system`에는 Domain에 독립적인 UI와 Interaction Infrastructure만 둡니다.
 
 현재 별도의 `primitives` 계층을 사용하지 않습니다.
 
 ```txt
-@repo/design-system/web
+@blue-jump/design-system/web
 
-@repo/design-system/admin
+@blue-jump/design-system/admin
 
-@repo/design-system/form
+@blue-jump/design-system/form
 
-@repo/design-system/toast
+@blue-jump/design-system/toast
 
-@repo/design-system/utils
+@blue-jump/design-system/utils
 ```
 
 특정 Domain DTO, Server Action, Permission, URL을 알아야 하는 Component를 Design System으로 이동하지 않습니다.
@@ -449,7 +449,7 @@ Workspace Package
 
 ## Environment
 
-Repository 공통 환경변수는 `@repo/env`에서 관리합니다.
+Repository 공통 환경변수는 `@blue-jump/env`에서 관리합니다.
 
 특정 App에만 필요한 환경변수는 해당 App의 `src/config`에서 관리합니다.
 

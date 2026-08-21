@@ -2,10 +2,10 @@
 
 import { redirect } from "next/navigation";
 
-import { requireUser, revokeCurrentAuthSession } from "@repo/auth/server";
-import { executeFormAction } from "@repo/core/action";
-import { DeleteMyAccountRequest } from "@repo/domain/user/client";
-import { softDeleteUserService } from "@repo/domain/user/server";
+import { requireUser, revokeCurrentAuthSession } from "@blue-jump/auth/server";
+import { executeFormAction } from "@blue-jump/core/action";
+import { DeleteMyAccountRequest } from "@blue-jump/domain/user/client";
+import { softDeleteUserService } from "@blue-jump/domain/user/server";
 
 import { URLS } from "@/constants";
 

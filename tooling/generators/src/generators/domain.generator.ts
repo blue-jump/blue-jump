@@ -58,7 +58,7 @@ export type ${pascalName}ErrorCode =
       path: join(domainDir, `${kebabName}.schema.ts`),
       content: `import { z } from "zod";
 
-import type { ListQuery } from "@repo/core/query";
+import type { ListQuery } from "@blue-jump/core/query";
 
 import { ${constantName} } from "./${kebabName}.constant";
 
@@ -142,10 +142,10 @@ export function canDelete${pascalName}(_actor: ${pascalName}PermissionActor) {
     {
       path: join(domainDir, `${kebabName}.service.ts`),
       content: repository
-        ? `import type { AppError } from "@repo/core/errors";
-import { logger } from "@repo/core/logger";
-import { failure, success, type Result } from "@repo/core/result";
-import { find${pascalName}ByIdRepository } from "@repo/database/${kebabName}";
+        ? `import type { AppError } from "@blue-jump/core/errors";
+import { logger } from "@blue-jump/core/logger";
+import { failure, success, type Result } from "@blue-jump/core/result";
+import { find${pascalName}ByIdRepository } from "@blue-jump/database/${kebabName}";
 
 import type { ${pascalName}DetailResponse } from "./${kebabName}.dto";
 import { ${constantName}_ERROR_CODE } from "./${kebabName}.error";
@@ -367,17 +367,17 @@ describe("${pascalName} permission", () => {
           content: `import type { ${pascalName} } from "@prisma/client";
 import { beforeEach, describe, expect, it, vi } from "vitest";
 
-import { logger } from "@repo/core/logger";
-import { find${pascalName}ByIdRepository } from "@repo/database/${kebabName}";
+import { logger } from "@blue-jump/core/logger";
+import { find${pascalName}ByIdRepository } from "@blue-jump/database/${kebabName}";
 
 import { ${constantName}_ERROR_CODE } from "../${kebabName}.error";
 import { get${pascalName}ByIdService } from "../${kebabName}.service";
 
-vi.mock("@repo/database/${kebabName}", () => ({
+vi.mock("@blue-jump/database/${kebabName}", () => ({
   find${pascalName}ByIdRepository: vi.fn(),
 }));
 
-vi.mock("@repo/core/logger", () => ({
+vi.mock("@blue-jump/core/logger", () => ({
   logger: {
     error: vi.fn(),
     info: vi.fn(),

@@ -17,7 +17,7 @@ vi.mock("@/config/server-env", () => ({
   },
 }));
 
-vi.mock("@repo/auth/server", () => ({
+vi.mock("@blue-jump/auth/server", () => ({
   createOAuthAuthorizeUrl: createOAuthAuthorizeUrlMock,
   parseOAuthProviderId: parseOAuthProviderIdMock,
 }));

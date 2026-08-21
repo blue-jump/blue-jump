@@ -1,7 +1,7 @@
 import Link from "next/link";
 
-import { Badge, Card } from "@repo/design-system/web";
-import type { ContentResponse } from "@repo/domain/content/client";
+import { Badge, Card } from "@blue-jump/design-system/web";
+import type { ContentResponse } from "@blue-jump/domain/content/client";
 
 import { URLS } from "@/constants";
 

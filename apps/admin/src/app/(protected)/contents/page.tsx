@@ -1,6 +1,6 @@
-import { requireAdmin } from "@repo/auth/server";
-import { ContentListQuery } from "@repo/domain/content/client";
-import { getContentsService } from "@repo/domain/content/server";
+import { requireAdmin } from "@blue-jump/auth/server";
+import { ContentListQuery } from "@blue-jump/domain/content/client";
+import { getContentsService } from "@blue-jump/domain/content/server";
 
 import { ContentListView } from "@/views";
 

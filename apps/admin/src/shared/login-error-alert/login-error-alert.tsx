@@ -1,4 +1,4 @@
-import { Alert, AlertDescription, AlertTitle } from "@repo/design-system/admin";
+import { Alert, AlertDescription, AlertTitle } from "@blue-jump/design-system/admin";
 
 interface LoginErrorMessage {
   title: string;

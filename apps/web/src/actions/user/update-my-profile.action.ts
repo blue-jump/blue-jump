@@ -2,10 +2,10 @@
 
 import { revalidatePath } from "next/cache";
 
-import { requireUser } from "@repo/auth/server";
-import { executeFormAction } from "@repo/core/action";
-import { UpdateUserProfileRequest } from "@repo/domain/user/client";
-import { updateUserProfileService } from "@repo/domain/user/server";
+import { requireUser } from "@blue-jump/auth/server";
+import { executeFormAction } from "@blue-jump/core/action";
+import { UpdateUserProfileRequest } from "@blue-jump/domain/user/client";
+import { updateUserProfileService } from "@blue-jump/domain/user/server";
 
 import { URLS } from "@/constants";
 

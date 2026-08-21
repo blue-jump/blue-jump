@@ -2,7 +2,7 @@ import { fileURLToPath } from "node:url";
 
 import { mergeConfig } from "vitest/config";
 
-import reactIntegrationConfig from "@repo/vitest-config/react-integration";
+import reactIntegrationConfig from "@blue-jump/vitest-config/react-integration";
 
 export default mergeConfig(reactIntegrationConfig, {
   resolve: {
@@ -12,6 +12,6 @@ export default mergeConfig(reactIntegrationConfig, {
   },
 
   test: {
-    setupFiles: ["@repo/vitest-config/setup/load-test-env", "./vitest.setup.ts"],
+    setupFiles: ["@blue-jump/vitest-config/setup/load-test-env", "./vitest.setup.ts"],
   },
 });

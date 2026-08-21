@@ -1,7 +1,7 @@
 import type { Content } from "@prisma/client";
 import { beforeEach, describe, expect, it, vi } from "vitest";
 
-import type { AppError } from "@repo/core/errors";
+import type { AppError } from "@blue-jump/core/errors";
 
 import { type ContentPermissionActor } from "../content.permission";
 import {
@@ -28,9 +28,9 @@ const loggerMock = vi.hoisted(() => ({
   error: vi.fn(),
 }));
 
-vi.mock("@repo/database/content", () => repositoryMock);
+vi.mock("@blue-jump/database/content", () => repositoryMock);
 
-vi.mock("@repo/core/logger", () => ({
+vi.mock("@blue-jump/core/logger", () => ({
   logger: loggerMock,
 }));
 

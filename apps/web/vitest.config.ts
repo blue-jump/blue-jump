@@ -2,7 +2,7 @@ import { fileURLToPath } from "node:url";
 
 import { mergeConfig } from "vitest/config";
 
-import reactConfig from "@repo/vitest-config/react";
+import reactConfig from "@blue-jump/vitest-config/react";
 
 export default mergeConfig(reactConfig, {
   resolve: {

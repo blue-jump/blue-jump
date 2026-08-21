@@ -1,1 +1,1 @@
-export { default } from "@repo/vitest-config/react-integration";
+export { default } from "@blue-jump/vitest-config/react-integration";

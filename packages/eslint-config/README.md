@@ -1,4 +1,4 @@
-# @repo/eslint-config
+# @blue-jump/eslint-config
 
 공통 ESLint Flat Config 패키지입니다.
 

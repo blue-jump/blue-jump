@@ -1,2 +1,2 @@
-export type { ClientEnv } from "@repo/env/client";
-export { clientEnv } from "@repo/env/client";
+export type { ClientEnv } from "@blue-jump/env/client";
+export { clientEnv } from "@blue-jump/env/client";

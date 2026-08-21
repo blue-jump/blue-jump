@@ -1,6 +1,6 @@
-import { Button } from "@repo/design-system/web";
-import type { UserDetailResponse } from "@repo/domain/user/client";
-import type { Meta, StoryObj } from "@repo/storybook-config/nextjs";
+import { Button } from "@blue-jump/design-system/web";
+import type { UserDetailResponse } from "@blue-jump/domain/user/client";
+import type { Meta, StoryObj } from "@blue-jump/storybook-config/nextjs";
 
 import UserProfileCard from "./user-profile-card";
 

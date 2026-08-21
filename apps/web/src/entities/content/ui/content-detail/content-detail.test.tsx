@@ -1,7 +1,7 @@
 import { render, screen } from "@testing-library/react";
 import { describe, expect, it } from "vitest";
 
-import type { ContentDetailResponse } from "@repo/domain/content/client";
+import type { ContentDetailResponse } from "@blue-jump/domain/content/client";
 
 import ContentDetail from "./content-detail";
 

@@ -1,7 +1,7 @@
-import type { AppError } from "@repo/core/errors";
-import { logger } from "@repo/core/logger";
-import { buildPagination, buildPaginationMeta } from "@repo/core/pagination";
-import { failure, success, type Result } from "@repo/core/result";
+import type { AppError } from "@blue-jump/core/errors";
+import { logger } from "@blue-jump/core/logger";
+import { buildPagination, buildPaginationMeta } from "@blue-jump/core/pagination";
+import { failure, success, type Result } from "@blue-jump/core/result";
 import {
   countContentsRepository,
   createContentRepository,
@@ -9,7 +9,7 @@ import {
   findContentsRepository,
   softDeleteContentRepository,
   updateContentRepository,
-} from "@repo/database/content";
+} from "@blue-jump/database/content";
 
 import type { ContentDetailResponse, ContentListResponse } from "./content.dto";
 import { CONTENT_ERROR_CODE } from "./content.error";

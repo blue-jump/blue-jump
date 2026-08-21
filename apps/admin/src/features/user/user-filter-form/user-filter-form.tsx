@@ -1,5 +1,5 @@
-import { Button, Input, LinkButton, Select } from "@repo/design-system/admin";
-import type { UserListQueryInput } from "@repo/domain/user/client";
+import { Button, Input, LinkButton, Select } from "@blue-jump/design-system/admin";
+import type { UserListQueryInput } from "@blue-jump/domain/user/client";
 
 export interface UserFilterFormProps {
   action: string;

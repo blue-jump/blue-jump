@@ -1,7 +1,7 @@
 import { render, screen } from "@testing-library/react";
 import { describe, expect, it } from "vitest";
 
-import type { UserDetailResponse } from "@repo/domain/user/client";
+import type { UserDetailResponse } from "@blue-jump/domain/user/client";
 
 import UserInfoList from "./user-info-list";
 import { formatUserDate } from "../../lib";

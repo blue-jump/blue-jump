@@ -1,6 +1,6 @@
-import type { ActionResult } from "@repo/core/action";
-import type { ContentDetailResponse } from "@repo/domain/content/client";
-import type { Meta, StoryObj } from "@repo/storybook-config/nextjs";
+import type { ActionResult } from "@blue-jump/core/action";
+import type { ContentDetailResponse } from "@blue-jump/domain/content/client";
+import type { Meta, StoryObj } from "@blue-jump/storybook-config/nextjs";
 
 import CreateContentForm, {
   type CreateContentFormAction,

@@ -1,5 +1,5 @@
-import type { UserDetailResponse } from "@repo/domain/user/client";
-import type { Meta, StoryObj } from "@repo/storybook-config/nextjs";
+import type { UserDetailResponse } from "@blue-jump/domain/user/client";
+import type { Meta, StoryObj } from "@blue-jump/storybook-config/nextjs";
 
 import UserInfoList from "./user-info-list";
 

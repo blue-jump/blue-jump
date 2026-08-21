@@ -2,11 +2,11 @@
 
 import { revalidatePath } from "next/cache";
 
-import { requireUser } from "@repo/auth/server";
-import type { ActionResult } from "@repo/core/action";
-import { executeFormAction } from "@repo/core/action";
-import { UpdateContentByIdRequest, type ContentDetailResponse } from "@repo/domain/content/client";
-import { updateContentService } from "@repo/domain/content/server";
+import { requireUser } from "@blue-jump/auth/server";
+import type { ActionResult } from "@blue-jump/core/action";
+import { executeFormAction } from "@blue-jump/core/action";
+import { UpdateContentByIdRequest, type ContentDetailResponse } from "@blue-jump/domain/content/client";
+import { updateContentService } from "@blue-jump/domain/content/server";
 
 import { URLS } from "@/constants";
 

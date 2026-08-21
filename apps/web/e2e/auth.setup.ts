@@ -2,7 +2,7 @@ import { createHash } from "node:crypto";
 import { mkdir, writeFile } from "node:fs/promises";
 import path from "node:path";
 
-import { loadPlaywrightEnv } from "@repo/playwright-config";
+import { loadPlaywrightEnv } from "@blue-jump/playwright-config";
 
 loadPlaywrightEnv();
 
@@ -70,7 +70,7 @@ export default async function globalSetup() {
 
   const expiresAt = addDays(new Date(), 30);
 
-  const { disconnectScriptPrisma, scriptPrisma } = await import("@repo/database/script-client");
+  const { disconnectScriptPrisma, scriptPrisma } = await import("@blue-jump/database/script-client");
 
   try {
     const user = await scriptPrisma.user.findUnique({

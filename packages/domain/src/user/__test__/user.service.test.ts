@@ -1,7 +1,7 @@
 import type { User, UserOAuthAccount } from "@prisma/client";
 import { beforeEach, describe, expect, it, vi } from "vitest";
 
-import type { AppError } from "@repo/core/errors";
+import type { AppError } from "@blue-jump/core/errors";
 
 import {
   findOrCreateOAuthUserService,
@@ -36,11 +36,11 @@ const loggerMock = vi.hoisted(() => ({
   error: vi.fn(),
 }));
 
-vi.mock("@repo/database/user", () => repositoryMock);
-vi.mock("@repo/database/user-oauth-account", () => oauthAccountRepositoryMock);
-vi.mock("@repo/database/user-session", () => userSessionRepositoryMock);
+vi.mock("@blue-jump/database/user", () => repositoryMock);
+vi.mock("@blue-jump/database/user-oauth-account", () => oauthAccountRepositoryMock);
+vi.mock("@blue-jump/database/user-session", () => userSessionRepositoryMock);
 
-vi.mock("@repo/core/logger", () => ({
+vi.mock("@blue-jump/core/logger", () => ({
   logger: loggerMock,
 }));
 

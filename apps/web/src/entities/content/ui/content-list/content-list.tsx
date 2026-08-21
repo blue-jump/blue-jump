@@ -1,4 +1,4 @@
-import type { ContentResponse } from "@repo/domain/content/client";
+import type { ContentResponse } from "@blue-jump/domain/content/client";
 
 import { ContentCard } from "../content-card";
 import { ContentEmpty } from "../content-empty";

@@ -1,8 +1,8 @@
-# `@repo/storage`
+# `@blue-jump/storage`
 
 파일 저장소 인프라 패키지입니다.
 
-`@repo/storage`는 앱에서 사용하는 파일 업로드, 삭제, public URL 생성, signed URL 생성 기능을 공통 인터페이스로 제공합니다.
+`@blue-jump/storage`는 앱에서 사용하는 파일 업로드, 삭제, public URL 생성, signed URL 생성 기능을 공통 인터페이스로 제공합니다.
 
 현재는 테스트와 개발용 `InMemoryStorageProvider`를 제공하며, 추후 Supabase Storage, AWS S3, Cloudflare R2, S3 compatible storage provider를 같은 인터페이스로 추가할 수 있습니다.
 
@@ -10,7 +10,7 @@
 
 ## 역할
 
-`@repo/storage`가 담당하는 것:
+`@blue-jump/storage`가 담당하는 것:
 
 ```txt
 StorageProvider interface
@@ -25,7 +25,7 @@ storage error code
 storage 관련 타입
 ```
 
-`@repo/storage`가 담당하지 않는 것:
+`@blue-jump/storage`가 담당하지 않는 것:
 
 ```txt
 비즈니스 규칙 판단
@@ -44,19 +44,19 @@ FormData 직접 처리
 허용:
 
 ```txt
-apps/* → @repo/storage
-@repo/storage → @repo/core
+apps/* → @blue-jump/storage
+@blue-jump/storage → @blue-jump/core
 ```
 
 금지:
 
 ```txt
-@repo/storage → apps/*
-@repo/storage → @repo/domain
-@repo/storage → @repo/database
-@repo/storage → @repo/auth-next
-@repo/storage → @repo/design-system
-@repo/storage → @repo/env
+@blue-jump/storage → apps/*
+@blue-jump/storage → @blue-jump/domain
+@blue-jump/storage → @blue-jump/database
+@blue-jump/storage → @blue-jump/auth-next
+@blue-jump/storage → @blue-jump/design-system
+@blue-jump/storage → @blue-jump/env
 ```
 
 파일 업로드가 필요한 경우 권장 흐름:
@@ -65,7 +65,7 @@ apps/* → @repo/storage
 apps/* Server Action
   → 인증/권한 확인
   → 입력 검증
-  → @repo/storage/server
+  → @blue-jump/storage/server
   → StorageService
   → StorageProvider
   → 외부 Storage
@@ -86,22 +86,22 @@ visibility
 
 ## Entry Points
 
-### `@repo/storage`
+### `@blue-jump/storage`
 
 타입과 에러 등 클라이언트 번들에 섞여도 비교적 안전한 요소를 노출합니다.
 
 ```ts
-import type { StorageObject, StorageResult } from "@repo/storage";
+import type { StorageObject, StorageResult } from "@blue-jump/storage";
 ```
 
-### `@repo/storage/server`
+### `@blue-jump/storage/server`
 
 서버 전용 entry point입니다.
 
 `server-only`가 적용되어 있으며, 실제 service 생성과 provider 사용은 이 entry point를 통해 수행합니다.
 
 ```ts
-import { createStorageServiceFromConfig, STORAGE_PROVIDER_TYPE } from "@repo/storage/server";
+import { createStorageServiceFromConfig, STORAGE_PROVIDER_TYPE } from "@blue-jump/storage/server";
 ```
 
 ---
@@ -109,7 +109,7 @@ import { createStorageServiceFromConfig, STORAGE_PROVIDER_TYPE } from "@repo/sto
 ## 기본 사용 예시
 
 ```ts
-import { createStorageServiceFromConfig, STORAGE_PROVIDER_TYPE } from "@repo/storage/server";
+import { createStorageServiceFromConfig, STORAGE_PROVIDER_TYPE } from "@blue-jump/storage/server";
 
 const storageService = createStorageServiceFromConfig({
   provider: STORAGE_PROVIDER_TYPE.IN_MEMORY,
@@ -266,19 +266,19 @@ STORAGE.INVALID_INPUT
 ## 테스트
 
 ```bash
-pnpm --filter @repo/storage test
+pnpm --filter @blue-jump/storage test
 ```
 
 watch mode:
 
 ```bash
-pnpm --filter @repo/storage test:watch
+pnpm --filter @blue-jump/storage test:watch
 ```
 
 coverage:
 
 ```bash
-pnpm --filter @repo/storage test:coverage
+pnpm --filter @blue-jump/storage test:coverage
 ```
 
 ---
@@ -286,9 +286,9 @@ pnpm --filter @repo/storage test:coverage
 ## 품질 검사
 
 ```bash
-pnpm --filter @repo/storage lint
-pnpm --filter @repo/storage check-types
-pnpm --filter @repo/storage test
+pnpm --filter @blue-jump/storage lint
+pnpm --filter @blue-jump/storage check-types
+pnpm --filter @blue-jump/storage test
 ```
 
 전체 검사:
@@ -333,7 +333,7 @@ packages/storage/
 storage는 파일 저장소 인프라만 담당한다.
 storage는 domain/database/auth/design-system/apps를 알지 않는다.
 provider 교체가 가능하도록 interface 뒤에 구현을 둔다.
-앱은 @repo/storage/server를 통해 서버 전용으로 사용한다.
+앱은 @blue-jump/storage/server를 통해 서버 전용으로 사용한다.
 환경변수는 가능하면 앱 config에서 검증한 뒤 storage config로 주입한다.
 domain service 안에서 직접 파일을 업로드하지 않는다.
 repository 안에서 직접 외부 storage SDK를 호출하지 않는다.

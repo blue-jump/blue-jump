@@ -1,6 +1,6 @@
 import type { HTMLAttributes } from "react";
 
-import { EmptyState } from "@repo/design-system/admin";
+import { EmptyState } from "@blue-jump/design-system/admin";
 
 export interface UserEmptyProps extends HTMLAttributes<HTMLDivElement> {
   title?: string;

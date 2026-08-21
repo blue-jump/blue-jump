@@ -4,8 +4,8 @@ import { render, screen, waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { beforeEach, describe, expect, it, vi } from "vitest";
 
-import { toastActionResult } from "@repo/design-system/toast";
-import type { ContentDetailResponse } from "@repo/domain/content/client";
+import { toastActionResult } from "@blue-jump/design-system/toast";
+import type { ContentDetailResponse } from "@blue-jump/domain/content/client";
 
 import CreateContentForm, {
   type CreateContentFormAction,
@@ -16,7 +16,7 @@ vi.mock("next/navigation", () => ({
   useRouter: vi.fn(),
 }));
 
-vi.mock("@repo/design-system/toast", () => ({
+vi.mock("@blue-jump/design-system/toast", () => ({
   toastActionResult: vi.fn(),
 }));
 

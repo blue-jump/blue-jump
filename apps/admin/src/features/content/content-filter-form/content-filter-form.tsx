@@ -1,4 +1,4 @@
-import { Button, Input, LinkButton, Select } from "@repo/design-system/admin";
+import { Button, Input, LinkButton, Select } from "@blue-jump/design-system/admin";
 
 import { URLS } from "@/constants";
 

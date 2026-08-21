@@ -5,7 +5,7 @@ import {
   optionalIntegerSchema,
   optionalStringSchema,
   requiredStringSchema,
-} from "@repo/core/input";
+} from "@blue-jump/core/input";
 
 import { CONTENT } from "./content.constant";
 

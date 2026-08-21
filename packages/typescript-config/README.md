@@ -1,4 +1,4 @@
-# @repo/typescript-config
+# @blue-jump/typescript-config
 
 공통 TypeScript 설정 패키지입니다.
 

@@ -4,7 +4,7 @@ import type { Metadata } from "next";
 
 import type { ReactNode } from "react";
 
-import { ToastProvider } from "@repo/design-system/toast";
+import { ToastProvider } from "@blue-jump/design-system/toast";
 
 import { serverEnv } from "@/config/server-env";
 import { Shell } from "@/shared/layout";

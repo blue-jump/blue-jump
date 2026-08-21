@@ -1,7 +1,7 @@
 import { render, screen } from "@testing-library/react";
 import { describe, expect, it } from "vitest";
 
-import type { UserListItemResponse } from "@repo/domain/user/client";
+import type { UserListItemResponse } from "@blue-jump/domain/user/client";
 
 import UserStatusBadge from "./user-status-badge";
 

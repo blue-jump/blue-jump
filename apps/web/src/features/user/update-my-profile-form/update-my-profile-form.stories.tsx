@@ -1,6 +1,6 @@
-import type { ActionResult } from "@repo/core/action";
-import type { UserDetailResponse } from "@repo/domain/user/client";
-import type { Meta, StoryObj } from "@repo/storybook-config/nextjs";
+import type { ActionResult } from "@blue-jump/core/action";
+import type { UserDetailResponse } from "@blue-jump/domain/user/client";
+import type { Meta, StoryObj } from "@blue-jump/storybook-config/nextjs";
 
 import UpdateMyProfileForm from "./update-my-profile-form";
 import type { UpdateMyProfileFormAction } from "./update-my-profile-form";

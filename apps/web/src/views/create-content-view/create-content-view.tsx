@@ -1,4 +1,4 @@
-import { Card, LinkButton } from "@repo/design-system/web";
+import { Card, LinkButton } from "@blue-jump/design-system/web";
 
 import { createContentAction } from "@/actions/content";
 import { URLS } from "@/constants";

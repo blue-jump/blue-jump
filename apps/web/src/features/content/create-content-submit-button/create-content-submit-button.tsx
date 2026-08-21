@@ -4,7 +4,7 @@ import { useFormStatus } from "react-dom";
 
 import type { ComponentPropsWithoutRef, ReactNode } from "react";
 
-import { Button } from "@repo/design-system/web";
+import { Button } from "@blue-jump/design-system/web";
 
 export interface CreateContentSubmitButtonProps extends Omit<
   ComponentPropsWithoutRef<typeof Button>,

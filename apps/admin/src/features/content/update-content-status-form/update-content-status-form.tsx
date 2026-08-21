@@ -4,7 +4,7 @@ import { useRouter } from "next/navigation";
 
 import { useActionState, useEffect } from "react";
 
-import type { ActionResult } from "@repo/core/action";
+import type { ActionResult } from "@blue-jump/core/action";
 import {
   Alert,
   AlertDescription,
@@ -14,10 +14,10 @@ import {
   FieldError,
   FieldLabel,
   Select,
-} from "@repo/design-system/admin";
-import { getFieldError, getFormError } from "@repo/design-system/form";
-import { toastActionResult } from "@repo/design-system/toast";
-import type { ContentDetailResponse, ContentStatus } from "@repo/domain/content/client";
+} from "@blue-jump/design-system/admin";
+import { getFieldError, getFormError } from "@blue-jump/design-system/form";
+import { toastActionResult } from "@blue-jump/design-system/toast";
+import type { ContentDetailResponse, ContentStatus } from "@blue-jump/domain/content/client";
 
 export type UpdateContentStatusFormAction = (
   prevState: ActionResult<ContentDetailResponse> | null,

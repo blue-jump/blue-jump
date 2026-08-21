@@ -4,9 +4,9 @@ import { useRouter } from "next/navigation";
 
 import { useActionState, useEffect, useId, useState } from "react";
 
-import type { ActionResult } from "@repo/core/action";
-import { getFieldError, getFormError } from "@repo/design-system/form";
-import { toastActionResult } from "@repo/design-system/toast";
+import type { ActionResult } from "@blue-jump/core/action";
+import { getFieldError, getFormError } from "@blue-jump/design-system/form";
+import { toastActionResult } from "@blue-jump/design-system/toast";
 import {
   Alert,
   AlertDescription,
@@ -19,8 +19,8 @@ import {
   Input,
   LinkButton,
   Separator,
-} from "@repo/design-system/web";
-import { USER, type UserDetailResponse } from "@repo/domain/user/client";
+} from "@blue-jump/design-system/web";
+import { USER, type UserDetailResponse } from "@blue-jump/domain/user/client";
 
 import { URLS } from "@/constants";
 import { UpdateMyProfileSubmitButton } from "@/features/user/update-my-profile-submit-button";

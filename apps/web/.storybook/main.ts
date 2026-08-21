@@ -1,6 +1,6 @@
 import { fileURLToPath } from "node:url";
 
-import nextjsConfig, { type StorybookConfig } from "@repo/storybook-config/nextjs";
+import nextjsConfig, { type StorybookConfig } from "@blue-jump/storybook-config/nextjs";
 
 const srcPath = fileURLToPath(new URL("../src", import.meta.url));
 

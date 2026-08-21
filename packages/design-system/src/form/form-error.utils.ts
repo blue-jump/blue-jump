@@ -1,4 +1,4 @@
-import type { FieldErrors } from "@repo/core/errors";
+import type { FieldErrors } from "@blue-jump/core/errors";
 
 import type { FormActionResult } from "./form-action-result.types";
 

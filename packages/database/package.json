@@ -1,5 +1,5 @@
 {
-  "name": "@repo/database",
+  "name": "@blue-jump/database",
   "version": "0.0.0",
   "private": true,
   "type": "module",
@@ -34,16 +34,16 @@
   "dependencies": {
     "@prisma/adapter-pg": "^7.8.0",
     "@prisma/client": "catalog:",
-    "@repo/core": "workspace:*",
-    "@repo/env": "workspace:*",
+    "@blue-jump/core": "workspace:*",
+    "@blue-jump/env": "workspace:*",
     "dotenv": "catalog:",
     "pg": "^8.21.0",
     "zod": "catalog:"
   },
   "devDependencies": {
-    "@repo/eslint-config": "workspace:*",
-    "@repo/typescript-config": "workspace:*",
-    "@repo/vitest-config": "workspace:*",
+    "@blue-jump/eslint-config": "workspace:*",
+    "@blue-jump/typescript-config": "workspace:*",
+    "@blue-jump/vitest-config": "workspace:*",
     "@types/pg": "^8.20.0",
     "eslint": "catalog:",
     "prisma": "catalog:",

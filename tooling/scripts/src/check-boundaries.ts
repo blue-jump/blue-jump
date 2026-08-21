@@ -35,91 +35,91 @@ const RUNTIME_DEPENDENCY_KEYS = [
 ] as const;
 
 const FORBIDDEN_RUNTIME_DEPENDENCIES: Record<string, string[]> = {
-  "@repo/core": [
-    "@repo/database",
-    "@repo/domain",
-    "@repo/auth",
-    "@repo/storage",
-    "@repo/mailer",
-    "@repo/design-system",
-    "@repo/env",
+  "@blue-jump/core": [
+    "@blue-jump/database",
+    "@blue-jump/domain",
+    "@blue-jump/auth",
+    "@blue-jump/storage",
+    "@blue-jump/mailer",
+    "@blue-jump/design-system",
+    "@blue-jump/env",
   ],
 
-  "@repo/env": [
-    "@repo/database",
-    "@repo/domain",
-    "@repo/auth",
-    "@repo/storage",
-    "@repo/mailer",
-    "@repo/design-system",
+  "@blue-jump/env": [
+    "@blue-jump/database",
+    "@blue-jump/domain",
+    "@blue-jump/auth",
+    "@blue-jump/storage",
+    "@blue-jump/mailer",
+    "@blue-jump/design-system",
   ],
 
-  "@repo/database": [
-    "@repo/domain",
-    "@repo/auth",
-    "@repo/storage",
-    "@repo/mailer",
-    "@repo/design-system",
+  "@blue-jump/database": [
+    "@blue-jump/domain",
+    "@blue-jump/auth",
+    "@blue-jump/storage",
+    "@blue-jump/mailer",
+    "@blue-jump/design-system",
   ],
 
-  "@repo/domain": ["@repo/auth", "@repo/storage", "@repo/mailer", "@repo/design-system"],
+  "@blue-jump/domain": ["@blue-jump/auth", "@blue-jump/storage", "@blue-jump/mailer", "@blue-jump/design-system"],
 
-  "@repo/auth": ["@repo/storage", "@repo/mailer", "@repo/design-system"],
+  "@blue-jump/auth": ["@blue-jump/storage", "@blue-jump/mailer", "@blue-jump/design-system"],
 
-  "@repo/storage": [
-    "@repo/database",
-    "@repo/domain",
-    "@repo/auth",
-    "@repo/mailer",
-    "@repo/design-system",
-    "@repo/env",
+  "@blue-jump/storage": [
+    "@blue-jump/database",
+    "@blue-jump/domain",
+    "@blue-jump/auth",
+    "@blue-jump/mailer",
+    "@blue-jump/design-system",
+    "@blue-jump/env",
   ],
 
-  "@repo/mailer": [
-    "@repo/database",
-    "@repo/domain",
-    "@repo/auth",
-    "@repo/storage",
-    "@repo/design-system",
-    "@repo/env",
+  "@blue-jump/mailer": [
+    "@blue-jump/database",
+    "@blue-jump/domain",
+    "@blue-jump/auth",
+    "@blue-jump/storage",
+    "@blue-jump/design-system",
+    "@blue-jump/env",
   ],
 
-  "@repo/design-system": [
-    "@repo/database",
-    "@repo/domain",
-    "@repo/auth",
-    "@repo/storage",
-    "@repo/mailer",
-    "@repo/env",
+  "@blue-jump/design-system": [
+    "@blue-jump/database",
+    "@blue-jump/domain",
+    "@blue-jump/auth",
+    "@blue-jump/storage",
+    "@blue-jump/mailer",
+    "@blue-jump/env",
   ],
 };
 
 const PACKAGE_ALLOWED_RUNTIME_DEPENDENCIES: Record<string, string[]> = {
-  "@repo/core": [],
+  "@blue-jump/core": [],
 
-  "@repo/env": [],
+  "@blue-jump/env": [],
 
-  "@repo/database": ["@repo/core", "@repo/env"],
+  "@blue-jump/database": ["@blue-jump/core", "@blue-jump/env"],
 
-  "@repo/domain": ["@repo/core", "@repo/database"],
+  "@blue-jump/domain": ["@blue-jump/core", "@blue-jump/database"],
 
-  "@repo/auth": ["@repo/core", "@repo/database", "@repo/domain", "@repo/env"],
+  "@blue-jump/auth": ["@blue-jump/core", "@blue-jump/database", "@blue-jump/domain", "@blue-jump/env"],
 
-  "@repo/storage": ["@repo/core"],
+  "@blue-jump/storage": ["@blue-jump/core"],
 
-  "@repo/mailer": ["@repo/core"],
+  "@blue-jump/mailer": ["@blue-jump/core"],
 
-  "@repo/design-system": ["@repo/core"],
+  "@blue-jump/design-system": ["@blue-jump/core"],
 };
 
 const IGNORED_WORKSPACE_PACKAGE_NAMES = new Set([
-  "@repo/eslint-config",
-  "@repo/typescript-config",
-  "@repo/vitest-config",
-  "@repo/playwright-config",
-  "@repo/storybook-config",
-  "@repo/scripts",
-  "@repo/generators",
+  "@blue-jump/eslint-config",
+  "@blue-jump/typescript-config",
+  "@blue-jump/vitest-config",
+  "@blue-jump/playwright-config",
+  "@blue-jump/storybook-config",
+  "@blue-jump/scripts",
+  "@blue-jump/generators",
 ]);
 
 async function main() {

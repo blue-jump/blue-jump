@@ -1,5 +1,5 @@
 {
-  "name": "@repo/scripts",
+  "name": "@blue-jump/scripts",
   "version": "0.0.0",
   "private": true,
   "type": "module",
@@ -18,12 +18,12 @@
     "check:boundaries": "tsx src/check-boundaries.ts"
   },
   "dependencies": {
-    "@repo/database": "workspace:*",
+    "@blue-jump/database": "workspace:*",
     "dotenv": "catalog:"
   },
   "devDependencies": {
-    "@repo/eslint-config": "workspace:*",
-    "@repo/typescript-config": "workspace:*",
+    "@blue-jump/eslint-config": "workspace:*",
+    "@blue-jump/typescript-config": "workspace:*",
     "eslint": "catalog:",
     "tsx": "catalog:",
     "typescript": "catalog:"

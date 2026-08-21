@@ -1,8 +1,8 @@
 import { render, screen } from "@testing-library/react";
 import { describe, expect, it } from "vitest";
 
-import type { PaginationMeta } from "@repo/core/pagination";
-import type { UserListQueryInput } from "@repo/domain/user/client";
+import type { PaginationMeta } from "@blue-jump/core/pagination";
+import type { UserListQueryInput } from "@blue-jump/domain/user/client";
 
 import UserListPagination from "./user-list-pagination";
 

@@ -1,6 +1,6 @@
 import { type NextRequest, NextResponse } from "next/server";
 
-import { createOAuthAuthorizeUrl, parseOAuthProviderId } from "@repo/auth/server";
+import { createOAuthAuthorizeUrl, parseOAuthProviderId } from "@blue-jump/auth/server";
 
 import { serverEnv } from "@/config/server-env";
 import { URLS } from "@/constants";

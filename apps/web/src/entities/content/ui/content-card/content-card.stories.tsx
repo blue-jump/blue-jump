@@ -1,5 +1,5 @@
-import type { ContentResponse } from "@repo/domain/content/client";
-import type { Meta, StoryObj } from "@repo/storybook-config/nextjs";
+import type { ContentResponse } from "@blue-jump/domain/content/client";
+import type { Meta, StoryObj } from "@blue-jump/storybook-config/nextjs";
 
 import ContentCard from "./content-card";
 

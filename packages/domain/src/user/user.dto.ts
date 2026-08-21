@@ -1,6 +1,6 @@
 import type { UserRole, UserStatus } from "@prisma/client";
 
-import type { PaginationMeta } from "@repo/core/pagination";
+import type { PaginationMeta } from "@blue-jump/core/pagination";
 
 export interface UserDetailResponse {
   id: string;

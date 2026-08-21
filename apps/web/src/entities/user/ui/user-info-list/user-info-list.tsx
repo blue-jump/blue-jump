@@ -1,5 +1,5 @@
-import { DataList, DataListItem, DataListLabel, DataListValue } from "@repo/design-system/web";
-import type { UserDetailResponse } from "@repo/domain/user/client";
+import { DataList, DataListItem, DataListLabel, DataListValue } from "@blue-jump/design-system/web";
+import type { UserDetailResponse } from "@blue-jump/domain/user/client";
 
 import { formatUserDate, getUserRoleLabel, getUserStatusLabel } from "../../lib";
 

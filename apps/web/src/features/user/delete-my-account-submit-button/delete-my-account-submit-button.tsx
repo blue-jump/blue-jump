@@ -2,7 +2,7 @@
 
 import { useFormStatus } from "react-dom";
 
-import { Button, type ButtonProps } from "@repo/design-system/web";
+import { Button, type ButtonProps } from "@blue-jump/design-system/web";
 
 export interface DeleteMyAccountSubmitButtonProps extends Omit<
   ButtonProps,

@@ -1,8 +1,8 @@
 import type { ReactNode } from "react";
 
-import { Avatar, Badge, Card, Separator } from "@repo/design-system/web";
-import type { BadgeProps } from "@repo/design-system/web";
-import type { UserDetailResponse } from "@repo/domain/user/client";
+import { Avatar, Badge, Card, Separator } from "@blue-jump/design-system/web";
+import type { BadgeProps } from "@blue-jump/design-system/web";
+import type { UserDetailResponse } from "@blue-jump/domain/user/client";
 
 import { getUserRoleLabel, getUserStatusLabel } from "../../lib";
 import { UserInfoList } from "../user-info-list";

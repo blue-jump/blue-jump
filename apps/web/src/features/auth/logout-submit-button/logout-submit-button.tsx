@@ -2,7 +2,7 @@
 
 import { useFormStatus } from "react-dom";
 
-import { Button, Spinner, type ButtonProps } from "@repo/design-system/web";
+import { Button, Spinner, type ButtonProps } from "@blue-jump/design-system/web";
 
 export interface LogoutSubmitButtonProps extends Omit<
   ButtonProps,

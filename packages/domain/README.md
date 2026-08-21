@@ -1,4 +1,4 @@
-# `@repo/domain`
+# `@blue-jump/domain`
 
 비즈니스 도메인 규칙과 애플리케이션 레벨 로직을 담당하는 패키지입니다.
 
@@ -9,7 +9,7 @@
 
 # 목적
 
-`@repo/domain`의 역할은 다음과 같습니다.
+`@blue-jump/domain`의 역할은 다음과 같습니다.
 
 ```txt
 도메인 상수 정의
@@ -493,8 +493,8 @@ cookies();
 # lint / type check
 
 ```bash
-pnpm --filter @repo/domain lint
-pnpm --filter @repo/domain check-types
+pnpm --filter @blue-jump/domain lint
+pnpm --filter @blue-jump/domain check-types
 ```
 
 ---

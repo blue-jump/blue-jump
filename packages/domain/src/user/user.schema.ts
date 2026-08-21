@@ -1,8 +1,8 @@
 import { AuthProvider, UserRole, UserStatus } from "@prisma/client";
 import { z } from "zod";
 
-import { nullableStringSchema } from "@repo/core/input";
-import type { ListQuery } from "@repo/core/query";
+import { nullableStringSchema } from "@blue-jump/core/input";
+import type { ListQuery } from "@blue-jump/core/query";
 
 import { USER } from "./user.constant";
 

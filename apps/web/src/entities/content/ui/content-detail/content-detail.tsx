@@ -1,7 +1,7 @@
 import type { ReactNode } from "react";
 
-import { Badge, Card, LinkButton, Separator } from "@repo/design-system/web";
-import type { ContentDetailResponse } from "@repo/domain/content/client";
+import { Badge, Card, LinkButton, Separator } from "@blue-jump/design-system/web";
+import type { ContentDetailResponse } from "@blue-jump/domain/content/client";
 
 import { formatContentDate, getContentStatusLabel } from "../../lib";
 

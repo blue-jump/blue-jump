@@ -1,6 +1,6 @@
-# @repo/mailer
+# @blue-jump/mailer
 
-`@repo/mailer`는 서버 전용 메일 발송 패키지입니다.
+`@blue-jump/mailer`는 서버 전용 메일 발송 패키지입니다.
 
 현재 구현은 Resend 기반 provider를 중심으로 하며, 개발/테스트 환경에서는 실제 메일을 보내지 않도록 `console` provider와 `fake` provider를 함께 제공합니다.
 
@@ -31,20 +31,20 @@ Next.js route/action 처리
 메일 발송 시점 결정
 ```
 
-환경변수는 앱 또는 `@repo/env`에서 검증한 뒤, provider 생성 시 주입합니다.
+환경변수는 앱 또는 `@blue-jump/env`에서 검증한 뒤, provider 생성 시 주입합니다.
 
 ---
 
 ## Export
 
 ```ts
-import { createConsoleMailerProvider, createResendMailerProvider } from "@repo/mailer/server";
+import { createConsoleMailerProvider, createResendMailerProvider } from "@blue-jump/mailer/server";
 ```
 
 테스트에서는 아래 export를 사용할 수 있습니다.
 
 ```ts
-import { createFakeMailerProvider } from "@repo/mailer/testing";
+import { createFakeMailerProvider } from "@blue-jump/mailer/testing";
 ```
 
 타입만 필요한 경우:
@@ -55,7 +55,7 @@ import type {
   MailerProvider,
   SendMailInput,
   SendMailResult,
-} from "@repo/mailer/types";
+} from "@blue-jump/mailer/types";
 ```
 
 ---
@@ -67,7 +67,7 @@ import type {
 운영 환경에서 실제 메일을 발송하는 provider입니다.
 
 ```ts
-import { createResendMailerProvider } from "@repo/mailer/server";
+import { createResendMailerProvider } from "@blue-jump/mailer/server";
 
 const mailer = createResendMailerProvider({
   apiKey: process.env.RESEND_API_KEY,
@@ -100,7 +100,7 @@ if (!result.ok) {
 개발, 테스트, CI에서 실제 메일을 보내지 않고 로그로 출력하는 provider입니다.
 
 ```ts
-import { createConsoleMailerProvider } from "@repo/mailer/server";
+import { createConsoleMailerProvider } from "@blue-jump/mailer/server";
 
 const mailer = createConsoleMailerProvider();
 
@@ -119,7 +119,7 @@ await mailer.sendMail({
 단위 테스트에서 발송된 메일을 메모리에 기록하는 provider입니다.
 
 ```ts
-import { createFakeMailerProvider } from "@repo/mailer/testing";
+import { createFakeMailerProvider } from "@blue-jump/mailer/testing";
 
 const mailer = createFakeMailerProvider();
 
@@ -139,7 +139,7 @@ expect(mailer.getSentMails()).toHaveLength(1);
 
 이 패키지는 환경변수를 직접 읽지 않습니다.
 
-앱 또는 `@repo/env`에서 다음 값을 검증한 뒤 provider에 주입합니다.
+앱 또는 `@blue-jump/env`에서 다음 값을 검증한 뒤 provider에 주입합니다.
 
 ```bash
 MAIL_PROVIDER="resend"
@@ -161,8 +161,8 @@ MAIL_FROM="Dev <dev@example.com>"
 예시:
 
 ```ts
-import { createConsoleMailerProvider, createResendMailerProvider } from "@repo/mailer/server";
-import { serverEnv } from "@repo/env/server";
+import { createConsoleMailerProvider, createResendMailerProvider } from "@blue-jump/mailer/server";
+import { serverEnv } from "@blue-jump/env/server";
 
 export const mailer =
   serverEnv.MAIL_PROVIDER === "resend"
@@ -238,47 +238,47 @@ type SendMailInput = {
 
 ## 의존성 방향
 
-`@repo/mailer`는 메일 발송 인프라 패키지입니다.
+`@blue-jump/mailer`는 메일 발송 인프라 패키지입니다.
 
 허용 방향:
 
 ```txt
-apps/* → @repo/mailer
-@repo/mailer → @repo/core
+apps/* → @blue-jump/mailer
+@blue-jump/mailer → @blue-jump/core
 ```
 
 금지 방향:
 
 ```txt
-@repo/mailer → apps/*
-@repo/mailer → @repo/env
-@repo/mailer → @repo/domain
-@repo/mailer → @repo/database
-@repo/mailer → @repo/auth
-@repo/mailer → @repo/design-system
-@repo/mailer → @repo/storage
+@blue-jump/mailer → apps/*
+@blue-jump/mailer → @blue-jump/env
+@blue-jump/mailer → @blue-jump/domain
+@blue-jump/mailer → @blue-jump/database
+@blue-jump/mailer → @blue-jump/auth
+@blue-jump/mailer → @blue-jump/design-system
+@blue-jump/mailer → @blue-jump/storage
 ```
 
-환경변수는 `@repo/mailer` 내부에서 읽지 않고, provider 생성 시 외부에서 주입합니다.
+환경변수는 `@blue-jump/mailer` 내부에서 읽지 않고, provider 생성 시 외부에서 주입합니다.
 
 ---
 
 ## 테스트
 
 ```bash
-pnpm --filter @repo/mailer test
+pnpm --filter @blue-jump/mailer test
 ```
 
 watch 모드:
 
 ```bash
-pnpm --filter @repo/mailer test:watch
+pnpm --filter @blue-jump/mailer test:watch
 ```
 
 coverage:
 
 ```bash
-pnpm --filter @repo/mailer test:coverage
+pnpm --filter @blue-jump/mailer test:coverage
 ```
 
 ---
@@ -286,9 +286,9 @@ pnpm --filter @repo/mailer test:coverage
 ## 품질 검사
 
 ```bash
-pnpm --filter @repo/mailer lint
-pnpm --filter @repo/mailer check-types
-pnpm --filter @repo/mailer test
+pnpm --filter @blue-jump/mailer lint
+pnpm --filter @blue-jump/mailer check-types
+pnpm --filter @blue-jump/mailer test
 ```
 
 전체 경계 검사:

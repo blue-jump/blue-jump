@@ -4,9 +4,9 @@ import { useRouter } from "next/navigation";
 
 import { useActionState, useEffect, useId, useRef, useState } from "react";
 
-import type { ActionResult } from "@repo/core/action";
-import { getFieldError, getFormError } from "@repo/design-system/form";
-import { toastActionResult } from "@repo/design-system/toast";
+import type { ActionResult } from "@blue-jump/core/action";
+import { getFieldError, getFormError } from "@blue-jump/design-system/form";
+import { toastActionResult } from "@blue-jump/design-system/toast";
 import {
   Alert,
   AlertDescription,
@@ -17,8 +17,8 @@ import {
   Input,
   Separator,
   Textarea,
-} from "@repo/design-system/web";
-import { CONTENT, type ContentDetailResponse } from "@repo/domain/content/client";
+} from "@blue-jump/design-system/web";
+import { CONTENT, type ContentDetailResponse } from "@blue-jump/domain/content/client";
 
 import { CreateContentSubmitButton } from "../create-content-submit-button";
 

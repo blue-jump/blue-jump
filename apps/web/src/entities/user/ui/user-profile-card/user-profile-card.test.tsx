@@ -1,7 +1,7 @@
 import { render, screen } from "@testing-library/react";
 import { describe, expect, it } from "vitest";
 
-import type { UserDetailResponse } from "@repo/domain/user/client";
+import type { UserDetailResponse } from "@blue-jump/domain/user/client";
 
 import UserProfileCard from "./user-profile-card";
 

@@ -32,7 +32,7 @@ vi.mock("@/actions/content", () => ({
   })),
 }));
 
-vi.mock("@repo/design-system/toast", () => ({
+vi.mock("@blue-jump/design-system/toast", () => ({
   toastActionResult: vi.fn(),
 }));
 

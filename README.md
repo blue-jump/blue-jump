@@ -1,4 +1,4 @@
-# boilerplate-turborepo
+# blue-jump
 
 Turborepo 기반의 Next.js 풀스택 모노레포 보일러플레이트입니다.
 

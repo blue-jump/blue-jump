@@ -1,4 +1,4 @@
-import nodeConfig from "@repo/eslint-config/node";
+import nodeConfig from "@blue-jump/eslint-config/node";
 
 /** @type {import("eslint").Linter.Config[]} */
 export default [
@@ -11,7 +11,7 @@ export default [
         {
           patterns: [
             {
-              regex: "^@repo/(auth|auth-next|database|design-system|domain)(?:/|$)",
+              regex: "^@blue-jump/(auth|auth-next|database|design-system|domain)(?:/|$)",
               message:
                 "packages/storage는 인프라 계층 패키지이므로 auth, database, design-system, domain을 import할 수 없습니다.",
             },

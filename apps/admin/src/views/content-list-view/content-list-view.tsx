@@ -1,5 +1,5 @@
-import { Card, LinkButton, Separator } from "@repo/design-system/admin";
-import type { ContentListResponse } from "@repo/domain/content/client";
+import { Card, LinkButton, Separator } from "@blue-jump/design-system/admin";
+import type { ContentListResponse } from "@blue-jump/domain/content/client";
 
 import { URLS } from "@/constants";
 import { ContentEmpty, ContentPagination, ContentTable } from "@/entities/content";

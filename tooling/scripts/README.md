@@ -1,4 +1,4 @@
-# `@repo/scripts`
+# `@blue-jump/scripts`
 
 Turborepo 보일러플레이트 내부에서 사용하는 공용 스크립트 패키지입니다.
 
@@ -83,8 +83,8 @@ pnpm init-project mars
 실행 시 기본적으로 다음 작업을 수행합니다.
 
 ```txt
-boilerplate-turborepo → mars
-@repo → @mars
+blue-jump → mars
+@blue-jump → @mars
 루트 package.json name 변경
 README 및 문서의 프로젝트명 변경
 .env.example 생성 확인
@@ -130,7 +130,7 @@ pnpm setup:scope mars
 기본 동작은 다음과 같습니다.
 
 ```txt
-@repo → @mars
+@blue-jump → @mars
 ```
 
 적용 전 변경 대상만 확인하려면 `--dry-run`을 사용합니다.
@@ -139,7 +139,7 @@ pnpm setup:scope mars
 pnpm setup:scope mars --dry-run
 ```
 
-기존 스코프가 `@repo`가 아닌 경우 `--from`을 사용합니다.
+기존 스코프가 `@blue-jump`가 아닌 경우 `--from`을 사용합니다.
 
 ```bash
 pnpm setup:scope eten --from mars
@@ -158,7 +158,7 @@ pnpm db:seed
 실제 실행 명령은 다음과 같습니다.
 
 ```bash
-pnpm --filter @repo/scripts run seed
+pnpm --filter @blue-jump/scripts run seed
 ```
 
 `seed.ts`는 개발 및 테스트 환경에서 사용할 초기 데이터를 생성하는 용도로 사용합니다.
@@ -198,10 +198,10 @@ tooling/*/.turbo
 ```json
 {
   "scripts": {
-    "init-project": "pnpm --filter @repo/scripts init-project",
-    "setup:scope": "pnpm --filter @repo/scripts setup:scope",
-    "db:seed": "pnpm --filter @repo/scripts run seed",
-    "scripts:clean": "pnpm --filter @repo/scripts run clean"
+    "init-project": "pnpm --filter @blue-jump/scripts init-project",
+    "setup:scope": "pnpm --filter @blue-jump/scripts setup:scope",
+    "db:seed": "pnpm --filter @blue-jump/scripts run seed",
+    "scripts:clean": "pnpm --filter @blue-jump/scripts run clean"
   }
 }
 ```
@@ -213,7 +213,7 @@ tooling/*/.turbo
 ## `init-project`
 
 ```bash
-pnpm --filter @repo/scripts init-project
+pnpm --filter @blue-jump/scripts init-project
 ```
 
 보일러플레이트를 새 프로젝트명과 패키지 스코프로 초기화합니다.
@@ -225,7 +225,7 @@ pnpm --filter @repo/scripts init-project
 ## `setup:scope`
 
 ```bash
-pnpm --filter @repo/scripts setup:scope
+pnpm --filter @blue-jump/scripts setup:scope
 ```
 
 워크스페이스 내부의 패키지 스코프를 일괄 변경합니다.
@@ -233,9 +233,9 @@ pnpm --filter @repo/scripts setup:scope
 예:
 
 ```txt
-@repo/core → @mars/core
-@repo/database → @mars/database
-@repo/design-system → @mars/design-system
+@blue-jump/core → @mars/core
+@blue-jump/database → @mars/database
+@blue-jump/design-system → @mars/design-system
 ```
 
 ---
@@ -243,7 +243,7 @@ pnpm --filter @repo/scripts setup:scope
 ## `seed`
 
 ```bash
-pnpm --filter @repo/scripts run seed
+pnpm --filter @blue-jump/scripts run seed
 ```
 
 개발용 초기 데이터를 생성합니다.
@@ -253,7 +253,7 @@ pnpm --filter @repo/scripts run seed
 ## `clean`
 
 ```bash
-pnpm --filter @repo/scripts run clean
+pnpm --filter @blue-jump/scripts run clean
 ```
 
 캐시 및 빌드 산출물을 제거합니다.
@@ -288,7 +288,7 @@ pnpm init-project mars
 패키지 스코프만 바꾸고 싶을 때 실행합니다.
 
 ```txt
-@repo → @mars
+@blue-jump → @mars
 ```
 
 예:
@@ -303,11 +303,11 @@ pnpm setup:scope mars
 
 # TypeScript 설정
 
-`@repo/typescript-config/node-library.json` 기반으로 동작합니다.
+`@blue-jump/typescript-config/node-library.json` 기반으로 동작합니다.
 
 ```json
 {
-  "extends": "@repo/typescript-config/node-library.json"
+  "extends": "@blue-jump/typescript-config/node-library.json"
 }
 ```
 
@@ -315,10 +315,10 @@ pnpm setup:scope mars
 
 # ESLint 설정
 
-`@repo/eslint-config/node`를 사용합니다.
+`@blue-jump/eslint-config/node`를 사용합니다.
 
 ```js
-import nodeConfig from "@repo/eslint-config/node";
+import nodeConfig from "@blue-jump/eslint-config/node";
 
 export default nodeConfig;
 ```
@@ -486,7 +486,7 @@ pnpm check
 
 ## `setup:scope`
 
-`setup:scope`는 기본적으로 `@repo`를 다른 스코프로 변경합니다.
+`setup:scope`는 기본적으로 `@blue-jump`를 다른 스코프로 변경합니다.
 
 ```bash
 pnpm setup:scope mars

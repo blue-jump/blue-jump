@@ -1,5 +1,5 @@
-import type { PaginationMeta } from "@repo/core/pagination";
-import { Pagination } from "@repo/design-system/admin";
+import type { PaginationMeta } from "@blue-jump/core/pagination";
+import { Pagination } from "@blue-jump/design-system/admin";
 
 import { URLS } from "@/constants";
 

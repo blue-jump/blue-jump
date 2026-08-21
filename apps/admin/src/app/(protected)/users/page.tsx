@@ -1,7 +1,7 @@
-import { requireAdmin } from "@repo/auth/server";
-import { getNumberSearchParam, getSearchParam } from "@repo/core/query";
-import { UserListQuerySchema } from "@repo/domain/user/client";
-import { getUsersService } from "@repo/domain/user/server";
+import { requireAdmin } from "@blue-jump/auth/server";
+import { getNumberSearchParam, getSearchParam } from "@blue-jump/core/query";
+import { UserListQuerySchema } from "@blue-jump/domain/user/client";
+import { getUsersService } from "@blue-jump/domain/user/server";
 
 import { URLS } from "@/constants";
 import { UserListView } from "@/views";

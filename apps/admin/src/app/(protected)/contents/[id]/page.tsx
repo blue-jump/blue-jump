@@ -1,8 +1,8 @@
 import { notFound } from "next/navigation";
 
-import { requireAdmin } from "@repo/auth/server";
-import { ContentIdParam } from "@repo/domain/content/client";
-import { getContentByIdService } from "@repo/domain/content/server";
+import { requireAdmin } from "@blue-jump/auth/server";
+import { ContentIdParam } from "@blue-jump/domain/content/client";
+import { getContentByIdService } from "@blue-jump/domain/content/server";
 
 import { ContentDetailView } from "@/views";
 

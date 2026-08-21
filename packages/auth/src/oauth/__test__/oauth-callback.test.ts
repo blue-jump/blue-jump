@@ -31,7 +31,7 @@ vi.mock("../kakao.provider", () => ({
   getKakaoOAuthProfileByCode: mocks.getKakaoOAuthProfileByCode,
 }));
 
-vi.mock("@repo/domain/user/server", () => ({
+vi.mock("@blue-jump/domain/user/server", () => ({
   findOrCreateOAuthUserService: mocks.findOrCreateOAuthUserService,
 }));
 

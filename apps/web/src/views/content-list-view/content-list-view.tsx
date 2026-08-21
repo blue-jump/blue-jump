@@ -1,5 +1,5 @@
-import { LinkButton } from "@repo/design-system/web";
-import type { ContentListResponse } from "@repo/domain/content/client";
+import { LinkButton } from "@blue-jump/design-system/web";
+import type { ContentListResponse } from "@blue-jump/domain/content/client";
 
 import { URLS } from "@/constants";
 import { ContentList, ContentPagination } from "@/entities/content";

@@ -1,4 +1,4 @@
-import type { ContentStatus } from "@repo/domain/content/client";
+import type { ContentStatus } from "@blue-jump/domain/content/client";
 
 export type ContentStatusTone = "default" | "outline" | "destructive";
 

@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from "@repo/storybook-config/react";
+import type { Meta, StoryObj } from "@blue-jump/storybook-config/react";
 
 import Accordion, { AccordionContent, AccordionItem, AccordionTrigger } from "./accordion";
 

@@ -1,5 +1,5 @@
-import { Card, Separator } from "@repo/design-system/admin";
-import type { ContentDetailResponse } from "@repo/domain/content/client";
+import { Card, Separator } from "@blue-jump/design-system/admin";
+import type { ContentDetailResponse } from "@blue-jump/domain/content/client";
 
 import { DeleteContentForm, type DeleteContentFormAction } from "../delete-content-form";
 import {

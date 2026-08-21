@@ -1,4 +1,4 @@
-import { type PaginationMeta } from "@repo/core/pagination";
+import { type PaginationMeta } from "@blue-jump/core/pagination";
 
 export type ContentStatus = "PUBLISHED" | "HIDDEN" | "DELETED";
 

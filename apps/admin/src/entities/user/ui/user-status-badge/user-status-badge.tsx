@@ -1,7 +1,7 @@
 import type { ComponentPropsWithoutRef } from "react";
 
-import { Badge } from "@repo/design-system/admin";
-import type { UserListItemResponse } from "@repo/domain/user/client";
+import { Badge } from "@blue-jump/design-system/admin";
+import type { UserListItemResponse } from "@blue-jump/domain/user/client";
 
 import { getUserStatusLabel, getUserStatusTone, type UserStatusTone } from "../../lib";
 

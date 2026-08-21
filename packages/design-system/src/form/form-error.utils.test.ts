@@ -1,7 +1,7 @@
 import { describe, expect, it } from "vitest";
 
-import { type FieldErrors } from "@repo/core/errors";
-import type { FormActionResult } from "@repo/design-system/form";
+import { type FieldErrors } from "@blue-jump/core/errors";
+import type { FormActionResult } from "@blue-jump/design-system/form";
 
 import {
   getFieldError,

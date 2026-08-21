@@ -1,5 +1,5 @@
-import { ContentListQuery } from "@repo/domain/content/client";
-import { getContentsService } from "@repo/domain/content/server";
+import { ContentListQuery } from "@blue-jump/domain/content/client";
+import { getContentsService } from "@blue-jump/domain/content/server";
 
 import { ContentListView } from "@/views/content-list-view";
 

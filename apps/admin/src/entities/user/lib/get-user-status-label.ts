@@ -1,4 +1,4 @@
-import type { UserListItemResponse } from "@repo/domain/user/client";
+import type { UserListItemResponse } from "@blue-jump/domain/user/client";
 
 export type UserStatusValue = UserListItemResponse["status"];
 

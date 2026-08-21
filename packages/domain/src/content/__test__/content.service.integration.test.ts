@@ -3,7 +3,7 @@ import { randomUUID } from "node:crypto";
 import type { Prisma } from "@prisma/client";
 import { afterAll, afterEach, describe, expect, it } from "vitest";
 
-import { prisma } from "@repo/database/client";
+import { prisma } from "@blue-jump/database/client";
 
 import { CONTENT_ERROR_CODE } from "../content.error";
 import type { ContentPermissionActor } from "../content.permission";

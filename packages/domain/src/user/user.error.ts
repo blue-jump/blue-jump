@@ -1,4 +1,4 @@
-import { type AppError } from "@repo/core/errors";
+import { type AppError } from "@blue-jump/core/errors";
 
 export const USER_ERROR_CODE = {
   NOT_FOUND: "USER_NOT_FOUND",

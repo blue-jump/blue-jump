@@ -1,6 +1,6 @@
-import type { PaginationMeta } from "@repo/core/pagination";
-import { Pagination } from "@repo/design-system/admin";
-import type { UserListQueryInput } from "@repo/domain/user/client";
+import type { PaginationMeta } from "@blue-jump/core/pagination";
+import { Pagination } from "@blue-jump/design-system/admin";
+import type { UserListQueryInput } from "@blue-jump/domain/user/client";
 
 export interface UserListPaginationProps {
   action: string;

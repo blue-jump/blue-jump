@@ -5,7 +5,7 @@ import Header from "./header";
 
 const getCurrentAuthSessionMock = vi.hoisted(() => vi.fn());
 
-vi.mock("@repo/auth/server", () => ({
+vi.mock("@blue-jump/auth/server", () => ({
   getCurrentAuthSession: getCurrentAuthSessionMock,
 }));
 

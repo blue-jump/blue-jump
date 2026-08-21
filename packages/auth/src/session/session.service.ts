@@ -1,12 +1,12 @@
 import "server-only";
 
-import { updateUserRepository } from "@repo/database/user";
+import { updateUserRepository } from "@blue-jump/database/user";
 import {
   createUserSessionRepository,
   findUserSessionWithUserByTokenHashRepository,
   revokeUserSessionByTokenHashRepository,
-} from "@repo/database/user-session";
-import { serverEnv } from "@repo/env/server";
+} from "@blue-jump/database/user-session";
+import { serverEnv } from "@blue-jump/env/server";
 
 import { deleteSessionCookie, getSessionCookieValue, setSessionCookie } from "./session-cookie";
 import { createSessionExpiresAt, createSessionToken, hashSessionToken } from "./session-token";

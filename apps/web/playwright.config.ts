@@ -1,6 +1,6 @@
 import { defineConfig } from "@playwright/test";
 
-import { defineNextAppE2EConfig, loadPlaywrightEnv } from "@repo/playwright-config";
+import { defineNextAppE2EConfig, loadPlaywrightEnv } from "@blue-jump/playwright-config";
 
 loadPlaywrightEnv();
 

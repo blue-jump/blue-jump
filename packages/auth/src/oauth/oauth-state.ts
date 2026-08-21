@@ -4,7 +4,7 @@ import { randomBytes } from "node:crypto";
 
 import { cookies } from "next/headers";
 
-import { serverEnv } from "@repo/env/server";
+import { serverEnv } from "@blue-jump/env/server";
 
 import type { OAuthProviderId } from "./oauth-provider";
 

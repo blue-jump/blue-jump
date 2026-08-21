@@ -2,7 +2,7 @@ import type { Decorator } from "@storybook/react-vite";
 
 import { useEffect } from "react";
 
-import basePreview from "@repo/storybook-config/preview";
+import basePreview from "@blue-jump/storybook-config/preview";
 
 import { ToastProvider } from "../src/toast";
 

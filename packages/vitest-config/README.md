@@ -1,4 +1,4 @@
-# @repo/vitest-config
+# @blue-jump/vitest-config
 
 Turborepo 보일러플레이트에서 사용하는 공통 Vitest 설정 패키지입니다.
 
@@ -20,13 +20,13 @@ Testing Library 설정
 각 패키지 및 앱은 개별적으로 복잡한 Vitest 설정을 작성하지 않고, 다음과 같이 공통 설정만 가져와 사용합니다.
 
 ```ts
-export { default } from "@repo/vitest-config/node";
+export { default } from "@blue-jump/vitest-config/node";
 ```
 
 또는
 
 ```ts
-export { default } from "@repo/vitest-config/react";
+export { default } from "@blue-jump/vitest-config/react";
 ```
 
 ---
@@ -47,17 +47,17 @@ packages/vitest-config/
 
 # 제공 설정
 
-## `@repo/vitest-config/node`
+## `@blue-jump/vitest-config/node`
 
 Node.js 기반 테스트 환경입니다.
 
 다음 패키지에서 사용합니다.
 
 ```txt
-@repo/core
-@repo/domain
-@repo/database
-@repo/env
+@blue-jump/core
+@blue-jump/domain
+@blue-jump/database
+@blue-jump/env
 tooling/*
 ```
 
@@ -74,19 +74,19 @@ v8 coverage
 ```ts
 // vitest.config.ts
 
-export { default } from "@repo/vitest-config/node";
+export { default } from "@blue-jump/vitest-config/node";
 ```
 
 ---
 
-## `@repo/vitest-config/react`
+## `@blue-jump/vitest-config/react`
 
 React + jsdom 기반 테스트 환경입니다.
 
 다음 패키지 및 앱에서 사용합니다.
 
 ```txt
-@repo/design-system
+@blue-jump/design-system
 apps/web
 apps/admin
 ```
@@ -106,7 +106,7 @@ v8 coverage
 ```ts
 // vitest.config.ts
 
-export { default } from "@repo/vitest-config/react";
+export { default } from "@blue-jump/vitest-config/react";
 ```
 
 ---
@@ -275,7 +275,7 @@ React 테스트 환경에서는 `jest-dom` 타입을 추가해야 합니다.
 
 ```json
 {
-  "extends": "@repo/typescript-config/react-library.json",
+  "extends": "@blue-jump/typescript-config/react-library.json",
   "compilerOptions": {
     "types": ["vitest/globals", "@testing-library/jest-dom"]
   }

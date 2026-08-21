@@ -2,7 +2,7 @@
 
 import { toast } from "sonner";
 
-import type { Meta, StoryObj } from "@repo/storybook-config/react";
+import type { Meta, StoryObj } from "@blue-jump/storybook-config/react";
 
 import ToastProvider from "./toast-provider";
 

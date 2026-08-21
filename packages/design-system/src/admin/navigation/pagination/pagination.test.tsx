@@ -2,7 +2,7 @@ import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { describe, expect, it, vi } from "vitest";
 
-import type { PaginationMeta } from "@repo/core/pagination";
+import type { PaginationMeta } from "@blue-jump/core/pagination";
 
 import Pagination, {
   PaginationButton,

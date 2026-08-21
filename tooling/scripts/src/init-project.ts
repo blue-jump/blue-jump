@@ -17,7 +17,7 @@ import {
   validateScopeName,
 } from "./project-setup.ts";
 
-const LEGACY_SESSION_COOKIE_NAME = "boilerplate_session";
+const LEGACY_SESSION_COOKIE_NAME = "blue_jump_session";
 
 const cleanupDirectoryNames = new Set([
   "node_modules",

@@ -266,7 +266,7 @@ export async function readCurrentScopeName(rootPath: string): Promise<string> {
     throw new Error(
       [
         `[project-setup] failed to resolve current package scope from: ${scriptsPackageName}`,
-        "Expected a scoped package name such as @repo/scripts.",
+        "Expected a scoped package name such as @blue-jump/scripts.",
       ].join("\n"),
     );
   }

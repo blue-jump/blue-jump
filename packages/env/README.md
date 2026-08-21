@@ -1,4 +1,4 @@
-# @repo/env
+# @blue-jump/env
 
 Turborepo 보일러플레이트에서 공통으로 사용하는 환경변수 검증 Package입니다.
 
@@ -26,7 +26,7 @@ shared.ts
 기본 책임:
 
 ```txt
-@repo/env
+@blue-jump/env
   공통 환경변수의 Schema와 Typed API 제공
 
 apps/*/src/config
@@ -36,7 +36,7 @@ apps/*/src/config
 예:
 
 ```txt
-@repo/env/server
+@blue-jump/env/server
   DATABASE_URL
   AUTH_SESSION_*
   OAuth 설정
@@ -69,10 +69,10 @@ packages/env/
 
 ## Server Env
 
-Server 전용 환경변수는 `@repo/env/server`를 통해 사용합니다.
+Server 전용 환경변수는 `@blue-jump/env/server`를 통해 사용합니다.
 
 ```ts
-import { serverEnv } from "@repo/env/server";
+import { serverEnv } from "@blue-jump/env/server";
 
 const databaseUrl = serverEnv.DATABASE_URL;
 const sessionCookieName = serverEnv.AUTH_SESSION_COOKIE_NAME;
@@ -105,7 +105,7 @@ Client Bundle에 포함되는 코드
 
 ## 현재 공통 Server Env
 
-현재 `@repo/env/server`에서 검증하는 주요 환경변수는 다음과 같습니다.
+현재 `@blue-jump/env/server`에서 검증하는 주요 환경변수는 다음과 같습니다.
 
 ### Database
 
@@ -176,12 +176,12 @@ Provider를 추가하거나 조건부 설정이 생기면 단순히 모든 값�
 
 ## Client Env
 
-Client 환경변수는 `@repo/env/client`를 통해 사용합니다.
+Client 환경변수는 `@blue-jump/env/client`를 통해 사용합니다.
 
 현재 공통 Client Env에는 `NODE_ENV`만 포함되어 있습니다.
 
 ```ts
-import { clientEnv } from "@repo/env/client";
+import { clientEnv } from "@blue-jump/env/client";
 
 const nodeEnv = clientEnv.NODE_ENV;
 ```
@@ -227,7 +227,7 @@ Provider Credential
 
 ## 앱 전용 환경변수
 
-특정 앱에서만 의미가 있는 환경변수는 `@repo/env`에 추가하지 않습니다.
+특정 앱에서만 의미가 있는 환경변수는 `@blue-jump/env`에 추가하지 않습니다.
 
 예:
 
@@ -251,7 +251,7 @@ apps/admin/src/config/server-env.ts
 개념적인 구조:
 
 ```txt
-@repo/env/server
+@blue-jump/env/server
        ↓
 commonServerEnv
        +
@@ -316,7 +316,7 @@ production
 사용 예:
 
 ```ts
-import { sharedEnvSchema } from "@repo/env/shared";
+import { sharedEnvSchema } from "@blue-jump/env/shared";
 
 const parsed = sharedEnvSchema.parse({
   NODE_ENV: process.env.NODE_ENV,
@@ -399,7 +399,7 @@ Playwright와 E2E Database는 일반 개발 환경과 분리된 값을 사용하
 ### Server Package
 
 ```ts
-import { serverEnv } from "@repo/env/server";
+import { serverEnv } from "@blue-jump/env/server";
 
 const databaseUrl = serverEnv.DATABASE_URL;
 ```
@@ -428,7 +428,7 @@ import { clientEnv } from "@/config/client-env";
 const nodeEnv = clientEnv.NODE_ENV;
 ```
 
-앱 코드에서는 가능한 한 `@repo/env/*`를 직접 여러 곳에서 import하기보다 앱의 `config` 진입점을 사용하는 것을 우선합니다.
+앱 코드에서는 가능한 한 `@blue-jump/env/*`를 직접 여러 곳에서 import하기보다 앱의 `config` 진입점을 사용하는 것을 우선합니다.
 
 ---
 
@@ -453,7 +453,7 @@ Server와 Client 모두 필요
 → apps/[app]/src/config/client-env.ts
 ```
 
-환경변수를 추가했다는 이유만으로 항상 `@repo/env`에 넣지 않습니다.
+환경변수를 추가했다는 이유만으로 항상 `@blue-jump/env`에 넣지 않습니다.
 
 ---
 
@@ -506,8 +506,8 @@ Secret을 Git Repository에 Commit
 Package 자체 검증:
 
 ```bash
-pnpm --filter @repo/env lint
-pnpm --filter @repo/env check-types
+pnpm --filter @blue-jump/env lint
+pnpm --filter @blue-jump/env check-types
 ```
 
 Repository 전체 검증:
@@ -530,7 +530,7 @@ pnpm test:integration
 
 ## 관련 설정
 
-환경변수를 추가하거나 제거하면 `@repo/env`만 수정하고 끝내지 않습니다.
+환경변수를 추가하거나 제거하면 `@blue-jump/env`만 수정하고 끝내지 않습니다.
 
 필요에 따라 다음 영역도 함께 확인합니다.
 
@@ -562,11 +562,11 @@ git grep 'ENV_VARIABLE_NAME'
 ## 사용 원칙
 
 ```txt
-@repo/env는 Repository 공통 환경변수만 담당한다.
+@blue-jump/env는 Repository 공통 환경변수만 담당한다.
 
 앱 전용 환경변수는 apps/*/src/config에서 관리한다.
 
-Server Secret은 @repo/env/server 또는 앱 server-env에서만 사용한다.
+Server Secret은 @blue-jump/env/server 또는 앱 server-env에서만 사용한다.
 
 Client Env에는 Browser에 공개 가능한 값만 넣는다.
 

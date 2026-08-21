@@ -1,5 +1,5 @@
-import type { UserListQueryInput } from "@repo/domain/user/client";
-import type { Meta, StoryObj } from "@repo/storybook-config/nextjs";
+import type { UserListQueryInput } from "@blue-jump/domain/user/client";
+import type { Meta, StoryObj } from "@blue-jump/storybook-config/nextjs";
 
 import UserFilterForm from "./user-filter-form";
 

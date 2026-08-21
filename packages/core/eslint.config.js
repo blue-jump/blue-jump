@@ -1,4 +1,4 @@
-import { nodeConfig } from "@repo/eslint-config/node";
+import { nodeConfig } from "@blue-jump/eslint-config/node";
 
 /** @type {import("eslint").Linter.Config[]} */
 export default [
@@ -15,7 +15,7 @@ export default [
               message: "packages/core에서 apps 내부 코드를 import할 수 없습니다.",
             },
             {
-              regex: "^@repo/(auth|database|design-system|domain|mailer|storage)(?:/|$)",
+              regex: "^@blue-jump/(auth|database|design-system|domain|mailer|storage)(?:/|$)",
               message:
                 "packages/core는 최하위 공통 기반이므로 다른 내부 패키지를 import할 수 없습니다.",
             },

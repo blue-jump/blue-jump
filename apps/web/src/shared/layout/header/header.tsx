@@ -1,4 +1,4 @@
-import { getCurrentAuthSession } from "@repo/auth/server";
+import { getCurrentAuthSession } from "@blue-jump/auth/server";
 
 import HeaderView from "./header-view";
 

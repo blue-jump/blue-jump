@@ -1,5 +1,5 @@
 {
-  "name": "@repo/design-system",
+  "name": "@blue-jump/design-system",
   "version": "0.0.0",
   "private": true,
   "type": "module",
@@ -36,7 +36,7 @@
     "@radix-ui/react-popover": "^1.1.16",
     "@radix-ui/react-tabs": "^1.1.14",
     "@radix-ui/react-tooltip": "^1.2.9",
-    "@repo/core": "workspace:*",
+    "@blue-jump/core": "workspace:*",
     "class-variance-authority": "^0.7.1",
     "clsx": "catalog:",
     "sonner": "^2.0.7",
@@ -47,10 +47,10 @@
     "react-dom": "^19.0.0"
   },
   "devDependencies": {
-    "@repo/eslint-config": "workspace:*",
-    "@repo/storybook-config": "workspace:*",
-    "@repo/typescript-config": "workspace:*",
-    "@repo/vitest-config": "workspace:*",
+    "@blue-jump/eslint-config": "workspace:*",
+    "@blue-jump/storybook-config": "workspace:*",
+    "@blue-jump/typescript-config": "workspace:*",
+    "@blue-jump/vitest-config": "workspace:*",
     "@storybook/addon-a11y": "catalog:",
     "@storybook/addon-docs": "catalog:",
     "@storybook/react-vite": "catalog:",

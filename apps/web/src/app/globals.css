@@ -1,5 +1,5 @@
 @import "tailwindcss";
-@import "@repo/design-system/web/styles.css";
+@import "@blue-jump/design-system/web/styles.css";
 
 @source "../../../../packages/design-system/src/web";
 

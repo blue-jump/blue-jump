@@ -1,4 +1,4 @@
-import { EmptyState } from "@repo/design-system/web";
+import { EmptyState } from "@blue-jump/design-system/web";
 
 export default function ContentEmpty() {
   return (

@@ -8,7 +8,7 @@ import {
   SidebarNavItem,
   SidebarNavList,
   SidebarSeparator,
-} from "@repo/design-system/admin";
+} from "@blue-jump/design-system/admin";
 
 import { NAVIGATION_ITEMS, type NavigationItem } from "@/constants";
 import { NavigationLink } from "@/shared/navigation-link";

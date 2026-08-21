@@ -2,7 +2,7 @@
 
 import { usePathname } from "next/navigation";
 
-import { SidebarNavLink } from "@repo/design-system/admin";
+import { SidebarNavLink } from "@blue-jump/design-system/admin";
 
 import { URLS, type NavigationItem } from "@/constants";
 

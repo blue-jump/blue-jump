@@ -2,7 +2,7 @@
 
 import { forwardRef, type ComponentPropsWithoutRef } from "react";
 
-import { LinkButton } from "@repo/design-system/admin";
+import { LinkButton } from "@blue-jump/design-system/admin";
 
 export type SocialLoginProviderId = "google" | "naver" | "kakao";
 

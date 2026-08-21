@@ -17,9 +17,9 @@ vi.mock("next/navigation", () => ({
   redirect: redirectMock,
 }));
 
-vi.mock("@repo/auth/server", () => authMock);
+vi.mock("@blue-jump/auth/server", () => authMock);
 
-vi.mock("@repo/domain/user/server", () => userServiceMock);
+vi.mock("@blue-jump/domain/user/server", () => userServiceMock);
 
 vi.mock("@/constants", () => ({
   URLS: {

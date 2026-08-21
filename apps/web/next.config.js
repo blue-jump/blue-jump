@@ -34,7 +34,7 @@ const nextConfig = {
   poweredByHeader: false,
   productionBrowserSourceMaps: false,
 
-  transpilePackages: ["@repo/auth", "@repo/design-system"],
+  transpilePackages: ["@blue-jump/auth", "@blue-jump/design-system"],
 
   images: {
     remotePatterns: [

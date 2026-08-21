@@ -26,17 +26,17 @@ const mocks = vi.hoisted(() => ({
 
 vi.mock("server-only", () => ({}));
 
-vi.mock("@repo/database/user-session", () => ({
+vi.mock("@blue-jump/database/user-session", () => ({
   createUserSessionRepository: mocks.createUserSessionRepository,
   findUserSessionWithUserByTokenHashRepository: mocks.findUserSessionWithUserByTokenHashRepository,
   revokeUserSessionByTokenHashRepository: mocks.revokeUserSessionByTokenHashRepository,
 }));
 
-vi.mock("@repo/database/user", () => ({
+vi.mock("@blue-jump/database/user", () => ({
   updateUserRepository: mocks.updateUserRepository,
 }));
 
-vi.mock("@repo/env/server", () => ({
+vi.mock("@blue-jump/env/server", () => ({
   serverEnv: {
     NODE_ENV: "test",
     AUTH_SESSION_COOKIE_NAME: "test_session",

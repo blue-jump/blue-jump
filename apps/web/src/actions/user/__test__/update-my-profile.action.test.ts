@@ -1,6 +1,6 @@
 import { beforeEach, describe, expect, it, vi } from "vitest";
 
-import { UpdateUserProfileRequest } from "@repo/domain/user/client";
+import { UpdateUserProfileRequest } from "@blue-jump/domain/user/client";
 
 import { updateMyProfileAction } from "../update-my-profile.action";
 
@@ -20,11 +20,11 @@ const userServiceMock = vi.hoisted(() => ({
   updateUserProfileService: vi.fn(),
 }));
 
-vi.mock("@repo/auth/server", () => authMock);
+vi.mock("@blue-jump/auth/server", () => authMock);
 
-vi.mock("@repo/core/action", () => actionMock);
+vi.mock("@blue-jump/core/action", () => actionMock);
 
-vi.mock("@repo/domain/user/server", () => userServiceMock);
+vi.mock("@blue-jump/domain/user/server", () => userServiceMock);
 
 vi.mock("next/cache", () => cacheMock);
 

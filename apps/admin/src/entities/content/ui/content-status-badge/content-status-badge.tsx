@@ -1,5 +1,5 @@
-import { Badge } from "@repo/design-system/admin";
-import type { ContentStatus } from "@repo/domain/content/client";
+import { Badge } from "@blue-jump/design-system/admin";
+import type { ContentStatus } from "@blue-jump/domain/content/client";
 
 import { getContentStatusLabel, getContentStatusTone } from "../../lib";
 
