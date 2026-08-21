@@ -1,0 +1,75 @@
+import type { Archive } from "@/types";
+
+export const MOCK_ARCHIVES = [
+  {
+    id: "archive-jegugu",
+    talentIds: ["talent-jegal", "talent-mogugu"],
+    category: "TERM",
+    title: "제구구",
+    summary:
+      "제갈금자와 모구구 조합을 부르는 말. 구구가 일을 만들고 금자가 한마디 하는 순간 자주 소환된다.",
+    occurredAt: "2025-03-01T00:00:00.000Z",
+    relatedPostIds: ["post-2"],
+    relatedCreativeIds: ["creative-2"],
+  },
+  {
+    id: "archive-ayo",
+    talentIds: ["talent-nunungzi"],
+    category: "TERM",
+    title: "아요",
+    summary:
+      "누눙지 방송에서 매우 높은 확률로 들을 수 있는 추임새. 좋을 때도 아요, 안 좋아도 일단 아요.",
+    occurredAt: "2025-11-21T00:00:00.000Z",
+    relatedPostIds: ["post-5"],
+    relatedCreativeIds: ["creative-4"],
+  },
+  {
+    id: "archive-mogugu-listening-test",
+    talentIds: ["talent-mogugu"],
+    category: "MEME",
+    title: "모구구 듣기평가",
+    summary: "분명 한국어인데 사골들이 문맥으로 해석하기 시작하면서 붙은 이름.",
+    occurredAt: "2026-04-10T00:00:00.000Z",
+    relatedPostIds: ["post-3"],
+  },
+  {
+    id: "archive-blue-jump-fourth-generation",
+    talentIds: ["talent-marronie", "talent-yang-doki"],
+    category: "HISTORY",
+    title: "블루점프 4기 합류",
+    summary: "마로니와 양도끼가 블루점프 4기 멤버로 공개된 날.",
+    occurredAt: "2026-06-28T00:00:00.000Z",
+    relatedPostIds: ["post-6", "post-7"],
+    relatedCreativeIds: ["creative-5", "creative-6"],
+    relatedProjectIds: ["project-fourth-generation-relay"],
+  },
+  {
+    id: "archive-haroha-reaper",
+    talentIds: ["talent-haroha"],
+    category: "BROADCAST",
+    title: "노래하는 저승차사",
+    summary: "진지하게 노래를 시작하면 채팅창의 망령들도 잠깐 조용해지는 시간.",
+    occurredAt: "2025-09-26T00:00:00.000Z",
+    relatedPostIds: ["post-4"],
+    relatedCreativeIds: ["creative-3"],
+    relatedProjectIds: ["project-haroha-fan-mv"],
+  },
+  {
+    id: "archive-blue-jump-office",
+    talentIds: [
+      "talent-great-moon-aroma",
+      "talent-jegal",
+      "talent-mogugu",
+      "talent-haroha",
+      "talent-nunungzi",
+    ],
+    category: "MEME",
+    title: "대표와 직원들",
+    summary:
+      "블루점프를 회사처럼 부르기 시작하면 대체로 대표의 권위가 가장 먼저 사라지는 방향으로 이야기가 흘러간다.",
+    occurredAt: "2025-03-30T00:00:00.000Z",
+    relatedPostIds: ["post-1", "post-8"],
+    relatedCreativeIds: ["creative-1"],
+    relatedProjectIds: ["project-blue-jump-highlight-archive"],
+  },
+] satisfies Archive[];
