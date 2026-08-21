@@ -1,0 +1,27 @@
+{
+  "name": "@repo/env",
+  "version": "0.0.0",
+  "type": "module",
+  "private": true,
+  "exports": {
+    "./server": "./src/server.ts",
+    "./client": "./src/client.ts",
+    "./shared": "./src/shared.ts"
+  },
+  "scripts": {
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "check-types": "tsc --noEmit",
+    "clean": "rm -rf node_modules .turbo"
+  },
+  "dependencies": {
+    "server-only": "catalog:",
+    "zod": "catalog:"
+  },
+  "devDependencies": {
+    "@repo/eslint-config": "workspace:*",
+    "@repo/typescript-config": "workspace:*",
+    "eslint": "catalog:",
+    "typescript": "catalog:"
+  }
+}

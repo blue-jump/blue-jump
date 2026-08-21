@@ -1,0 +1,38 @@
+{
+  "name": "@repo/domain",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "exports": {
+    "./content/client": "./src/content/client.ts",
+    "./content/server": "./src/content/server.ts",
+    "./user/client": "./src/user/client.ts",
+    "./user/server": "./src/user/server.ts"
+  },
+  "scripts": {
+    "lint": "eslint . --max-warnings 0",
+    "lint:fix": "eslint . --fix",
+    "check-types": "tsc --noEmit",
+    "clean": "rm -rf node_modules .turbo",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "test:coverage": "vitest run --coverage",
+    "test:integration": "vitest run --config vitest.integration.config.ts",
+    "test:integration:watch": "vitest --config vitest.integration.config.ts"
+  },
+  "dependencies": {
+    "@prisma/client": "catalog:",
+    "@repo/core": "workspace:*",
+    "@repo/database": "workspace:*",
+    "server-only": "catalog:",
+    "zod": "catalog:"
+  },
+  "devDependencies": {
+    "@repo/eslint-config": "workspace:*",
+    "@repo/typescript-config": "workspace:*",
+    "@repo/vitest-config": "workspace:*",
+    "eslint": "catalog:",
+    "prisma": "catalog:",
+    "typescript": "catalog:"
+  }
+}

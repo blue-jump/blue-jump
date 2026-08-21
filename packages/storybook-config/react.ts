@@ -1,0 +1,21 @@
+import type { StorybookConfig } from "@storybook/react-vite";
+import tailwindcss from "@tailwindcss/vite";
+
+export type { Meta, StorybookConfig, StoryObj } from "@storybook/react-vite";
+
+export const reactStorybookConfig: StorybookConfig = {
+  stories: ["../src/**/*.stories.@(ts|tsx|mdx)"],
+  addons: ["@storybook/addon-docs", "@storybook/addon-a11y"],
+  framework: {
+    name: "@storybook/react-vite",
+    options: {},
+  },
+  async viteFinal(config) {
+    return {
+      ...config,
+      plugins: [...(config.plugins ?? []), tailwindcss()],
+    };
+  },
+};
+
+export default reactStorybookConfig;

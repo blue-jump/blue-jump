@@ -1,0 +1,29 @@
+{
+  "name": "@repo/storybook-config",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "exports": {
+    "./nextjs": "./nextjs.ts",
+    "./preview": "./preview.ts",
+    "./react": "./react.ts"
+  },
+  "scripts": {
+    "clean": "rm -rf node_modules .turbo"
+  },
+  "devDependencies": {
+    "@repo/eslint-config": "workspace:*",
+    "@repo/typescript-config": "workspace:*",
+    "@storybook/addon-a11y": "catalog:",
+    "@storybook/addon-docs": "catalog:",
+    "@storybook/nextjs-vite": "^10.4.2",
+    "@storybook/react-vite": "catalog:",
+    "eslint": "catalog:",
+    "storybook": "catalog:",
+    "typescript": "catalog:"
+  },
+  "dependencies": {
+    "@tailwindcss/vite": "^4.3.1",
+    "tailwindcss": "catalog:"
+  }
+}

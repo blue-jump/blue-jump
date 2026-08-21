@@ -1,0 +1,28 @@
+@import "tailwindcss";
+
+@import "../web/styles.css";
+@import "../admin/styles.css";
+
+@source "../web";
+@source "../admin";
+@source "../toast";
+
+@layer base {
+  html,
+  body {
+    min-height: 100%;
+  }
+
+  body {
+    background: var(--color-background);
+    color: var(--color-foreground);
+  }
+
+  button {
+    cursor: pointer;
+  }
+
+  button:disabled {
+    cursor: not-allowed;
+  }
+}

@@ -1,0 +1,38 @@
+{
+  "name": "@repo/core",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "exports": {
+    "./action": "./src/action/index.ts",
+    "./errors": "./src/errors/index.ts",
+    "./format": "./src/format/index.ts",
+    "./input": "./src/input/index.ts",
+    "./logger": "./src/logger/index.ts",
+    "./pagination": "./src/pagination/index.ts",
+    "./parse": "./src/parse/index.ts",
+    "./query": "./src/query/index.ts",
+    "./resolve": "./src/resolve/index.ts",
+    "./result": "./src/result/index.ts",
+    "./validation": "./src/validation/index.ts"
+  },
+  "scripts": {
+    "lint": "eslint . --max-warnings 0",
+    "lint:fix": "eslint . --fix",
+    "check-types": "tsc --noEmit",
+    "clean": "rm -rf .turbo node_modules",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "test:coverage": "vitest run --coverage"
+  },
+  "dependencies": {
+    "zod": "catalog:"
+  },
+  "devDependencies": {
+    "@repo/eslint-config": "workspace:*",
+    "@repo/typescript-config": "workspace:*",
+    "@repo/vitest-config": "workspace:*",
+    "eslint": "catalog:",
+    "typescript": "catalog:"
+  }
+}
