@@ -10,22 +10,16 @@ const meta = {
   },
   args: {
     href: "#",
-    children: "Link Button",
+    children: "커뮤니티 보기",
   },
   argTypes: {
     variant: {
       control: "select",
-      options: ["default", "outline", "ghost", "destructive"],
+      options: ["primary", "brand", "secondary", "outline", "ghost", "destructive"],
     },
     size: {
       control: "select",
       options: ["sm", "md", "lg"],
-    },
-    fullWidth: {
-      control: "boolean",
-    },
-    disabled: {
-      control: "boolean",
     },
   },
 } satisfies Meta<typeof LinkButton>;
@@ -34,81 +28,77 @@ export default meta;
 
 type Story = StoryObj<typeof meta>;
 
-export const Default = {} satisfies Story;
+export const Default: Story = {};
 
-export const Outline = {
+export const Brand: Story = {
+  args: {
+    variant: "brand",
+    children: "BLUE JUMP",
+  },
+};
+
+export const Secondary: Story = {
+  args: {
+    variant: "secondary",
+  },
+};
+
+export const Outline: Story = {
   args: {
     variant: "outline",
-    children: "Outline",
   },
-} satisfies Story;
+};
 
-export const Ghost = {
+export const Ghost: Story = {
   args: {
     variant: "ghost",
-    children: "Ghost",
   },
-} satisfies Story;
+};
 
-export const Destructive = {
-  args: {
-    variant: "destructive",
-    children: "Delete",
-  },
-} satisfies Story;
+export const Variants: Story = {
+  render: () => (
+    <div className="flex flex-wrap items-center gap-3">
+      <LinkButton href="#" variant="primary">
+        Primary
+      </LinkButton>
 
-export const Disabled = {
-  args: {
-    disabled: true,
-    children: "Disabled",
-  },
-} satisfies Story;
+      <LinkButton href="#" variant="brand">
+        Brand
+      </LinkButton>
 
-export const WithSlots = {
-  args: {
-    leftSlot: <span aria-hidden="true">←</span>,
-    rightSlot: <span aria-hidden="true">→</span>,
-    children: "Next",
-  },
-} satisfies Story;
+      <LinkButton href="#" variant="secondary">
+        Secondary
+      </LinkButton>
 
-const variants = ["default", "outline", "ghost", "destructive"] as const;
-const sizes = ["sm", "md", "lg"] as const;
+      <LinkButton href="#" variant="outline">
+        Outline
+      </LinkButton>
 
-export const Variants = {
-  render: () => {
-    return (
-      <div className="flex flex-wrap items-center gap-3">
-        {variants.map((variant) => (
-          <LinkButton key={variant} href="#" variant={variant}>
-            {variant}
-          </LinkButton>
-        ))}
-      </div>
-    );
-  },
-} satisfies Story;
+      <LinkButton href="#" variant="ghost">
+        Ghost
+      </LinkButton>
 
-export const Sizes = {
-  render: () => {
-    return (
-      <div className="flex items-center gap-3">
-        {sizes.map((size) => (
-          <LinkButton key={size} href="#" size={size}>
-            {size}
-          </LinkButton>
-        ))}
-      </div>
-    );
-  },
-} satisfies Story;
+      <LinkButton href="#" variant="destructive">
+        Destructive
+      </LinkButton>
+    </div>
+  ),
+};
 
-export const FullWidth = {
-  parameters: {
-    layout: "padded",
-  },
-  args: {
-    fullWidth: true,
-    children: "Full Width Link Button",
-  },
-} satisfies Story;
+export const Sizes: Story = {
+  render: () => (
+    <div className="flex items-center gap-3">
+      <LinkButton href="#" size="sm">
+        Small
+      </LinkButton>
+
+      <LinkButton href="#" size="md">
+        Medium
+      </LinkButton>
+
+      <LinkButton href="#" size="lg">
+        Large
+      </LinkButton>
+    </div>
+  ),
+};
