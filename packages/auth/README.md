@@ -2,7 +2,7 @@
 
 Next.js App Router 기반 애플리케이션에서 공통으로 사용하는 인증/인가 패키지입니다.
 
-`@blue-jump/auth`는 Google, Naver, Kakao OAuth 로그인, DB 세션, 세션 쿠키, 현재 사용자 조회, 사용자/관리자 접근 제어를 담당합니다.
+`@blue-jump/auth`는 Google, Naver OAuth 로그인, DB 세션, 세션 쿠키, 현재 사용자 조회, 사용자/관리자 접근 제어를 담당합니다.
 
 이 패키지는 Next.js 서버 런타임 전용 패키지입니다.
 
@@ -14,7 +14,7 @@ Next.js App Router 기반 애플리케이션에서 공통으로 사용하는 인
 @blue-jump/auth
   OAuth authorize URL 생성
   OAuth state cookie 생성/검증
-  Google / Naver / Kakao OAuth token 교환
+  Google / Naver OAuth token 교환
   OAuth provider profile 조회
   OAuth callback 처리
   DB 기반 세션 생성/조회/폐기
@@ -83,7 +83,6 @@ packages/auth/
    │  └─ index.ts
    ├─ oauth/
    │  ├─ google.provider.ts
-   │  ├─ kakao.provider.ts
    │  ├─ naver.provider.ts
    │  ├─ oauth-callback.ts
    │  ├─ oauth-profile.ts
@@ -145,10 +144,6 @@ GOOGLE_CLIENT_SECRET=
 # Naver OAuth
 NAVER_CLIENT_ID=
 NAVER_CLIENT_SECRET=
-
-# Kakao OAuth
-KAKAO_CLIENT_ID=
-KAKAO_CLIENT_SECRET=
 ```
 
 `AUTH_SESSION_MAX_AGE_SECONDS`는 DB 세션 만료 시간과 session cookie maxAge에 함께 사용됩니다.
@@ -632,7 +627,7 @@ Google, Naver, Kakao 응답 형식은 서로 다릅니다.
 
 ```ts
 export interface OAuthProfile {
-  provider: "GOOGLE" | "NAVER" | "KAKAO";
+  provider: "GOOGLE" | "NAVER";
   providerUserId: string;
   email: string;
   name: string | null;

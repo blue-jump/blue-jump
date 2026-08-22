@@ -52,7 +52,7 @@ export async function GET(
       userAgent: request.headers.get("user-agent"),
     });
 
-    return NextResponse.redirect(createWebUrl(URLS.CLIENT.MY_PAGE));
+    return NextResponse.redirect(createWebUrl(URLS.CLIENT.HOME));
   } catch {
     return NextResponse.redirect(createWebUrl(`${URLS.CLIENT.LOGIN}?error=oauth_failed`));
   }

@@ -9,18 +9,25 @@ const meta = {
     layout: "centered",
   },
   args: {
-    children: "Badge",
-    variant: "default",
-    size: "md",
+    children: "직원단",
   },
   argTypes: {
     variant: {
       control: "select",
-      options: ["default", "muted", "outline", "destructive"],
+      options: [
+        "neutral",
+        "primary",
+        "brand",
+        "accent",
+        "outline",
+        "success",
+        "warning",
+        "destructive",
+      ],
     },
     size: {
       control: "select",
-      options: ["sm", "md", "lg"],
+      options: ["sm", "md"],
     },
   },
 } satisfies Meta<typeof Badge>;
@@ -29,57 +36,53 @@ export default meta;
 
 type Story = StoryObj<typeof meta>;
 
-export const Default = {} satisfies Story;
+export const Default: Story = {};
 
-export const Muted = {
+export const Primary: Story = {
   args: {
-    variant: "muted",
-    children: "Muted",
+    variant: "primary",
   },
-} satisfies Story;
+};
 
-export const Outline = {
+export const Brand: Story = {
+  args: {
+    variant: "brand",
+    children: "BLUE JUMP",
+  },
+};
+
+export const Accent: Story = {
+  args: {
+    variant: "accent",
+  },
+};
+
+export const Outline: Story = {
   args: {
     variant: "outline",
-    children: "Outline",
   },
-} satisfies Story;
+};
 
-export const Destructive = {
-  args: {
-    variant: "destructive",
-    children: "Destructive",
-  },
-} satisfies Story;
+export const Variants: Story = {
+  render: () => (
+    <div className="flex flex-wrap items-center gap-2">
+      <Badge variant="neutral">Neutral</Badge>
+      <Badge variant="primary">Primary</Badge>
+      <Badge variant="brand">Brand</Badge>
+      <Badge variant="accent">Accent</Badge>
+      <Badge variant="outline">Outline</Badge>
+      <Badge variant="success">완료</Badge>
+      <Badge variant="warning">모집 중</Badge>
+      <Badge variant="destructive">마감</Badge>
+    </div>
+  ),
+};
 
-export const Variants = {
-  render: () => {
-    const variants = ["default", "muted", "outline", "destructive"] as const;
-
-    return (
-      <div className="flex flex-wrap items-center gap-3">
-        {variants.map((variant) => (
-          <Badge key={variant} variant={variant}>
-            {variant}
-          </Badge>
-        ))}
-      </div>
-    );
-  },
-} satisfies Story;
-
-export const Sizes = {
-  render: () => {
-    const sizes = ["sm", "md", "lg"] as const;
-
-    return (
-      <div className="flex items-center gap-3">
-        {sizes.map((size) => (
-          <Badge key={size} size={size}>
-            {size}
-          </Badge>
-        ))}
-      </div>
-    );
-  },
-} satisfies Story;
+export const Sizes: Story = {
+  render: () => (
+    <div className="flex items-center gap-2">
+      <Badge size="sm">Small</Badge>
+      <Badge size="md">Medium</Badge>
+    </div>
+  ),
+};

@@ -8,19 +8,16 @@ import { createOAuthState, setOAuthStateCookie } from "./oauth-state";
 const OAuthAuthorizeEndpointMap = {
   google: "https://accounts.google.com/o/oauth2/v2/auth",
   naver: "https://nid.naver.com/oauth2.0/authorize",
-  kakao: "https://kauth.kakao.com/oauth/authorize",
 } as const satisfies Record<OAuthProviderId, string>;
 
 const OAuthDefaultScopeMap = {
   google: ["openid", "email", "profile"],
   naver: [],
-  kakao: ["profile", "account_email"],
 } as const satisfies Record<OAuthProviderId, readonly string[]>;
 
 const OAuthScopeSeparatorMap = {
   google: " ",
   naver: " ",
-  kakao: ",",
 } as const satisfies Record<OAuthProviderId, string>;
 
 export interface BuildOAuthAuthorizeUrlParams {
@@ -45,9 +42,6 @@ function getOAuthClientId(providerId: OAuthProviderId): string {
 
     case "naver":
       return serverEnv.NAVER_CLIENT_ID;
-
-    case "kakao":
-      return serverEnv.KAKAO_CLIENT_ID;
   }
 }
 

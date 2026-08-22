@@ -220,8 +220,8 @@ const SEED_OAUTH_ACCOUNTS = [
   },
   {
     id: createSeedUuid(104),
-    provider: "KAKAO",
-    providerUserId: "seed-kakao-user-02",
+    provider: "NAVER",
+    providerUserId: "seed-naver-user-02",
     userKey: "normal02",
   },
   {
@@ -238,8 +238,8 @@ const SEED_OAUTH_ACCOUNTS = [
   },
   {
     id: createSeedUuid(107),
-    provider: "KAKAO",
-    providerUserId: "seed-kakao-user-05",
+    provider: "NAVER",
+    providerUserId: "seed-naver-user-05",
     userKey: "normal05",
   },
   {
@@ -256,13 +256,13 @@ const SEED_OAUTH_ACCOUNTS = [
   },
   {
     id: createSeedUuid(110),
-    provider: "KAKAO",
-    providerUserId: "seed-kakao-deleted",
+    provider: "NAVER",
+    providerUserId: "seed-naver-deleted",
     userKey: "deleted",
   },
 ] as const satisfies ReadonlyArray<{
   id: string;
-  provider: "GOOGLE" | "NAVER" | "KAKAO";
+  provider: "GOOGLE" | "NAVER";
   providerUserId: string;
   userKey: SeedUserKey;
 }>;

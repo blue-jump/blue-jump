@@ -1,11 +1,14 @@
 export const URLS = {
   CLIENT: {
     HOME: "/",
+    COMMUNITY: "/community",
+    CREATIVE: "/creative",
+    PROJECTS: "/projects",
+    GATHERINGS: "/gatherings",
+    ARCHIVE: "/archive",
+    TALENTS: "/talents",
+    PROFILE: "/profile",
     LOGIN: "/login",
-    CONTENTS: "/contents",
-    CREATE_CONTENT: "/contents/create",
-    CONTENTS_DETAIL: (contentId: string) => `/contents/${contentId}`,
-    MY_PAGE: "/me",
   },
 
   API: {
@@ -13,7 +16,6 @@ export const URLS = {
       LOGOUT: "/api/auth/logout",
       GOOGLE: "/api/auth/google",
       NAVER: "/api/auth/naver",
-      KAKAO: "/api/auth/kakao",
       OAUTH: (providerId: string) => `/api/auth/${providerId}`,
       OAUTH_CALLBACK: (providerId: string) => `/api/auth/${providerId}/callback`,
     },

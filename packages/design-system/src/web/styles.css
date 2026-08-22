@@ -4,79 +4,217 @@
 [data-ds-theme="web"] {
   color-scheme: light;
 
-  --ds-color-background: oklch(1 0 0);
-  --ds-color-foreground: oklch(0.145 0 0);
+  /* Blue Jump brand */
 
-  --ds-color-surface: oklch(1 0 0);
-  --ds-color-surface-foreground: oklch(0.145 0 0);
+  --ds-color-brand: #246bfd;
+  --ds-color-brand-foreground: #ffffff;
 
-  --ds-color-primary: oklch(0.205 0 0);
-  --ds-color-primary-foreground: oklch(0.985 0 0);
+  --ds-color-brand-accent: #19c5e5;
+  --ds-color-brand-accent-foreground: #062638;
 
-  --ds-color-secondary: oklch(0.97 0 0);
-  --ds-color-secondary-foreground: oklch(0.205 0 0);
+  /* Page */
 
-  --ds-color-muted: oklch(0.97 0 0);
-  --ds-color-muted-foreground: oklch(0.556 0 0);
+  --ds-color-background: #f7faff;
+  --ds-color-foreground: #17243a;
 
-  --ds-color-accent: oklch(0.97 0 0);
-  --ds-color-accent-foreground: oklch(0.205 0 0);
+  /* Surface */
 
-  --ds-color-destructive: oklch(0.577 0.245 27.325);
-  --ds-color-destructive-foreground: oklch(0.985 0 0);
+  --ds-color-surface: #ffffff;
+  --ds-color-surface-foreground: #17243a;
 
-  --ds-color-success: oklch(0.62 0.15 145);
-  --ds-color-success-foreground: oklch(0.985 0 0);
+  /* Context */
 
-  --ds-color-warning: oklch(0.75 0.17 75);
-  --ds-color-warning-foreground: oklch(0.145 0 0);
+  --ds-color-primary: var(--ds-color-brand);
+  --ds-color-primary-foreground: var(--ds-color-brand-foreground);
 
-  --ds-color-info: oklch(0.62 0.13 250);
-  --ds-color-info-foreground: oklch(0.985 0 0);
+  --ds-color-secondary: #eaf2ff;
+  --ds-color-secondary-foreground: #23436f;
 
-  --ds-color-border: oklch(0.922 0 0);
-  --ds-color-input: oklch(0.922 0 0);
-  --ds-color-ring: oklch(0.708 0 0);
-  --ds-color-overlay: oklch(0 0 0);
+  --ds-color-accent: var(--ds-color-brand-accent);
+  --ds-color-accent-foreground: var(--ds-color-brand-accent-foreground);
+
+  /* Muted */
+
+  --ds-color-muted: #f0f4fa;
+  --ds-color-muted-foreground: #687991;
+
+  /* Interaction */
+
+  --ds-color-interactive: var(--ds-color-primary);
+  --ds-color-interactive-hover: color-mix(in oklab, var(--ds-color-primary) 88%, #071a3a);
+  --ds-color-interactive-foreground: var(--ds-color-primary-foreground);
+
+  --ds-color-focus: #0aaed0;
+
+  /* Decoration */
+
+  --ds-color-decoration: color-mix(in oklab, var(--ds-color-accent) 18%, transparent);
+
+  /* Feedback */
+
+  --ds-color-destructive: #dc3444;
+  --ds-color-destructive-foreground: #ffffff;
+
+  --ds-color-success: #198754;
+  --ds-color-success-foreground: #ffffff;
+
+  --ds-color-warning: #e9a31b;
+  --ds-color-warning-foreground: #2c2109;
+
+  --ds-color-info: #3978e9;
+  --ds-color-info-foreground: #ffffff;
+
+  /* Border / Input / Focus */
+
+  --ds-color-border: #dce6f2;
+  --ds-color-input: #ccd9e8;
+  --ds-color-ring: var(--ds-color-focus);
+
+  /* Overlay */
+
+  --ds-color-overlay: rgb(7 18 38 / 0.56);
+
+  /* Web typography */
+
+  --font-sans:
+    Pretendard, "Pretendard Variable", "Noto Sans KR", "Apple SD Gothic Neo", Inter, ui-sans-serif,
+    system-ui, sans-serif;
+
+  /* Web shape */
+
+  --radius-xs: 0.375rem;
+  --radius-sm: 0.5rem;
+  --radius-md: 0.75rem;
+  --radius-lg: 1rem;
+  --radius-xl: 1.25rem;
+  --radius-2xl: 1.5rem;
+
+  /* Web elevation */
+
+  --shadow-xs: 0 1px 2px rgb(17 40 76 / 0.04);
+
+  --shadow-sm: 0 2px 8px rgb(17 40 76 / 0.06), 0 1px 2px rgb(17 40 76 / 0.04);
+
+  --shadow-md: 0 8px 24px rgb(17 40 76 / 0.08), 0 2px 6px rgb(17 40 76 / 0.04);
+
+  --shadow-lg: 0 16px 40px rgb(17 40 76 / 0.1), 0 4px 12px rgb(17 40 76 / 0.05);
+
+  --shadow-xl: 0 24px 64px rgb(17 40 76 / 0.12), 0 8px 20px rgb(17 40 76 / 0.06);
 }
+
+/*
+ * Talent Theme contract
+ *
+ * Individual Talent themes provide only:
+ *
+ * --ds-talent-primary
+ * --ds-talent-primary-foreground
+ * --ds-talent-accent
+ * --ds-talent-accent-foreground
+ * --ds-talent-decoration
+ *
+ * The common Web semantic contract remains unchanged.
+ */
+
+:root[data-ds-theme="web"][data-ds-talent-theme],
+[data-ds-theme="web"] [data-ds-talent-theme] {
+  --ds-color-primary: var(--ds-talent-primary, var(--ds-color-brand));
+  --ds-color-primary-foreground: var(
+    --ds-talent-primary-foreground,
+    var(--ds-color-brand-foreground)
+  );
+
+  --ds-color-accent: var(--ds-talent-accent, var(--ds-color-brand-accent));
+  --ds-color-accent-foreground: var(
+    --ds-talent-accent-foreground,
+    var(--ds-color-brand-accent-foreground)
+  );
+
+  --ds-color-decoration: var(
+    --ds-talent-decoration,
+    color-mix(in oklab, var(--ds-color-accent) 18%, transparent)
+  );
+
+  --ds-color-interactive: var(--ds-color-primary);
+  --ds-color-interactive-hover: color-mix(in oklab, var(--ds-color-primary) 88%, #071a3a);
+  --ds-color-interactive-foreground: var(--ds-color-primary-foreground);
+
+  /*
+   * Tailwind theme variables are redeclared on the Talent scope so
+   * contextual colors follow the scoped semantic values.
+   */
+
+  --color-primary: var(--ds-color-primary);
+  --color-primary-foreground: var(--ds-color-primary-foreground);
+
+  --color-accent: var(--ds-color-accent);
+  --color-accent-foreground: var(--ds-color-accent-foreground);
+
+  --color-interactive: var(--ds-color-interactive);
+  --color-interactive-hover: var(--ds-color-interactive-hover);
+  --color-interactive-foreground: var(--ds-color-interactive-foreground);
+
+  --color-decoration: var(--ds-color-decoration);
+}
+
+/*
+ * Dark mode is not part of the current sample scope.
+ * The existing Web color-mode contract is nevertheless retained so
+ * data-ds-mode="dark" does not become an invalid state.
+ */
 
 :root[data-ds-mode="dark"],
 [data-ds-theme="web"][data-ds-mode="dark"],
 [data-ds-mode="dark"] [data-ds-theme="web"] {
   color-scheme: dark;
 
-  --ds-color-background: oklch(0.145 0 0);
-  --ds-color-foreground: oklch(0.985 0 0);
+  --ds-color-brand: #6e95ff;
+  --ds-color-brand-foreground: #071426;
 
-  --ds-color-surface: oklch(0.205 0 0);
-  --ds-color-surface-foreground: oklch(0.985 0 0);
+  --ds-color-brand-accent: #3ad5ec;
+  --ds-color-brand-accent-foreground: #06212a;
 
-  --ds-color-primary: oklch(0.922 0 0);
-  --ds-color-primary-foreground: oklch(0.205 0 0);
+  --ds-color-background: #071426;
+  --ds-color-foreground: #edf5ff;
 
-  --ds-color-secondary: oklch(0.269 0 0);
-  --ds-color-secondary-foreground: oklch(0.985 0 0);
+  --ds-color-surface: #0d1d31;
+  --ds-color-surface-foreground: #edf5ff;
 
-  --ds-color-muted: oklch(0.269 0 0);
-  --ds-color-muted-foreground: oklch(0.708 0 0);
+  --ds-color-primary: var(--ds-color-brand);
+  --ds-color-primary-foreground: var(--ds-color-brand-foreground);
 
-  --ds-color-accent: oklch(0.269 0 0);
-  --ds-color-accent-foreground: oklch(0.985 0 0);
+  --ds-color-secondary: #142941;
+  --ds-color-secondary-foreground: #dbe9f7;
 
-  --ds-color-destructive: oklch(0.704 0.191 22.216);
-  --ds-color-destructive-foreground: oklch(0.985 0 0);
+  --ds-color-accent: var(--ds-color-brand-accent);
+  --ds-color-accent-foreground: var(--ds-color-brand-accent-foreground);
 
-  --ds-color-success: oklch(0.7 0.14 145);
-  --ds-color-success-foreground: oklch(0.145 0 0);
+  --ds-color-muted: #13263c;
+  --ds-color-muted-foreground: #9eb0c4;
 
-  --ds-color-warning: oklch(0.82 0.15 75);
-  --ds-color-warning-foreground: oklch(0.145 0 0);
+  --ds-color-interactive: var(--ds-color-primary);
+  --ds-color-interactive-hover: color-mix(in oklab, var(--ds-color-primary) 86%, white);
+  --ds-color-interactive-foreground: var(--ds-color-primary-foreground);
 
-  --ds-color-info: oklch(0.75 0.12 250);
-  --ds-color-info-foreground: oklch(0.145 0 0);
+  --ds-color-focus: #43d6ef;
 
-  --ds-color-border: oklch(0.269 0 0);
-  --ds-color-input: oklch(0.269 0 0);
-  --ds-color-ring: oklch(0.556 0 0);
-  --ds-color-overlay: oklch(0 0 0);
+  --ds-color-decoration: color-mix(in oklab, var(--ds-color-accent) 18%, transparent);
+
+  --ds-color-destructive: #f36b77;
+  --ds-color-destructive-foreground: #28080c;
+
+  --ds-color-success: #6fd3a0;
+  --ds-color-success-foreground: #072017;
+
+  --ds-color-warning: #f4c863;
+  --ds-color-warning-foreground: #271b02;
+
+  --ds-color-info: #87adff;
+  --ds-color-info-foreground: #071426;
+
+  --ds-color-border: #263d56;
+  --ds-color-input: #324c67;
+  --ds-color-ring: var(--ds-color-focus);
+
+  --ds-color-overlay: rgb(1 7 20 / 0.72);
 }

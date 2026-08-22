@@ -1,0 +1,46 @@
+import type { Gathering } from "@/types";
+
+export const MOCK_GATHERINGS = [
+  {
+    id: "gathering-blue-jump-pop-up",
+    organizerId: "user-night-shift",
+    participantIds: ["user-night-shift", "user-geumsu", "user-sagol"],
+    talentIds: [
+      "talent-great-moon-aroma",
+      "talent-jegal",
+      "talent-mogugu",
+      "talent-haroha",
+      "talent-nunungzi",
+    ],
+    title: "블루점프 팝업 첫날 같이 갈 사람",
+    description: "오픈 시간 맞춰서 보고 근처에서 밥 먹을 사람만. 밤샘 줄서기는 안 합니다.",
+    location: "서울 홍대",
+    startsAt: "2026-09-12T02:00:00.000Z",
+    capacity: 6,
+    status: "OPEN",
+  },
+  {
+    id: "gathering-haroha-work",
+    organizerId: "user-ghost",
+    participantIds: ["user-ghost", "user-yardbug"],
+    talentIds: ["talent-haroha"],
+    title: "망령들 그림/영상 작업 같이 할 사람",
+    description: "각자 노트북이나 아이패드 들고 와서 조용히 작업하다가 저녁 먹고 헤어집니다.",
+    location: "서울 성수",
+    startsAt: "2026-09-06T05:00:00.000Z",
+    capacity: 5,
+    status: "OPEN",
+  },
+  {
+    id: "gathering-fourth-generation",
+    organizerId: "user-hambak",
+    participantIds: ["user-hambak", "user-yardbug", "user-geumsu", "user-sagol"],
+    talentIds: ["talent-marronie", "talent-yang-doki"],
+    title: "4기 첫 오프행사 같이 갈 사람",
+    description: "끝나고 감상회 겸 밥 먹을 예정. 너무 늦게까지는 안 놉니다.",
+    location: "경기 고양",
+    startsAt: "2026-09-20T03:30:00.000Z",
+    capacity: 4,
+    status: "FULL",
+  },
+] satisfies Gathering[];

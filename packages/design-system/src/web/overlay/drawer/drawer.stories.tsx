@@ -1,14 +1,25 @@
 import type { Meta, StoryObj } from "@blue-jump/storybook-config/react";
 
-import Drawer, {
-  DrawerClose,
-  DrawerContent,
-  DrawerDescription,
-  DrawerFooter,
-  DrawerHeader,
-  DrawerTitle,
-  DrawerTrigger,
-} from "./drawer";
+import Drawer from "./drawer";
+import Button from "../../buttons/button/button";
+
+function DrawerNavigation() {
+  return (
+    <nav aria-label="주요 메뉴" className="flex flex-col gap-1 p-4">
+      {["Main", "Community", "Creative", "Projects", "Gatherings", "Archive", "Talents"].map(
+        (item) => (
+          <a
+            key={item}
+            href="#"
+            className="text-foreground duration-fast ease-standard hover:bg-muted rounded-md px-3 py-2 text-sm font-medium transition-colors"
+          >
+            {item}
+          </a>
+        ),
+      )}
+    </nav>
+  );
+}
 
 const meta = {
   title: "Web/Overlay/Drawer",
@@ -16,103 +27,62 @@ const meta = {
   parameters: {
     layout: "centered",
   },
-  tags: ["autodocs"],
+  args: {
+    trigger: <Button>메뉴 열기</Button>,
+    title: "메뉴",
+    description: "블루점프의 주요 공간으로 이동합니다.",
+    children: <DrawerNavigation />,
+  },
+  argTypes: {
+    trigger: {
+      control: false,
+    },
+    title: {
+      control: false,
+    },
+    description: {
+      control: false,
+    },
+    children: {
+      control: false,
+    },
+    side: {
+      control: "select",
+      options: ["left", "right"],
+    },
+    size: {
+      control: "select",
+      options: ["sm", "md", "lg"],
+    },
+  },
 } satisfies Meta<typeof Drawer>;
 
 export default meta;
 
 type Story = StoryObj<typeof meta>;
 
-export const Default = {
-  render: () => {
-    return (
-      <Drawer>
-        <DrawerTrigger className="bg-primary text-primary-foreground rounded-md px-4 py-2 text-sm font-medium">
-          열기
-        </DrawerTrigger>
+export const Default: Story = {};
 
-        <DrawerContent>
-          <DrawerHeader>
-            <DrawerTitle>웹 드로어</DrawerTitle>
-            <DrawerDescription>서비스 화면에서 사용하는 기본 드로어입니다.</DrawerDescription>
-          </DrawerHeader>
-
-          <div className="text-foreground text-sm">
-            모바일 메뉴, 필터, 사용자 설정 같은 보조 화면에 사용할 수 있습니다.
-          </div>
-
-          <DrawerFooter>
-            <DrawerClose className="border-border rounded-md border px-4 py-2 text-sm">
-              닫기
-            </DrawerClose>
-            <DrawerClose className="bg-primary text-primary-foreground rounded-md px-4 py-2 text-sm font-medium">
-              확인
-            </DrawerClose>
-          </DrawerFooter>
-        </DrawerContent>
-      </Drawer>
-    );
+export const Left: Story = {
+  args: {
+    side: "left",
   },
-} satisfies Story;
+};
 
-export const Sides = {
-  render: () => {
-    return (
-      <div className="flex gap-3">
-        {(["left", "right", "top", "bottom"] as const).map((side) => {
-          return (
-            <Drawer key={side}>
-              <DrawerTrigger className="border-border rounded-md border px-4 py-2 text-sm">
-                {side}
-              </DrawerTrigger>
-
-              <DrawerContent side={side}>
-                <DrawerHeader>
-                  <DrawerTitle>side={side}</DrawerTitle>
-                  <DrawerDescription>드로어 방향 variant 예시입니다.</DrawerDescription>
-                </DrawerHeader>
-
-                <DrawerFooter>
-                  <DrawerClose className="bg-primary text-primary-foreground rounded-md px-4 py-2 text-sm font-medium">
-                    닫기
-                  </DrawerClose>
-                </DrawerFooter>
-              </DrawerContent>
-            </Drawer>
-          );
-        })}
-      </div>
-    );
+export const Small: Story = {
+  args: {
+    size: "sm",
   },
-} satisfies Story;
+};
 
-export const Sizes = {
-  render: () => {
-    return (
-      <div className="flex gap-3">
-        {(["sm", "md", "lg"] as const).map((size) => {
-          return (
-            <Drawer key={size}>
-              <DrawerTrigger className="border-border rounded-md border px-4 py-2 text-sm">
-                {size}
-              </DrawerTrigger>
-
-              <DrawerContent size={size}>
-                <DrawerHeader>
-                  <DrawerTitle>size={size}</DrawerTitle>
-                  <DrawerDescription>드로어 크기 variant 예시입니다.</DrawerDescription>
-                </DrawerHeader>
-
-                <DrawerFooter>
-                  <DrawerClose className="bg-primary text-primary-foreground rounded-md px-4 py-2 text-sm font-medium">
-                    닫기
-                  </DrawerClose>
-                </DrawerFooter>
-              </DrawerContent>
-            </Drawer>
-          );
-        })}
-      </div>
-    );
+export const Large: Story = {
+  args: {
+    size: "lg",
   },
-} satisfies Story;
+};
+
+export const WithoutDescription: Story = {
+  args: {
+    description: undefined,
+  },
+};

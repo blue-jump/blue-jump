@@ -26,10 +26,3 @@ export const Naver: Story = {
     href: URLS.API.AUTH.NAVER,
   },
 };
-
-export const Kakao: Story = {
-  args: {
-    providerId: "kakao",
-    href: URLS.API.AUTH.KAKAO,
-  },
-};

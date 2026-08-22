@@ -13,8 +13,6 @@ export const URLS = {
       GOOGLE_CALLBACK: "/api/auth/google/callback",
       NAVER: "/api/auth/naver",
       NAVER_CALLBACK: "/api/auth/naver/callback",
-      KAKAO: "/api/auth/kakao",
-      KAKAO_CALLBACK: "/api/auth/kakao/callback",
       OAUTH: (providerId: string) => `/api/auth/${providerId}`,
       OAUTH_CALLBACK: (providerId: string) => `/api/auth/${providerId}/callback`,
     },

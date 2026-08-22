@@ -7,7 +7,6 @@ const mocks = vi.hoisted(() => ({
 
   getGoogleOAuthProfileByCode: vi.fn(),
   getNaverOAuthProfileByCode: vi.fn(),
-  getKakaoOAuthProfileByCode: vi.fn(),
 
   findOrCreateOAuthUserService: vi.fn(),
   createAuthSession: vi.fn(),
@@ -25,10 +24,6 @@ vi.mock("../google.provider", () => ({
 
 vi.mock("../naver.provider", () => ({
   getNaverOAuthProfileByCode: mocks.getNaverOAuthProfileByCode,
-}));
-
-vi.mock("../kakao.provider", () => ({
-  getKakaoOAuthProfileByCode: mocks.getKakaoOAuthProfileByCode,
 }));
 
 vi.mock("@blue-jump/domain/user/server", () => ({
@@ -76,11 +71,6 @@ describe("oauth-callback", () => {
       ...OAUTH_PROFILE,
       provider: "NAVER",
       providerUserId: "naver-user-id",
-    });
-    mocks.getKakaoOAuthProfileByCode.mockResolvedValue({
-      ...OAUTH_PROFILE,
-      provider: "KAKAO",
-      providerUserId: "kakao-user-id",
     });
 
     mocks.findOrCreateOAuthUserService.mockResolvedValue({
@@ -181,26 +171,6 @@ describe("oauth-callback", () => {
     expect(result).toMatchObject({
       provider: "NAVER",
       providerUserId: "naver-user-id",
-    });
-  });
-
-  it("Kakao callback profile을 조회한다", async () => {
-    const result = await resolveOAuthCallbackProfile({
-      providerId: "kakao",
-      code: "kakao-code",
-      state: "state",
-      appBaseUrl: "http://localhost:3000",
-      callbackPath: "/api/auth/kakao/callback",
-    });
-
-    expect(mocks.getKakaoOAuthProfileByCode).toHaveBeenCalledWith({
-      code: "kakao-code",
-      appBaseUrl: "http://localhost:3000",
-      callbackPath: "/api/auth/kakao/callback",
-    });
-    expect(result).toMatchObject({
-      provider: "KAKAO",
-      providerUserId: "kakao-user-id",
     });
   });
 
