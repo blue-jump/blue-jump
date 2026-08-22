@@ -4,7 +4,6 @@ import { useState } from "react";
 
 import { Avatar, Drawer, IconButton } from "@blue-jump/design-system/web";
 
-
 import type { NavigationItem } from "@/constants";
 
 import { GlobalNavigation } from "../global-navigation";
