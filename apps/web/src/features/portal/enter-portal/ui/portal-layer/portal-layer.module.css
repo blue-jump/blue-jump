@@ -1,9 +1,182 @@
+.layer {
+  --portal-transition-duration: 720ms;
+}
+
 .desktopInstruction {
   display: none;
 }
 
 .touchInstruction {
   display: block;
+}
+
+.portalButton {
+  -webkit-tap-highlight-color: transparent;
+}
+
+.portalVisual,
+.portalCopy,
+.portalRing,
+.portalCore,
+.portalLight,
+.outerRipple {
+  will-change: transform, opacity;
+}
+
+/*
+ * Portal Open
+ *
+ * Input
+ * ↓
+ * Response
+ * ↓
+ * Expansion
+ * ↓
+ * Ripple / Light
+ * ↓
+ * Layer 제거
+ */
+
+.layer[data-state="opening"] {
+  pointer-events: none;
+  animation: portal-layer-exit var(--portal-transition-duration) cubic-bezier(0.22, 1, 0.36, 1)
+    forwards;
+}
+
+.layer[data-state="opening"] .portalVisual {
+  animation: portal-open var(--portal-transition-duration) cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+.layer[data-state="opening"] .portalRing {
+  animation: portal-ring-open var(--portal-transition-duration) cubic-bezier(0.22, 1, 0.36, 1)
+    forwards;
+}
+
+.layer[data-state="opening"] .portalCore {
+  animation: portal-core-open var(--portal-transition-duration) cubic-bezier(0.22, 1, 0.36, 1)
+    forwards;
+}
+
+.layer[data-state="opening"] .portalLight {
+  animation: portal-light-open var(--portal-transition-duration) cubic-bezier(0.22, 1, 0.36, 1)
+    forwards;
+}
+
+.layer[data-state="opening"] .outerRipple {
+  animation: portal-ripple-open var(--portal-transition-duration) cubic-bezier(0.22, 1, 0.36, 1)
+    forwards;
+}
+
+.layer[data-state="opening"] .portalCopy {
+  animation: portal-copy-exit 240ms ease-out forwards;
+}
+
+@keyframes portal-open {
+  0% {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  18% {
+    transform: scale(0.94);
+  }
+
+  46% {
+    opacity: 1;
+    transform: scale(1.08);
+  }
+
+  100% {
+    opacity: 0;
+    transform: scale(2.35);
+  }
+}
+
+@keyframes portal-ring-open {
+  0% {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  24% {
+    transform: scale(0.92);
+  }
+
+  100% {
+    opacity: 0;
+    transform: scale(3.1);
+  }
+}
+
+@keyframes portal-core-open {
+  0% {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  20% {
+    transform: scale(0.88);
+  }
+
+  54% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+    transform: scale(2.7);
+  }
+}
+
+@keyframes portal-light-open {
+  0% {
+    opacity: 0.55;
+    transform: scale(0.9);
+  }
+
+  38% {
+    opacity: 0.9;
+  }
+
+  100% {
+    opacity: 0;
+    transform: scale(4.2);
+  }
+}
+
+@keyframes portal-ripple-open {
+  0% {
+    opacity: 0.3;
+    transform: scale(1);
+  }
+
+  100% {
+    opacity: 0;
+    transform: scale(3.7);
+  }
+}
+
+@keyframes portal-copy-exit {
+  from {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  to {
+    opacity: 0;
+    transform: translateY(0.5rem);
+  }
+}
+
+@keyframes portal-layer-exit {
+  0%,
+  58% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+  }
 }
 
 @media (hover: hover) and (pointer: fine) {
@@ -13,5 +186,17 @@
 
   .touchInstruction {
     display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .layer[data-state="opening"],
+  .layer[data-state="opening"] .portalVisual,
+  .layer[data-state="opening"] .portalRing,
+  .layer[data-state="opening"] .portalCore,
+  .layer[data-state="opening"] .portalLight,
+  .layer[data-state="opening"] .outerRipple,
+  .layer[data-state="opening"] .portalCopy {
+    animation: none;
   }
 }
