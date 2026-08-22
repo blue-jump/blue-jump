@@ -7,10 +7,10 @@ export const URLS = {
     GATHERINGS: "/gatherings",
     ARCHIVE: "/archive",
     TALENTS: "/talents",
+    TALENT: (slug: string) => `/talents/${slug}`,
     PROFILE: "/profile",
     LOGIN: "/login",
   },
-
   API: {
     AUTH: {
       LOGOUT: "/api/auth/logout",
