@@ -1,24 +1,14 @@
 import type { Meta, StoryObj } from "@blue-jump/storybook-config/nextjs";
 
-import type { Talent } from "@/types";
+import { MOCK_TALENTS } from "@/mocks/talents.mock";
 
 import LiveTalentCard from "./live-talent-card";
 
-const talent: Talent = {
-  id: "talent-great-moon-aroma",
-  slug: "great-moon-aroma",
-  name: "대월향",
-  englishName: "GreatMoonAroma",
-  description: "블루점프 대표",
-  fandomName: "직원단",
-  signatureColor: "#0123B4",
-  role: "REPRESENTATIVE",
-  profileImageUrl: "/images/mock/talents/great-moon-aroma-profile.webp",
-  coverImageUrl: "/images/mock/talents/great-moon-aroma-cover.webp",
-  themeKey: "great-moon-aroma",
-  isLive: true,
-  liveTitle: "직원들 불러다가 오늘도 뭐 하나 합니다",
-};
+const talent = MOCK_TALENTS.find((talent) => talent.id === "talent-great-moon-aroma");
+
+if (!talent) {
+  throw new Error("LiveTalentCard Story에 사용할 Talent를 찾을 수 없습니다.");
+}
 
 const meta: Meta<typeof LiveTalentCard> = {
   title: "Entities/Talent/LiveTalentCard",

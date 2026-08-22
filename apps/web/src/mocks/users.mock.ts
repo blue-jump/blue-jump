@@ -2,6 +2,15 @@ import type { User } from "@/types";
 
 export const MOCK_USERS = [
   {
+    id: "user-night-shift",
+    nickname: "야근3년차",
+    bio: "대표님 방송 보다가 진짜 야근하게 된 직원단.",
+    profileImageUrl: "/images/mock/users/night-shift.webp",
+    favoriteTalentIds: ["talent-great-moon-aroma", "talent-jegal"],
+    activityTypeIds: ["archivist", "clip-maker"],
+    joinedAt: "2023-02-18T13:20:00.000Z",
+  },
+  {
     id: "user-geumsu",
     nickname: "금자보고벌떡",
     bio: "블루점프 합방 보고 금자 방송 입갤.",

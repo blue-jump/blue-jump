@@ -3,7 +3,7 @@ import type { Post } from "@/types";
 export const MOCK_POSTS = [
   {
     id: "post-1",
-    authorId: "user-night-shift",
+    authorId: "user-geumsu",
     talentIds: [
       "talent-great-moon-aroma",
       "talent-jegal",
