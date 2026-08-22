@@ -1,6 +1,7 @@
-import type { AppError } from "@blue-jump/core/errors";
 import type { User, UserOAuthAccount } from "@prisma/client";
 import { beforeEach, describe, expect, it, vi } from "vitest";
+
+import type { AppError } from "@blue-jump/core/errors";
 
 import {
   findOrCreateOAuthUserService,
