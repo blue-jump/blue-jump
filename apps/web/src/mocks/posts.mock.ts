@@ -13,7 +13,7 @@ export const MOCK_POSTS = [
     ],
     category: "GENERAL",
     title: "오늘 단체합방 결론: 대표님이 제일 신남",
-    body: "분명 직원들 통솔하러 들어온 것 같은데 20분 지나니까 제일 앞에서 사고 치고 있음ㅋㅋㅋ",
+    body: "분명 직원들 군기 잡으러 들어온 것 같은데 20분 지나니까 제일 앞에서 사고 치고 있음ㅋㅋㅋ",
     createdAt: "2026-08-21T13:18:00.000Z",
   },
   {
@@ -21,7 +21,7 @@ export const MOCK_POSTS = [
     authorId: "user-geumsu",
     talentIds: ["talent-jegal", "talent-mogugu"],
     category: "MEME",
-    title: "제구구 또 시작했네ㅋㅋㅋㅋ",
+    title: "금자 또 시작했네ㅋㅋㅋㅋ",
     body: "구구 한마디 할 때마다 금자 혈압 오르는 게 화면 밖에서도 보이는 것 같음",
     createdAt: "2026-08-21T12:44:00.000Z",
   },
