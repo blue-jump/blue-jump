@@ -1,0 +1,17 @@
+.desktopInstruction {
+  display: none;
+}
+
+.touchInstruction {
+  display: block;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .desktopInstruction {
+    display: block;
+  }
+
+  .touchInstruction {
+    display: none;
+  }
+}
