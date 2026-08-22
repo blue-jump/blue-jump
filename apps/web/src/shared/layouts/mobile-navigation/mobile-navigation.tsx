@@ -61,7 +61,7 @@ export default function MobileNavigation({ items, profileItem, pathname }: Mobil
 
         <div className="border-border mt-auto border-t p-4">
           <p className="text-caption text-muted-foreground mb-2 px-2 font-medium tracking-wide uppercase">
-            My Space
+            내 공간
           </p>
 
           <NavigationLink

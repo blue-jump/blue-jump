@@ -303,7 +303,7 @@ describe("user.service", () => {
         email: "new-user@example.com",
         name: "Naver User",
         avatarUrl: "https://example.com/naver.png",
-        nickname: "naver_generated_hash",
+        nickname: "naver_0123456789abcdef",
       });
 
       oauthAccountRepositoryMock.findUserOAuthAccountWithUserRepository.mockResolvedValue(null);
@@ -322,7 +322,7 @@ describe("user.service", () => {
         email: "new-user@example.com",
         name: "Naver User",
         avatarUrl: "https://example.com/naver.png",
-        nickname: expect.stringMatching(/^naver[a-f0-9]{16}$/),
+        nickname: expect.stringMatching(/^naver_[a-f0-9]{16}$/),
         oauthAccounts: {
           create: {
             email: "new-user@example.com",

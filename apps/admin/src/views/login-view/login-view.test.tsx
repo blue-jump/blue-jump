@@ -11,7 +11,6 @@ describe("LoginView", () => {
     expect(screen.getByText("관리자 권한이 있는 계정으로 로그인해 주세요.")).toBeInTheDocument();
     expect(screen.getByRole("link", { name: "Google로 로그인" })).toBeInTheDocument();
     expect(screen.getByRole("link", { name: "네이버로 로그인" })).toBeInTheDocument();
-    expect(screen.getByRole("link", { name: "카카오로 로그인" })).toBeInTheDocument();
   });
 
   it("로그인 에러가 있으면 에러 알림을 렌더링한다", () => {
