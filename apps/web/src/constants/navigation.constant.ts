@@ -56,5 +56,5 @@ export const PROFILE_NAVIGATION_ITEM = {
   id: "profile",
   label: "프로필",
   href: URLS.CLIENT.PROFILE,
-  available: false,
+  available: true,
 } satisfies NavigationItem;
