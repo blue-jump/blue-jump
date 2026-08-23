@@ -24,8 +24,20 @@ export default function TalentSelector({ talents, currentTalentId }: TalentSelec
                   aria-current={isCurrent ? "page" : undefined}
                   className={
                     isCurrent
-                      ? "text-foreground duration-fast ease-standard flex min-w-36 items-center gap-2.5 rounded-lg border border-(--talent-accent,var(--color-border)) bg-(--talent-surface,var(--color-muted)) px-3 py-2 transition-colors"
-                      : "text-muted-foreground hover:border-border hover:bg-muted hover:text-foreground duration-fast ease-standard flex min-w-36 items-center gap-2.5 rounded-lg border border-transparent px-3 py-2 transition-colors"
+                      ? [
+                          "border-(--talent-accent,var(--color-border))",
+                          "text-foreground bg-(--talent-surface,var(--color-muted))",
+                          "flex min-w-36 items-center gap-2.5 rounded-lg border px-3 py-2",
+                          "duration-fast ease-standard transition-colors",
+                          "motion-reduce:transition-none",
+                        ].join(" ")
+                      : [
+                          "text-muted-foreground border-transparent",
+                          "flex min-w-36 items-center gap-2.5 rounded-lg border px-3 py-2",
+                          "duration-fast ease-standard transition-colors",
+                          "hover:border-border hover:bg-muted hover:text-foreground",
+                          "motion-reduce:transition-none",
+                        ].join(" ")
                   }
                 >
                   <span className="bg-muted relative size-9 shrink-0 overflow-hidden rounded-full">
