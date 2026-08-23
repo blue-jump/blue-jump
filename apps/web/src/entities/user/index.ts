@@ -1,1 +1,1 @@
-export { FanProfileCard, UserActivityList } from "./ui";
+export { FanProfileCard, type UserActivityItem, UserActivityList } from "./ui";

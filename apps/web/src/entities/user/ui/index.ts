@@ -1,2 +1,2 @@
 export { FanProfileCard } from "./fan-profile-card";
-export { UserActivityList } from "./user-activity-list";
+export { type UserActivityItem, UserActivityList } from "./user-activity-list";

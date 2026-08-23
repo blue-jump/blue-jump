@@ -1,1 +1,1 @@
-export { default as UserActivityList } from "./user-activity-list";
+export { type UserActivityItem, default as UserActivityList } from "./user-activity-list";
