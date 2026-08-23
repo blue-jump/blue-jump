@@ -1,0 +1,1 @@
+export { TalentListView } from "./ui";
