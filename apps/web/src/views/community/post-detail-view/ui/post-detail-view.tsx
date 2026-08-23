@@ -1,3 +1,4 @@
+import { SAMPLE_DEMO_USER_ID } from "@/constants";
 import { CommentItem } from "@/entities/comment";
 import { PostDetail } from "@/entities/post";
 import { PostReactionDemo } from "@/features/community";
@@ -7,7 +8,6 @@ import {
   getReactionsByTarget,
   getTalentsByIds,
 } from "@/mocks/sample-data.selectors";
-import { MOCK_USERS } from "@/mocks/users.mock";
 import { Container, Section } from "@/shared/layouts";
 import type { Comment, Post, User } from "@/types";
 
@@ -48,7 +48,7 @@ export default function PostDetailView({ post }: PostDetailViewProps) {
   const talents = getTalentsByIds(post.talentIds);
   const comments = getResolvedComments(post.id);
   const reactions = getReactionsByTarget("POST", post.id);
-  const demoUser = MOCK_USERS[0];
+  const demoUser = findUserById(SAMPLE_DEMO_USER_ID);
 
   if (!author) {
     return (
