@@ -50,17 +50,16 @@ export default function TalentHero({ talent }: TalentHeroProps) {
       <div
         className={[
           "bg-(--talent-surface,var(--color-surface)) px-4 pb-6 sm:px-6 sm:pb-7 lg:px-8",
-          "duration-fast ease-standard transition-colors",
-          "motion-reduce:transition-none",
+          "duration-fast ease-standard transition-colors motion-reduce:transition-none",
         ].join(" ")}
       >
-        <div className="-mt-10 flex flex-col gap-4 sm:-mt-14 sm:flex-row sm:items-end sm:gap-5">
+        <div className="flex flex-col gap-4 pt-4 sm:-mt-14 sm:flex-row sm:items-end sm:gap-5 sm:pt-0">
           <div
             className={[
-              "bg-muted relative size-24 shrink-0 border-(--talent-surface,var(--color-surface))",
-              "overflow-hidden rounded-xl border-4 shadow-sm sm:size-28 lg:size-32",
-              "duration-fast ease-standard transition-colors",
-              "motion-reduce:transition-none",
+              "bg-muted border-(--talent-accent,var(--color-border))",
+              "relative size-24 shrink-0 overflow-hidden rounded-xl border-4 shadow-sm",
+              "sm:size-28 lg:size-32",
+              "duration-fast ease-standard transition-colors motion-reduce:transition-none",
             ].join(" ")}
           >
             {talent.profileImageUrl ? (
@@ -77,7 +76,7 @@ export default function TalentHero({ talent }: TalentHeroProps) {
                 aria-label={`${talent.name} 프로필 이미지`}
                 className="text-muted-foreground flex size-full items-center justify-center text-2xl font-semibold"
               >
-                {talent.name.slice(0, 1)}
+                <span aria-hidden="true">{talent.name.slice(0, 1)}</span>
               </div>
             )}
           </div>

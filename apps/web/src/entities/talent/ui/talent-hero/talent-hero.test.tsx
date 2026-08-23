@@ -22,7 +22,7 @@ const TALENT: Talent = {
 };
 
 describe("TalentHero", () => {
-  it("Talent의 기본 정보와 이미지를 표시한다", () => {
+  it("Talent의 기본 정보를 표시한다", () => {
     render(<TalentHero talent={TALENT} />);
 
     expect(
@@ -35,6 +35,10 @@ describe("TalentHero", () => {
     expect(screen.getByText("Haroha")).toBeInTheDocument();
     expect(screen.getByText("저승차사")).toBeInTheDocument();
     expect(screen.getByText("3기 · 팬덤 망령")).toBeInTheDocument();
+  });
+
+  it("Cover와 Profile 이미지에 의미 있는 대체 텍스트를 제공한다", () => {
+    render(<TalentHero talent={TALENT} />);
 
     expect(screen.getByAltText("하로하 커버 이미지")).toBeInTheDocument();
     expect(screen.getByAltText("하로하 프로필 이미지")).toBeInTheDocument();
@@ -83,5 +87,29 @@ describe("TalentHero", () => {
     render(<TalentHero talent={TALENT} />);
 
     expect(screen.queryByText("LIVE")).not.toBeInTheDocument();
+  });
+
+  it("이미지가 없어도 동일한 대체 텍스트를 제공한다", () => {
+    render(
+      <TalentHero
+        talent={{
+          ...TALENT,
+          profileImageUrl: undefined,
+          coverImageUrl: undefined,
+        }}
+      />,
+    );
+
+    expect(
+      screen.getByRole("img", {
+        name: "하로하 커버 이미지",
+      }),
+    ).toBeInTheDocument();
+
+    expect(
+      screen.getByRole("img", {
+        name: "하로하 프로필 이미지",
+      }),
+    ).toBeInTheDocument();
   });
 });
