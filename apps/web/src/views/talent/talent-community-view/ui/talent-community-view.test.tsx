@@ -1,7 +1,13 @@
-import { render, screen } from "@testing-library/react";
+import { render, screen, within } from "@testing-library/react";
 import { describe, expect, it } from "vitest";
 
+import { URLS } from "@/constants";
 import { MOCK_TALENTS } from "@/mocks";
+import {
+  findUserById,
+  getCreativesByTalentId,
+  getPostsByTalentId,
+} from "@/mocks/sample-data.selectors";
 import type { Talent } from "@/types";
 
 import TalentCommunityView from "./talent-community-view";
@@ -14,6 +20,24 @@ function getTalent(id: Talent["id"]) {
   }
 
   return talent;
+}
+
+function getLatestResolvablePost(talentId: Talent["id"]) {
+  return [...getPostsByTalentId(talentId)]
+    .sort(
+      (leftPost, rightPost) =>
+        new Date(rightPost.createdAt).getTime() - new Date(leftPost.createdAt).getTime(),
+    )
+    .find((post) => findUserById(post.authorId));
+}
+
+function getLatestResolvableCreative(talentId: Talent["id"]) {
+  return [...getCreativesByTalentId(talentId)]
+    .sort(
+      (leftCreative, rightCreative) =>
+        new Date(rightCreative.createdAt).getTime() - new Date(leftCreative.createdAt).getTime(),
+    )
+    .find((creative) => findUserById(creative.creatorId));
 }
 
 function expectBefore(first: Element, second: Element) {
@@ -57,12 +81,94 @@ describe("TalentCommunityView", () => {
     render(<TalentCommunityView talent={talent} />);
 
     expect(screen.getByText("오늘 단체합방 결론: 대표님이 제일 신남")).toBeInTheDocument();
-
     expect(screen.getByText("블루점프 명장면 아카이브 정리")).toBeInTheDocument();
-
     expect(screen.getByText("대표님이 또 뭔가 준비한 블루점프 단체합방")).toBeInTheDocument();
-
     expect(screen.getByText("대표와 직원들")).toBeInTheDocument();
+  });
+
+  it("Post와 Creative 영역에서 현재 Talent Context를 명확하게 표시한다", () => {
+    const talent = getTalent("talent-haroha");
+
+    render(<TalentCommunityView talent={talent} />);
+
+    expect(
+      screen.getByRole("region", {
+        name: `${talent.name} 관련 글`,
+      }),
+    ).toBeInTheDocument();
+
+    expect(
+      screen.getByRole("region", {
+        name: `${talent.name} 팬 창작`,
+      }),
+    ).toBeInTheDocument();
+  });
+
+  it("관련 Post와 Creative에서 공통 Detail 화면으로 이동할 수 있다", () => {
+    const talent = getTalent("talent-haroha");
+
+    const relatedPost = getLatestResolvablePost(talent.id);
+    const relatedCreative = getLatestResolvableCreative(talent.id);
+
+    if (!relatedPost) {
+      throw new Error(
+        `Talent Community Detail 연결 테스트에 사용할 Post를 찾을 수 없습니다: ${talent.id}`,
+      );
+    }
+
+    if (!relatedCreative) {
+      throw new Error(
+        `Talent Community Detail 연결 테스트에 사용할 Creative를 찾을 수 없습니다: ${talent.id}`,
+      );
+    }
+
+    render(<TalentCommunityView talent={talent} />);
+
+    const postSection = screen.getByRole("region", {
+      name: `${talent.name} 관련 글`,
+    });
+
+    const creativeSection = screen.getByRole("region", {
+      name: `${talent.name} 팬 창작`,
+    });
+
+    expect(
+      within(postSection).getByRole("link", {
+        name: relatedPost.title,
+      }),
+    ).toHaveAttribute("href", URLS.CLIENT.POST(relatedPost.id));
+
+    expect(
+      within(creativeSection).getByRole("link", {
+        name: relatedCreative.title,
+      }),
+    ).toHaveAttribute("href", URLS.CLIENT.CREATIVE_DETAIL(relatedCreative.id));
+  });
+
+  it("Talent Community에서 Community와 Creative 전체 목록으로 이동할 수 있다", () => {
+    const talent = getTalent("talent-haroha");
+
+    render(<TalentCommunityView talent={talent} />);
+
+    const postSection = screen.getByRole("region", {
+      name: `${talent.name} 관련 글`,
+    });
+
+    const creativeSection = screen.getByRole("region", {
+      name: `${talent.name} 팬 창작`,
+    });
+
+    expect(
+      within(postSection).getByRole("link", {
+        name: "커뮤니티 전체",
+      }),
+    ).toHaveAttribute("href", URLS.CLIENT.COMMUNITY);
+
+    expect(
+      within(creativeSection).getByRole("link", {
+        name: "창작 전체",
+      }),
+    ).toHaveAttribute("href", URLS.CLIENT.CREATIVE);
   });
 
   it("Project, Schedule, Archive를 정의된 우선순위로 표시한다", () => {

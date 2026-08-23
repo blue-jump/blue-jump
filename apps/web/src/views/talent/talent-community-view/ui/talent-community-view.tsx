@@ -1,3 +1,6 @@
+import Link from "next/link";
+
+import { URLS } from "@/constants";
 import { ArchiveCard } from "@/entities/archive";
 import { CreativeCard } from "@/entities/creative";
 import { PostCard } from "@/entities/post";
@@ -180,12 +183,21 @@ export default function TalentCommunityView({ talent }: TalentCommunityViewProps
 
           <div className="grid grid-cols-1 gap-x-8 gap-y-12 lg:grid-cols-12">
             <section aria-labelledby="talent-community-posts-heading" className="lg:col-span-5">
-              <h2
-                id="talent-community-posts-heading"
-                className="text-foreground text-xl font-semibold"
-              >
-                최근 글
-              </h2>
+              <div className="flex items-center justify-between gap-4">
+                <h2
+                  id="talent-community-posts-heading"
+                  className="text-foreground text-xl font-semibold"
+                >
+                  {talent.name} 관련 글
+                </h2>
+
+                <Link
+                  href={URLS.CLIENT.COMMUNITY}
+                  className="text-interactive hover:text-interactive-hover shrink-0 rounded-sm text-sm font-medium underline-offset-4 hover:underline"
+                >
+                  커뮤니티 전체
+                </Link>
+              </div>
 
               {relatedPosts.length > 0 ? (
                 <div className="mt-5 space-y-4">
@@ -201,12 +213,21 @@ export default function TalentCommunityView({ talent }: TalentCommunityViewProps
             </section>
 
             <section aria-labelledby="talent-community-creatives-heading" className="lg:col-span-7">
-              <h2
-                id="talent-community-creatives-heading"
-                className="text-foreground text-xl font-semibold"
-              >
-                팬 창작
-              </h2>
+              <div className="flex items-center justify-between gap-4">
+                <h2
+                  id="talent-community-creatives-heading"
+                  className="text-foreground text-xl font-semibold"
+                >
+                  {talent.name} 팬 창작
+                </h2>
+
+                <Link
+                  href={URLS.CLIENT.CREATIVE}
+                  className="text-interactive hover:text-interactive-hover shrink-0 rounded-sm text-sm font-medium underline-offset-4 hover:underline"
+                >
+                  창작 전체
+                </Link>
+              </div>
 
               {relatedCreatives.length > 0 ? (
                 <div className="mt-5 grid grid-cols-1 gap-6 sm:grid-cols-2">
