@@ -16,57 +16,102 @@ import {
 } from "@/mocks";
 import { findUserById, getTalentsByIds } from "@/mocks/sample-data.selectors";
 import { Container, Section } from "@/shared/layouts";
+import type { Gathering, Project } from "@/types";
+
+const PROJECT_STATUS_PRIORITY = {
+  RECRUITING: 0,
+  IN_PROGRESS: 1,
+  COMPLETED: 2,
+} satisfies Record<Project["status"], number>;
 
 const liveTalents = MOCK_TALENTS.filter((talent) => talent.isLive);
 
-const featuredProject = MOCK_PROJECTS.at(0);
-const featuredGathering = MOCK_GATHERINGS.at(0);
-const featuredSchedule = MOCK_SCHEDULES.at(0);
-const featuredArchive = [...MOCK_ARCHIVES]
+function getRecentPosts(limit: number) {
+  return [...MOCK_POSTS]
+    .sort(
+      (leftPost, rightPost) =>
+        new Date(rightPost.createdAt).getTime() - new Date(leftPost.createdAt).getTime(),
+    )
+    .flatMap((post) => {
+      const author = findUserById(post.authorId);
+
+      if (!author) {
+        return [];
+      }
+
+      return [
+        {
+          post,
+          author,
+          talents: getTalentsByIds(post.talentIds),
+        },
+      ];
+    })
+    .slice(0, limit);
+}
+
+function getRecentCreatives(limit: number) {
+  return [...MOCK_CREATIVES]
+    .sort(
+      (leftCreative, rightCreative) =>
+        new Date(rightCreative.createdAt).getTime() - new Date(leftCreative.createdAt).getTime(),
+    )
+    .flatMap((creative) => {
+      const creator = findUserById(creative.creatorId);
+
+      if (!creator) {
+        return [];
+      }
+
+      return [
+        {
+          creative,
+          creator,
+          talents: getTalentsByIds(creative.talentIds),
+        },
+      ];
+    })
+    .slice(0, limit);
+}
+
+function getActiveProjects(projects: readonly Project[], limit: number) {
+  return [...projects]
+    .filter((project) => project.status !== "COMPLETED")
+    .sort(
+      (leftProject, rightProject) =>
+        PROJECT_STATUS_PRIORITY[leftProject.status] - PROJECT_STATUS_PRIORITY[rightProject.status],
+    )
+    .slice(0, limit);
+}
+
+function getUpcomingGatherings(gatherings: readonly Gathering[], limit: number) {
+  return [...gatherings]
+    .filter((gathering) => gathering.status !== "COMPLETED")
+    .sort(
+      (leftGathering, rightGathering) =>
+        new Date(leftGathering.startsAt).getTime() - new Date(rightGathering.startsAt).getTime(),
+    )
+    .slice(0, limit);
+}
+
+const recentPosts = getRecentPosts(2);
+const recentCreatives = getRecentCreatives(2);
+const activeProjects = getActiveProjects(MOCK_PROJECTS, 2);
+const upcomingGatherings = getUpcomingGatherings(MOCK_GATHERINGS, 2);
+
+const upcomingSchedules = [...MOCK_SCHEDULES]
+  .sort(
+    (leftSchedule, rightSchedule) =>
+      new Date(leftSchedule.startsAt).getTime() - new Date(rightSchedule.startsAt).getTime(),
+  )
+  .slice(0, 3);
+
+const recentArchives = [...MOCK_ARCHIVES]
   .sort(
     (leftArchive, rightArchive) =>
       new Date(rightArchive.occurredAt).getTime() - new Date(leftArchive.occurredAt).getTime(),
   )
-  .at(0);
-
-function getFeaturedPost() {
-  for (const post of MOCK_POSTS) {
-    const author = findUserById(post.authorId);
-
-    if (!author) {
-      continue;
-    }
-
-    return {
-      post,
-      author,
-      talents: getTalentsByIds(post.talentIds),
-    };
-  }
-
-  return undefined;
-}
-
-function getFeaturedCreative() {
-  for (const creative of MOCK_CREATIVES) {
-    const creator = findUserById(creative.creatorId);
-
-    if (!creator) {
-      continue;
-    }
-
-    return {
-      creative,
-      creator,
-      talents: getTalentsByIds(creative.talentIds),
-    };
-  }
-
-  return undefined;
-}
-
-const featuredPost = getFeaturedPost();
-const featuredCreative = getFeaturedCreative();
+  .slice(0, 2);
 
 export default function MainView() {
   return (
@@ -103,8 +148,8 @@ export default function MainView() {
           블루점프 활동
         </h2>
 
-        <div className="grid grid-cols-1 gap-x-5 gap-y-10 md:grid-cols-12">
-          <section aria-labelledby="main-live-heading" className="md:col-span-12">
+        <div className="grid grid-cols-1 gap-x-6 gap-y-12 lg:grid-cols-12">
+          <section aria-labelledby="main-live-heading" className="lg:col-span-12">
             <div className="flex items-end justify-between gap-4">
               <div>
                 <p className="text-destructive text-xs font-semibold tracking-[0.14em]">LIVE</p>
@@ -114,19 +159,23 @@ export default function MainView() {
                 </h3>
               </div>
 
-              <span className="text-muted-foreground text-sm">{liveTalents.length}명</span>
+              <span className="text-muted-foreground shrink-0 text-sm">{liveTalents.length}명</span>
             </div>
 
-            <div className="mt-5 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
-              {liveTalents.map((talent, index) => (
-                <LiveTalentCard key={talent.id} talent={talent} eager={index === 0} />
-              ))}
-            </div>
+            {liveTalents.length > 0 ? (
+              <div className="mt-5 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
+                {liveTalents.map((talent, index) => (
+                  <LiveTalentCard key={talent.id} talent={talent} eager={index === 0} />
+                ))}
+              </div>
+            ) : (
+              <p className="text-muted-foreground mt-5 text-sm">현재 방송 중인 멤버가 없습니다.</p>
+            )}
           </section>
 
           <section
             aria-labelledby="main-talents-heading"
-            className="border-border border-t pt-8 md:col-span-12"
+            className="border-border border-t pt-8 lg:col-span-12"
           >
             <div className="flex items-end justify-between gap-4">
               <div>
@@ -140,10 +189,12 @@ export default function MainView() {
                 </h3>
               </div>
 
-              <span className="text-muted-foreground text-sm">{MOCK_TALENTS.length}명</span>
+              <span className="text-muted-foreground shrink-0 text-sm">
+                {MOCK_TALENTS.length}명
+              </span>
             </div>
 
-            <div className="mt-5 grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-7">
+            <div className="mt-6 grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-7">
               {MOCK_TALENTS.map((talent) => (
                 <TalentCard key={talent.id} talent={talent} />
               ))}
@@ -152,7 +203,7 @@ export default function MainView() {
 
           <section
             aria-labelledby="main-community-heading"
-            className="border-border border-t pt-8 md:col-span-5"
+            className="border-border border-t pt-8 lg:col-span-5"
           >
             <div className="flex items-center justify-between gap-4">
               <h3 id="main-community-heading" className="text-foreground text-xl font-semibold">
@@ -162,13 +213,11 @@ export default function MainView() {
               <span className="text-muted-foreground text-sm">{MOCK_POSTS.length}</span>
             </div>
 
-            {featuredPost ? (
-              <div className="mt-5">
-                <PostCard
-                  post={featuredPost.post}
-                  author={featuredPost.author}
-                  talents={featuredPost.talents}
-                />
+            {recentPosts.length > 0 ? (
+              <div className="mt-5 space-y-4">
+                {recentPosts.map(({ post, author, talents }) => (
+                  <PostCard key={post.id} post={post} author={author} talents={talents} />
+                ))}
               </div>
             ) : (
               <p className="text-muted-foreground mt-5 text-sm">표시할 게시글이 없습니다.</p>
@@ -177,7 +226,7 @@ export default function MainView() {
 
           <section
             aria-labelledby="main-creative-heading"
-            className="border-border border-t pt-8 md:col-span-7"
+            className="border-border border-t pt-8 lg:col-span-7"
           >
             <div className="flex items-center justify-between gap-4">
               <h3 id="main-creative-heading" className="text-foreground text-xl font-semibold">
@@ -187,13 +236,16 @@ export default function MainView() {
               <span className="text-muted-foreground text-sm">{MOCK_CREATIVES.length}</span>
             </div>
 
-            {featuredCreative ? (
-              <div className="mt-5 max-w-sm">
-                <CreativeCard
-                  creative={featuredCreative.creative}
-                  creator={featuredCreative.creator}
-                  talents={featuredCreative.talents}
-                />
+            {recentCreatives.length > 0 ? (
+              <div className="mt-5 grid grid-cols-1 gap-6 sm:grid-cols-2">
+                {recentCreatives.map(({ creative, creator, talents }) => (
+                  <CreativeCard
+                    key={creative.id}
+                    creative={creative}
+                    creator={creator}
+                    talents={talents}
+                  />
+                ))}
               </div>
             ) : (
               <p className="text-muted-foreground mt-5 text-sm">표시할 창작물이 없습니다.</p>
@@ -202,7 +254,7 @@ export default function MainView() {
 
           <section
             aria-labelledby="main-projects-heading"
-            className="border-border border-t pt-8 md:col-span-7"
+            className="border-border border-t pt-8 lg:col-span-7"
           >
             <div className="flex items-center justify-between gap-4">
               <h3 id="main-projects-heading" className="text-foreground text-xl font-semibold">
@@ -212,21 +264,24 @@ export default function MainView() {
               <span className="text-muted-foreground text-sm">{MOCK_PROJECTS.length}</span>
             </div>
 
-            {featuredProject ? (
-              <div className="mt-5">
-                <ProjectCard
-                  project={featuredProject}
-                  talents={getTalentsByIds(featuredProject.talentIds)}
-                />
+            {activeProjects.length > 0 ? (
+              <div className="mt-5 space-y-4">
+                {activeProjects.map((project) => (
+                  <ProjectCard
+                    key={project.id}
+                    project={project}
+                    talents={getTalentsByIds(project.talentIds)}
+                  />
+                ))}
               </div>
             ) : (
-              <p className="text-muted-foreground mt-5 text-sm">표시할 프로젝트가 없습니다.</p>
+              <p className="text-muted-foreground mt-5 text-sm">진행 중인 프로젝트가 없습니다.</p>
             )}
           </section>
 
           <section
             aria-labelledby="main-gatherings-heading"
-            className="border-border border-t pt-8 md:col-span-5"
+            className="border-border border-t pt-8 lg:col-span-5"
           >
             <div className="flex items-center justify-between gap-4">
               <h3 id="main-gatherings-heading" className="text-foreground text-xl font-semibold">
@@ -236,21 +291,24 @@ export default function MainView() {
               <span className="text-muted-foreground text-sm">{MOCK_GATHERINGS.length}</span>
             </div>
 
-            {featuredGathering ? (
-              <div className="mt-5">
-                <GatheringCard
-                  gathering={featuredGathering}
-                  talents={getTalentsByIds(featuredGathering.talentIds)}
-                />
+            {upcomingGatherings.length > 0 ? (
+              <div className="mt-5 space-y-4">
+                {upcomingGatherings.map((gathering) => (
+                  <GatheringCard
+                    key={gathering.id}
+                    gathering={gathering}
+                    talents={getTalentsByIds(gathering.talentIds)}
+                  />
+                ))}
               </div>
             ) : (
-              <p className="text-muted-foreground mt-5 text-sm">표시할 모임이 없습니다.</p>
+              <p className="text-muted-foreground mt-5 text-sm">예정된 모임이 없습니다.</p>
             )}
           </section>
 
           <section
             aria-labelledby="main-schedule-heading"
-            className="border-border border-t pt-8 md:col-span-4"
+            className="border-border border-t pt-8 lg:col-span-5"
           >
             <div className="flex items-center justify-between gap-4">
               <h3 id="main-schedule-heading" className="text-foreground text-xl font-semibold">
@@ -260,21 +318,24 @@ export default function MainView() {
               <span className="text-muted-foreground text-sm">{MOCK_SCHEDULES.length}</span>
             </div>
 
-            {featuredSchedule ? (
-              <div className="mt-5">
-                <ScheduleItem
-                  schedule={featuredSchedule}
-                  talents={getTalentsByIds(featuredSchedule.talentIds)}
-                />
+            {upcomingSchedules.length > 0 ? (
+              <div className="mt-3">
+                {upcomingSchedules.map((schedule) => (
+                  <ScheduleItem
+                    key={schedule.id}
+                    schedule={schedule}
+                    talents={getTalentsByIds(schedule.talentIds)}
+                  />
+                ))}
               </div>
             ) : (
-              <p className="text-muted-foreground mt-5 text-sm">표시할 일정이 없습니다.</p>
+              <p className="text-muted-foreground mt-5 text-sm">예정된 일정이 없습니다.</p>
             )}
           </section>
 
           <section
             aria-labelledby="main-archive-heading"
-            className="border-border border-t pt-8 md:col-span-8"
+            className="border-border border-t pt-8 lg:col-span-7"
           >
             <div className="flex items-center justify-between gap-4">
               <h3 id="main-archive-heading" className="text-foreground text-xl font-semibold">
@@ -284,12 +345,13 @@ export default function MainView() {
               <span className="text-muted-foreground text-sm">{MOCK_ARCHIVES.length}</span>
             </div>
 
-            {featuredArchive ? (
-              <div className="mt-5">
-                <ArchiveCard
-                  archive={featuredArchive}
-                  talents={getTalentsByIds(featuredArchive.talentIds)}
-                />
+            {recentArchives.length > 0 ? (
+              <div className="divide-border mt-5 divide-y">
+                {recentArchives.map((archive) => (
+                  <div key={archive.id} className="py-5 first:pt-0 last:pb-0">
+                    <ArchiveCard archive={archive} talents={getTalentsByIds(archive.talentIds)} />
+                  </div>
+                ))}
               </div>
             ) : (
               <p className="text-muted-foreground mt-5 text-sm">표시할 기록이 없습니다.</p>
