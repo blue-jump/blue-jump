@@ -1,1 +1,1 @@
-export { LiveTalentCard, TalentCard } from "./ui";
+export { LiveTalentCard, TalentCard, TalentHero } from "./ui";
