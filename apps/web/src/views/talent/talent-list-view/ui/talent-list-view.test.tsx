@@ -12,7 +12,7 @@ describe("TalentListView", () => {
 
     expect(
       screen.getByRole("heading", {
-        name: "버튜버",
+        name: "멤버",
         level: 1,
       }),
     ).toBeInTheDocument();

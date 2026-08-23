@@ -14,7 +14,7 @@ export default function TalentListView() {
               id="talent-list-heading"
               className="text-heading-1 text-foreground mt-3 font-semibold"
             >
-              버튜버
+              멤버
             </h1>
           </div>
 
@@ -25,7 +25,7 @@ export default function TalentListView() {
 
         <section aria-labelledby="talent-grid-heading" className="mt-8 md:mt-10">
           <h2 id="talent-grid-heading" className="sr-only">
-            블루점프 소속 버튜버
+            블루점프 멤버
           </h2>
 
           <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 sm:gap-5 lg:grid-cols-4 lg:gap-6">

@@ -11,7 +11,7 @@ export interface TalentSelectorProps {
 
 export default function TalentSelector({ talents, currentTalentId }: TalentSelectorProps) {
   return (
-    <nav aria-label="버튜버 선택">
+    <nav aria-label="멤버 선택">
       <div className="-mx-4 overflow-x-auto px-4 pb-1 sm:mx-0 sm:px-0">
         <ul className="flex w-max min-w-full gap-2">
           {talents.map((talent) => {

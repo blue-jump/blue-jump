@@ -46,9 +46,9 @@ export const NAVIGATION_ITEMS = [
   },
   {
     id: "talents",
-    label: "버튜버",
+    label: "멤버",
     href: URLS.CLIENT.TALENTS,
-    available: false,
+    available: true,
   },
 ] satisfies NavigationItem[];
 

@@ -16,6 +16,10 @@ export function findTalentById(talentId: string) {
   return MOCK_TALENTS.find((talent) => talent.id === talentId);
 }
 
+export function findTalentBySlug(slug: string) {
+  return MOCK_TALENTS.find((talent) => talent.slug === slug);
+}
+
 export function findUserById(userId: string) {
   return MOCK_USERS.find((user) => user.id === userId);
 }

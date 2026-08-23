@@ -35,7 +35,7 @@ describe("Header", () => {
     expect(screen.getByText("프로젝트")).toBeInTheDocument();
     expect(screen.getByText("모임")).toBeInTheDocument();
     expect(screen.getByText("아카이브")).toBeInTheDocument();
-    expect(screen.getByText("버튜버")).toBeInTheDocument();
+    expect(screen.getByText("멤버")).toBeInTheDocument();
   });
 
   it("모바일 내비게이션 진입 버튼을 렌더링한다", () => {
