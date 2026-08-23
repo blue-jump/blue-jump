@@ -12,7 +12,7 @@ import type { Post, Talent, User } from "@/types";
 
 export interface CommunityPostFeedItem {
   post: Post;
-  author: Pick<User, "nickname" | "profileImageUrl">;
+  author: Pick<User, "id" | "nickname" | "profileImageUrl">;
   talents: Pick<Talent, "id" | "name">[];
 }
 

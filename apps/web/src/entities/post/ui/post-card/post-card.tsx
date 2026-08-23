@@ -8,7 +8,7 @@ import { POST_CATEGORY_LABELS } from "../../constants";
 
 export interface PostCardProps {
   post: Post;
-  author: Pick<User, "nickname" | "profileImageUrl">;
+  author: Pick<User, "id" | "nickname" | "profileImageUrl">;
   talents: Pick<Talent, "id" | "name">[];
 }
 
@@ -27,7 +27,11 @@ export default function PostCard({ post, author, talents }: PostCardProps) {
   return (
     <article className="border-border bg-surface rounded-lg border px-5 py-4">
       <header className="flex items-start justify-between gap-4">
-        <div className="flex min-w-0 items-center gap-3">
+        <Link
+          href={URLS.CLIENT.PROFILE_DETAIL(author.id)}
+          aria-label={`${author.nickname} 프로필 보기`}
+          className="group flex min-w-0 items-center gap-3 rounded-sm"
+        >
           <div className="bg-muted relative flex size-9 shrink-0 items-center justify-center overflow-hidden rounded-full">
             {author.profileImageUrl ? (
               <Image
@@ -49,13 +53,15 @@ export default function PostCard({ post, author, talents }: PostCardProps) {
           </div>
 
           <div className="min-w-0">
-            <p className="text-foreground truncate text-sm font-medium">{author.nickname}</p>
+            <p className="text-foreground truncate text-sm font-medium underline-offset-4 group-hover:underline">
+              {author.nickname}
+            </p>
 
             <time dateTime={post.createdAt} className="text-muted-foreground mt-0.5 block text-xs">
               {POST_DATE_FORMATTER.format(new Date(post.createdAt))}
             </time>
           </div>
-        </div>
+        </Link>
 
         <span className="text-muted-foreground shrink-0 text-xs">
           {POST_CATEGORY_LABELS[post.category]}

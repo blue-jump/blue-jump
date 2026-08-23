@@ -8,7 +8,7 @@ import { POST_CATEGORY_LABELS } from "../../constants";
 
 export interface PostDetailProps {
   post: Post;
-  author: Pick<User, "nickname" | "profileImageUrl">;
+  author: Pick<User, "id" | "nickname" | "profileImageUrl">;
   talents: Pick<Talent, "id" | "name" | "slug">[];
 }
 
@@ -34,7 +34,11 @@ export default function PostDetail({ post, author, talents }: PostDetailProps) {
           {post.title}
         </h1>
 
-        <div className="mt-5 flex items-center gap-3">
+        <Link
+          href={URLS.CLIENT.PROFILE_DETAIL(author.id)}
+          aria-label={`${author.nickname} 프로필 보기`}
+          className="group mt-5 flex w-fit min-w-0 items-center gap-3 rounded-sm"
+        >
           <div className="bg-muted relative flex size-10 shrink-0 items-center justify-center overflow-hidden rounded-full">
             {author.profileImageUrl ? (
               <Image
@@ -56,13 +60,15 @@ export default function PostDetail({ post, author, talents }: PostDetailProps) {
           </div>
 
           <div className="min-w-0">
-            <p className="text-foreground truncate text-sm font-medium">{author.nickname}</p>
+            <p className="text-foreground truncate text-sm font-medium underline-offset-4 group-hover:underline">
+              {author.nickname}
+            </p>
 
             <time dateTime={post.createdAt} className="text-muted-foreground mt-0.5 block text-xs">
               {POST_DETAIL_DATE_FORMATTER.format(new Date(post.createdAt))}
             </time>
           </div>
-        </div>
+        </Link>
       </header>
 
       <div className="border-border border-b py-8">
