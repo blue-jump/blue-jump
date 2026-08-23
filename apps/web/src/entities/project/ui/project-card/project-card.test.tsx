@@ -1,10 +1,12 @@
 import { render, screen } from "@testing-library/react";
 import { describe, expect, it } from "vitest";
 
+import { URLS } from "@/constants";
 import { MOCK_PROJECTS } from "@/mocks/projects.mock";
 import { getTalentsByIds } from "@/mocks/sample-data.selectors";
 
 import ProjectCard from "./project-card";
+import { PROJECT_STATUS_LABELS } from "../../constants";
 
 const project = MOCK_PROJECTS.find((project) => project.id === "project-haroha-fan-mv");
 
@@ -25,12 +27,24 @@ describe("ProjectCard", () => {
     ).toBeInTheDocument();
 
     expect(screen.getByText(project.summary)).toBeInTheDocument();
-    expect(screen.getByText("모집 중")).toBeInTheDocument();
+
+    expect(screen.getByText(PROJECT_STATUS_LABELS[project.status])).toBeInTheDocument();
+
     expect(screen.getByText(`참여 ${project.participantIds.length}명`)).toBeInTheDocument();
 
     const relatedTalentNames = talents.map((talent) => talent.name).join(" · ");
 
     expect(screen.getByText(relatedTalentNames)).toBeInTheDocument();
+  });
+
+  it("프로젝트 제목에서 상세 화면으로 이동할 수 있습니다.", () => {
+    render(<ProjectCard project={project} talents={talents} />);
+
+    expect(
+      screen.getByRole("link", {
+        name: project.title,
+      }),
+    ).toHaveAttribute("href", URLS.CLIENT.PROJECT_DETAIL(project.id));
   });
 
   it("모집 역할별 현재 인원과 정원을 표시합니다.", () => {

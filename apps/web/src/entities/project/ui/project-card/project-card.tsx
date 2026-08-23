@@ -1,15 +1,14 @@
-import type { Project, ProjectStatus, Talent } from "@/types";
+import Link from "next/link";
 
-interface ProjectCardProps {
+import { URLS } from "@/constants";
+import type { Project, Talent } from "@/types";
+
+import { PROJECT_STATUS_LABELS } from "../../constants";
+
+export interface ProjectCardProps {
   project: Project;
   talents: Pick<Talent, "id" | "name">[];
 }
-
-const PROJECT_STATUS_LABELS = {
-  RECRUITING: "모집 중",
-  IN_PROGRESS: "진행 중",
-  COMPLETED: "완료",
-} satisfies Record<ProjectStatus, string>;
 
 export default function ProjectCard({ project, talents }: ProjectCardProps) {
   const relatedTalentNames = talents.map((talent) => talent.name).join(" · ");
@@ -24,7 +23,12 @@ export default function ProjectCard({ project, talents }: ProjectCardProps) {
           </p>
 
           <h3 className="text-foreground mt-2 text-lg leading-snug font-semibold">
-            {project.title}
+            <Link
+              href={URLS.CLIENT.PROJECT_DETAIL(project.id)}
+              className="rounded-sm underline-offset-4 hover:underline"
+            >
+              {project.title}
+            </Link>
           </h3>
         </div>
 
