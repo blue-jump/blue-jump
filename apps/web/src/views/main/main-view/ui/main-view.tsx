@@ -1,5 +1,6 @@
 import { CreativeCard } from "@/entities/creative";
 import { PostCard } from "@/entities/post";
+import { ProjectCard } from "@/entities/project";
 import { LiveTalentCard, TalentCard } from "@/entities/talent";
 import {
   MOCK_ARCHIVES,
@@ -109,8 +110,8 @@ export default function MainView() {
             </div>
 
             <div className="mt-5 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
-              {liveTalents.map((talent) => (
-                <LiveTalentCard key={talent.id} talent={talent} />
+              {liveTalents.map((talent, index) => (
+                <LiveTalentCard key={talent.id} talent={talent} eager={index === 0} />
               ))}
             </div>
           </section>
@@ -193,31 +194,25 @@ export default function MainView() {
 
           <section
             aria-labelledby="main-projects-heading"
-            className="border-border bg-surface rounded-2xl border p-6 md:col-span-7 md:p-8"
+            className="border-border border-t pt-8 md:col-span-7"
           >
-            <div className="flex items-start justify-between gap-5">
-              <div>
-                <p className="text-brand text-xs font-semibold tracking-[0.14em]">PROJECT</p>
-
-                <h3
-                  id="main-projects-heading"
-                  className="text-foreground mt-2 text-xl font-semibold"
-                >
-                  프로젝트
-                </h3>
-              </div>
+            <div className="flex items-center justify-between gap-4">
+              <h3 id="main-projects-heading" className="text-foreground text-xl font-semibold">
+                프로젝트
+              </h3>
 
               <span className="text-muted-foreground text-sm">{MOCK_PROJECTS.length}</span>
             </div>
 
-            {featuredProject && (
-              <div className="mt-7 max-w-xl">
-                <p className="text-foreground font-semibold">{featuredProject.title}</p>
-
-                <p className="text-muted-foreground mt-2 line-clamp-2 text-sm">
-                  {featuredProject.summary}
-                </p>
+            {featuredProject ? (
+              <div className="mt-5">
+                <ProjectCard
+                  project={featuredProject}
+                  talents={getTalentsByIds(featuredProject.talentIds)}
+                />
               </div>
+            ) : (
+              <p className="text-muted-foreground mt-5 text-sm">표시할 프로젝트가 없습니다.</p>
             )}
           </section>
 
