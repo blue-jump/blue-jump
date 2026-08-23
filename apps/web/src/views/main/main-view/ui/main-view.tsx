@@ -2,6 +2,7 @@ import { CreativeCard } from "@/entities/creative";
 import { GatheringCard } from "@/entities/gathering";
 import { PostCard } from "@/entities/post";
 import { ProjectCard } from "@/entities/project";
+import { ScheduleItem } from "@/entities/schedule";
 import { LiveTalentCard, TalentCard } from "@/entities/talent";
 import {
   MOCK_ARCHIVES,
@@ -243,21 +244,26 @@ export default function MainView() {
 
           <section
             aria-labelledby="main-schedule-heading"
-            className="bg-foreground text-background rounded-2xl p-6 md:col-span-4 md:min-h-52 md:p-8"
+            className="border-border border-t pt-8 md:col-span-4"
           >
-            <div className="flex h-full flex-col justify-between gap-10">
-              <div>
-                <p className="text-accent text-xs font-semibold tracking-[0.14em]">SCHEDULE</p>
+            <div className="flex items-center justify-between gap-4">
+              <h3 id="main-schedule-heading" className="text-foreground text-xl font-semibold">
+                일정
+              </h3>
 
-                <h3 id="main-schedule-heading" className="mt-2 text-xl font-semibold">
-                  일정
-                </h3>
-              </div>
-
-              {featuredSchedule && (
-                <p className="line-clamp-3 text-sm text-white/75">{featuredSchedule.title}</p>
-              )}
+              <span className="text-muted-foreground text-sm">{MOCK_SCHEDULES.length}</span>
             </div>
+
+            {featuredSchedule ? (
+              <div className="mt-5">
+                <ScheduleItem
+                  schedule={featuredSchedule}
+                  talents={getTalentsByIds(featuredSchedule.talentIds)}
+                />
+              </div>
+            ) : (
+              <p className="text-muted-foreground mt-5 text-sm">표시할 일정이 없습니다.</p>
+            )}
           </section>
 
           <section
