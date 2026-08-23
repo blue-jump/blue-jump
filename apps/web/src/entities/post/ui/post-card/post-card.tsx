@@ -1,19 +1,16 @@
 import Image from "next/image";
+import Link from "next/link";
 
+import { URLS } from "@/constants";
 import type { Post, Talent, User } from "@/types";
 
-interface PostCardProps {
+import { POST_CATEGORY_LABELS } from "../../constants";
+
+export interface PostCardProps {
   post: Post;
   author: Pick<User, "nickname" | "profileImageUrl">;
   talents: Pick<Talent, "id" | "name">[];
 }
-
-const POST_CATEGORY_LABELS = {
-  GENERAL: "일반",
-  MEME: "밈",
-  QUESTION: "질문",
-  INFORMATION: "정보",
-} satisfies Record<Post["category"], string>;
 
 const POST_DATE_FORMATTER = new Intl.DateTimeFormat("ko-KR", {
   timeZone: "Asia/Seoul",
@@ -41,8 +38,12 @@ export default function PostCard({ post, author, talents }: PostCardProps) {
                 className="object-cover"
               />
             ) : (
-              <span className="text-muted-foreground text-sm font-medium" aria-hidden="true">
-                {author.nickname.slice(0, 1)}
+              <span
+                role="img"
+                aria-label={`${author.nickname} 프로필`}
+                className="text-muted-foreground flex size-full items-center justify-center text-sm font-medium"
+              >
+                <span aria-hidden="true">{author.nickname.slice(0, 1)}</span>
               </span>
             )}
           </div>
@@ -62,7 +63,14 @@ export default function PostCard({ post, author, talents }: PostCardProps) {
       </header>
 
       <div className="mt-4">
-        <h3 className="text-foreground text-lg leading-snug font-semibold">{post.title}</h3>
+        <h3 className="text-foreground text-lg leading-snug font-semibold">
+          <Link
+            href={URLS.CLIENT.POST(post.id)}
+            className="rounded-sm underline-offset-4 hover:underline"
+          >
+            {post.title}
+          </Link>
+        </h3>
 
         <p className="text-muted-foreground mt-2 line-clamp-2 text-sm leading-6">{post.body}</p>
       </div>

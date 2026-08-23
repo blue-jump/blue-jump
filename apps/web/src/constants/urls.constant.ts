@@ -2,6 +2,7 @@ export const URLS = {
   CLIENT: {
     HOME: "/",
     COMMUNITY: "/community",
+    POST: (postId: string) => `/community/${postId}`,
     CREATIVE: "/creative",
     PROJECTS: "/projects",
     GATHERINGS: "/gatherings",

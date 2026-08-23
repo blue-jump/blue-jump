@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from "@blue-jump/storybook-config/nextjs";
 
 import type { Post, Talent, User } from "@/types";
 
-import PostCard from "./post-card";
+import PostDetail from "./post-detail";
 
 const AUTHOR = {
   nickname: "금자보고벌떡",
@@ -12,12 +12,14 @@ const AUTHOR = {
 const JEGAL = {
   id: "talent-jegal",
   name: "제갈금자",
-} satisfies Pick<Talent, "id" | "name">;
+  slug: "jegal",
+} satisfies Pick<Talent, "id" | "name" | "slug">;
 
 const MOGUGU = {
   id: "talent-mogugu",
   name: "모구구",
-} satisfies Pick<Talent, "id" | "name">;
+  slug: "mogugu",
+} satisfies Pick<Talent, "id" | "name" | "slug">;
 
 const POST = {
   id: "post-2",
@@ -29,14 +31,14 @@ const POST = {
   createdAt: "2026-08-21T12:44:00.000Z",
 } satisfies Post;
 
-const meta = {
-  title: "Entities/Post/PostCard",
-  component: PostCard,
+const meta: Meta<typeof PostDetail> = {
+  title: "Entities/Post/PostDetail",
+  component: PostDetail,
   parameters: {
     layout: "padded",
   },
   tags: ["autodocs"],
-} satisfies Meta<typeof PostCard>;
+};
 
 export default meta;
 
