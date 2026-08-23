@@ -12,7 +12,7 @@ export const MOCK_USERS = [
   },
   {
     id: "user-geumsu",
-    nickname: "금자보고벌떡",
+    nickname: "금자노예1호",
     bio: "블루점프 합방 보고 금자 방송 입갤.",
     profileImageUrl: "/images/mock/users/geumsu.webp",
     favoriteTalentIds: ["talent-jegal", "talent-mogugu"],
