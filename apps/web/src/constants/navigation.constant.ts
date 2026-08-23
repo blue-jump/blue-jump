@@ -18,13 +18,13 @@ export const NAVIGATION_ITEMS = [
     id: "community",
     label: "커뮤니티",
     href: URLS.CLIENT.COMMUNITY,
-    available: false,
+    available: true,
   },
   {
     id: "creative",
     label: "창작",
     href: URLS.CLIENT.CREATIVE,
-    available: false,
+    available: true,
   },
   {
     id: "projects",
