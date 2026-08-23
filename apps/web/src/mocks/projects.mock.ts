@@ -15,7 +15,7 @@ export const MOCK_PROJECTS = [
     ],
     participantIds: ["user-night-shift", "user-geumsu", "user-sagol", "user-nureongi"],
     title: "블루점프 명장면 아카이브 정리",
-    summary: "신입들이 옛날 밈 물어볼 때마다 설명하기 힘들어서 그냥 우리가 정리하기로 했습니다.",
+    summary: "뉴비들이 옛날 밈 물어볼 때마다 설명하기 힘들어서 그냥 우리가 정리하기로 했습니다.",
     status: "IN_PROGRESS",
     roles: [
       {

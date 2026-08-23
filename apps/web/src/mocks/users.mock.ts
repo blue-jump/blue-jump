@@ -12,8 +12,8 @@ export const MOCK_USERS = [
   },
   {
     id: "user-geumsu",
-    nickname: "퇴근못한금수",
-    bio: "금자 말빨 구경하러 왔다가 아직도 못 나가는 중.",
+    nickname: "금자보고벌떡",
+    bio: "블루점프 합방 보고 금자 방송 입갤.",
     profileImageUrl: "/images/mock/users/geumsu.webp",
     favoriteTalentIds: ["talent-jegal", "talent-mogugu"],
     activityTypeIds: ["meme-maker", "clip-maker"],
@@ -21,7 +21,7 @@ export const MOCK_USERS = [
   },
   {
     id: "user-sagol",
-    nickname: "사골한그릇",
+    nickname: "모팔팔동생",
     bio: "구구가 안 당하는 날을 기다리고 있습니다.",
     profileImageUrl: "/images/mock/users/sagol.webp",
     favoriteTalentIds: ["talent-mogugu", "talent-jegal"],
