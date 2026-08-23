@@ -8,7 +8,7 @@ import { CREATIVE_TYPE_LABELS } from "../../constants";
 
 export interface CreativeDetailProps {
   creative: Creative;
-  creator: Pick<User, "nickname">;
+  creator: Pick<User, "id" | "nickname">;
   talents: Pick<Talent, "id" | "name" | "slug">[];
 }
 
@@ -49,7 +49,12 @@ export default function CreativeDetail({ creative, creator, talents }: CreativeD
 
             <span aria-hidden="true">·</span>
 
-            <span>{creator.nickname}</span>
+            <Link
+              href={URLS.CLIENT.PROFILE_DETAIL(creator.id)}
+              className="text-foreground rounded-sm font-medium underline-offset-4 hover:underline"
+            >
+              {creator.nickname}
+            </Link>
 
             <span aria-hidden="true">·</span>
 

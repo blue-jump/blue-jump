@@ -60,6 +60,16 @@ describe("CreativeCard", () => {
     ).toHaveAttribute("href", URLS.CLIENT.CREATIVE_DETAIL(creative.id));
   });
 
+  it("Creator에서 User Profile로 이동할 수 있습니다.", () => {
+    render(<CreativeCard creative={creative} creator={creator} talents={talents} />);
+
+    expect(
+      screen.getByRole("link", {
+        name: creator.nickname,
+      }),
+    ).toHaveAttribute("href", URLS.CLIENT.PROFILE_DETAIL(creator.id));
+  });
+
   it("thumbnailUrl이 없으면 이미지 대신 제목을 표시합니다.", () => {
     render(
       <CreativeCard

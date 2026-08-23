@@ -1,7 +1,8 @@
-import { render, screen } from "@testing-library/react";
+import { render, screen, within } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { describe, expect, it } from "vitest";
 
+import { URLS } from "@/constants";
 import { CREATIVE_TYPE_LABELS } from "@/entities/creative";
 import { MOCK_CREATIVES } from "@/mocks/creatives.mock";
 import { findUserById } from "@/mocks/sample-data.selectors";
@@ -50,6 +51,34 @@ describe("CreativeListView", () => {
           name: creative.title,
         }),
       ).toBeInTheDocument();
+    }
+  });
+
+  it("각 Creative Creator에서 해당 User Profile로 이동할 수 있습니다.", () => {
+    render(<CreativeListView />);
+
+    for (const creative of resolvedCreatives) {
+      const creator = findUserById(creative.creatorId);
+
+      if (!creator) {
+        throw new Error(`Creative Creator를 찾을 수 없습니다: ${creative.creatorId}`);
+      }
+
+      const creativeLink = screen.getByRole("link", {
+        name: creative.title,
+      });
+
+      const creativeArticle = creativeLink.closest("article");
+
+      if (!creativeArticle) {
+        throw new Error(`CreativeCard Article을 찾을 수 없습니다: ${creative.id}`);
+      }
+
+      expect(
+        within(creativeArticle).getByRole("link", {
+          name: creator.nickname,
+        }),
+      ).toHaveAttribute("href", URLS.CLIENT.PROFILE_DETAIL(creator.id));
     }
   });
 

@@ -52,6 +52,27 @@ describe("CreativeDetailView", () => {
     }
   });
 
+  it("Creator에서 해당 User Profile로 이동할 수 있습니다.", () => {
+    render(<CreativeDetailView creative={creative} />);
+
+    const heading = screen.getByRole("heading", {
+      name: creative.title,
+      level: 1,
+    });
+
+    const article = heading.closest("article");
+
+    if (!article) {
+      throw new Error("Creative Detail Article을 찾을 수 없습니다.");
+    }
+
+    expect(
+      within(article).getByRole("link", {
+        name: creator.nickname,
+      }),
+    ).toHaveAttribute("href", URLS.CLIENT.PROFILE_DETAIL(creator.id));
+  });
+
   it("Creative에 연결된 관련 멤버를 Talent Community 링크로 표시합니다.", () => {
     render(<CreativeDetailView creative={creative} />);
 

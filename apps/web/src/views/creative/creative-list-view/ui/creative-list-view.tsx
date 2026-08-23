@@ -27,8 +27,9 @@ function resolveCreativeFeedItems(creatives: readonly Creative[]): CreativeFeedI
         {
           creative,
           creator: {
+            id: creator.id,
             nickname: creator.nickname,
-          } satisfies Pick<User, "nickname">,
+          } satisfies Pick<User, "id" | "nickname">,
           talents: getTalentsByIds(creative.talentIds).map(
             (talent) =>
               ({

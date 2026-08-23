@@ -8,7 +8,7 @@ import type { Creative, Talent, User } from "@/types";
 
 export interface CreativeFeedItem {
   creative: Creative;
-  creator: Pick<User, "nickname">;
+  creator: Pick<User, "id" | "nickname">;
   talents: Pick<Talent, "id" | "name">[];
 }
 
@@ -28,7 +28,9 @@ export default function CreativeFeed({ items, talents }: CreativeFeedProps) {
   }
 
   const creatives = items.map((item) => item.creative);
+
   const filteredCreatives = filterCreatives(creatives, filter);
+
   const filteredCreativeIds = new Set(filteredCreatives.map((creative) => creative.id));
 
   const filteredItems = items.filter((item) => filteredCreativeIds.has(item.creative.id));
