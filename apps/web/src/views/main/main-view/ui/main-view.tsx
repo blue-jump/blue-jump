@@ -1,3 +1,4 @@
+import { ArchiveCard } from "@/entities/archive";
 import { CreativeCard } from "@/entities/creative";
 import { GatheringCard } from "@/entities/gathering";
 import { PostCard } from "@/entities/post";
@@ -21,7 +22,12 @@ const liveTalents = MOCK_TALENTS.filter((talent) => talent.isLive);
 const featuredProject = MOCK_PROJECTS.at(0);
 const featuredGathering = MOCK_GATHERINGS.at(0);
 const featuredSchedule = MOCK_SCHEDULES.at(0);
-const featuredArchive = MOCK_ARCHIVES.at(0);
+const featuredArchive = [...MOCK_ARCHIVES]
+  .sort(
+    (leftArchive, rightArchive) =>
+      new Date(rightArchive.occurredAt).getTime() - new Date(leftArchive.occurredAt).getTime(),
+  )
+  .at(0);
 
 function getFeaturedPost() {
   for (const post of MOCK_POSTS) {
@@ -268,36 +274,26 @@ export default function MainView() {
 
           <section
             aria-labelledby="main-archive-heading"
-            className="border-border relative border-y py-6 md:col-span-8 md:px-4 md:py-8"
+            className="border-border border-t pt-8 md:col-span-8"
           >
-            <div
-              aria-hidden="true"
-              className="bg-decoration absolute inset-y-6 left-0 w-1 rounded-full"
-            />
+            <div className="flex items-center justify-between gap-4">
+              <h3 id="main-archive-heading" className="text-foreground text-xl font-semibold">
+                아카이브
+              </h3>
 
-            <div className="pl-5">
-              <div className="flex items-center justify-between gap-4">
-                <h3 id="main-archive-heading" className="text-foreground text-xl font-semibold">
-                  아카이브
-                </h3>
-
-                <span className="text-muted-foreground text-sm">{MOCK_ARCHIVES.length}</span>
-              </div>
-
-              {featuredArchive && (
-                <div className="mt-6">
-                  <p className="text-muted-foreground text-xs font-semibold tracking-[0.12em]">
-                    {featuredArchive.category}
-                  </p>
-
-                  <p className="text-foreground mt-2 font-semibold">{featuredArchive.title}</p>
-
-                  <p className="text-muted-foreground mt-2 line-clamp-2 text-sm">
-                    {featuredArchive.summary}
-                  </p>
-                </div>
-              )}
+              <span className="text-muted-foreground text-sm">{MOCK_ARCHIVES.length}</span>
             </div>
+
+            {featuredArchive ? (
+              <div className="mt-5">
+                <ArchiveCard
+                  archive={featuredArchive}
+                  talents={getTalentsByIds(featuredArchive.talentIds)}
+                />
+              </div>
+            ) : (
+              <p className="text-muted-foreground mt-5 text-sm">표시할 기록이 없습니다.</p>
+            )}
           </section>
         </div>
       </Section>
