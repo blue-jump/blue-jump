@@ -1,4 +1,5 @@
 import { CreativeCard } from "@/entities/creative";
+import { GatheringCard } from "@/entities/gathering";
 import { PostCard } from "@/entities/post";
 import { ProjectCard } from "@/entities/project";
 import { LiveTalentCard, TalentCard } from "@/entities/talent";
@@ -218,9 +219,9 @@ export default function MainView() {
 
           <section
             aria-labelledby="main-gatherings-heading"
-            className="border-border bg-surface rounded-2xl border p-6 md:col-span-5 md:p-8"
+            className="border-border border-t pt-8 md:col-span-5"
           >
-            <div className="flex items-start justify-between gap-5">
+            <div className="flex items-center justify-between gap-4">
               <h3 id="main-gatherings-heading" className="text-foreground text-xl font-semibold">
                 모임
               </h3>
@@ -228,12 +229,15 @@ export default function MainView() {
               <span className="text-muted-foreground text-sm">{MOCK_GATHERINGS.length}</span>
             </div>
 
-            {featuredGathering && (
-              <div className="mt-7">
-                <p className="text-foreground font-semibold">{featuredGathering.title}</p>
-
-                <p className="text-muted-foreground mt-2 text-sm">{featuredGathering.location}</p>
+            {featuredGathering ? (
+              <div className="mt-5">
+                <GatheringCard
+                  gathering={featuredGathering}
+                  talents={getTalentsByIds(featuredGathering.talentIds)}
+                />
               </div>
+            ) : (
+              <p className="text-muted-foreground mt-5 text-sm">표시할 모임이 없습니다.</p>
             )}
           </section>
 
