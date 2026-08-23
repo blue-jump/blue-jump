@@ -1,7 +1,8 @@
-import { render, screen } from "@testing-library/react";
+import { render, screen, within } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { describe, expect, it } from "vitest";
 
+import { URLS } from "@/constants";
 import { MOCK_POSTS } from "@/mocks/posts.mock";
 import { findUserById } from "@/mocks/sample-data.selectors";
 import type { Post, PostCategory } from "@/types";
@@ -48,6 +49,34 @@ describe("CommunityListView", () => {
     }
   });
 
+  it("각 게시글 작성자에서 해당 User Profile로 이동할 수 있습니다.", () => {
+    render(<CommunityListView />);
+
+    for (const post of resolvedPosts) {
+      const author = findUserById(post.authorId);
+
+      if (!author) {
+        throw new Error(`Mock Post 작성자를 찾을 수 없습니다: ${post.authorId}`);
+      }
+
+      const postLink = screen.getByRole("link", {
+        name: post.title,
+      });
+
+      const article = postLink.closest("article");
+
+      if (!article) {
+        throw new Error(`PostCard article을 찾을 수 없습니다: ${post.id}`);
+      }
+
+      expect(
+        within(article).getByRole("link", {
+          name: `${author.nickname} 프로필 보기`,
+        }),
+      ).toHaveAttribute("href", URLS.CLIENT.PROFILE_DETAIL(author.id));
+    }
+  });
+
   it("게시글을 최신 작성 시각 순서로 표시합니다.", () => {
     render(<CommunityListView />);
 
@@ -87,7 +116,6 @@ describe("CommunityListView", () => {
     );
 
     const expectedPosts = resolvedPosts.filter((post) => post.category === category);
-
     const hiddenPosts = resolvedPosts.filter((post) => post.category !== category);
 
     for (const post of expectedPosts) {

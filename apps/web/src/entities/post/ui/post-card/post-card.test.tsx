@@ -2,35 +2,25 @@ import { render, screen } from "@testing-library/react";
 import { describe, expect, it } from "vitest";
 
 import { URLS } from "@/constants";
-import type { Post, Talent, User } from "@/types";
+import { MOCK_POSTS } from "@/mocks/posts.mock";
+import { findUserById, getTalentsByIds } from "@/mocks/sample-data.selectors";
 
 import PostCard from "./post-card";
+import { POST_CATEGORY_LABELS } from "../../constants";
 
-const POST = {
-  id: "post-2",
-  authorId: "user-geumsu",
-  talentIds: ["talent-jegal", "talent-mogugu"],
-  category: "MEME",
-  title: "금자 또 시작했네ㅋㅋㅋㅋ",
-  body: "구구 한마디 할 때마다 금자 혈압 오르는 게 화면 밖에서도 보이는 것 같음",
-  createdAt: "2026-08-21T12:44:00.000Z",
-} satisfies Post;
+const POST = MOCK_POSTS.find((post) => post.id === "post-2");
 
-const AUTHOR = {
-  nickname: "금자보고벌떡",
-  profileImageUrl: "/images/mock/users/geumsu.webp",
-} satisfies Pick<User, "nickname" | "profileImageUrl">;
+if (!POST) {
+  throw new Error("PostCard 테스트에 사용할 Mock Post를 찾을 수 없습니다.");
+}
 
-const TALENTS = [
-  {
-    id: "talent-jegal",
-    name: "제갈금자",
-  },
-  {
-    id: "talent-mogugu",
-    name: "모구구",
-  },
-] satisfies Pick<Talent, "id" | "name">[];
+const AUTHOR = findUserById(POST.authorId);
+
+if (!AUTHOR) {
+  throw new Error("PostCard 테스트에 사용할 Mock User를 찾을 수 없습니다.");
+}
+
+const TALENTS = getTalentsByIds(POST.talentIds);
 
 describe("PostCard", () => {
   it("게시글 정보를 표시한다", () => {
@@ -39,8 +29,9 @@ describe("PostCard", () => {
     expect(screen.getByText(POST.title)).toBeInTheDocument();
     expect(screen.getByText(POST.body)).toBeInTheDocument();
     expect(screen.getByText(AUTHOR.nickname)).toBeInTheDocument();
-    expect(screen.getByText("밈")).toBeInTheDocument();
-    expect(screen.getByText("제갈금자 · 모구구")).toBeInTheDocument();
+    expect(screen.getByText(POST_CATEGORY_LABELS[POST.category])).toBeInTheDocument();
+
+    expect(screen.getByText(TALENTS.map((talent) => talent.name).join(" · "))).toBeInTheDocument();
   });
 
   it("게시글 제목에서 상세 화면으로 이동할 수 있다", () => {
@@ -51,6 +42,16 @@ describe("PostCard", () => {
         name: POST.title,
       }),
     ).toHaveAttribute("href", URLS.CLIENT.POST(POST.id));
+  });
+
+  it("작성자 Identity에서 User Profile로 이동할 수 있다", () => {
+    render(<PostCard post={POST} author={AUTHOR} talents={TALENTS} />);
+
+    expect(
+      screen.getByRole("link", {
+        name: `${AUTHOR.nickname} 프로필 보기`,
+      }),
+    ).toHaveAttribute("href", URLS.CLIENT.PROFILE_DETAIL(AUTHOR.id));
   });
 
   it("작성자 Profile 이미지에 대체 텍스트를 제공한다", () => {

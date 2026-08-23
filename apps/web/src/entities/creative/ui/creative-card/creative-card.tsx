@@ -8,7 +8,7 @@ import { CREATIVE_TYPE_LABELS } from "../../constants";
 
 export interface CreativeCardProps {
   creative: Creative;
-  creator: Pick<User, "nickname">;
+  creator: Pick<User, "id" | "nickname">;
   talents: Pick<Talent, "id" | "name">[];
 }
 
@@ -46,7 +46,12 @@ export default function CreativeCard({ creative, creator, talents }: CreativeCar
         </h3>
 
         <div className="text-muted-foreground mt-2 flex flex-wrap gap-x-2 text-sm">
-          <span>{creator.nickname}</span>
+          <Link
+            href={URLS.CLIENT.PROFILE_DETAIL(creator.id)}
+            className="text-foreground rounded-sm font-medium underline-offset-4 hover:underline"
+          >
+            {creator.nickname}
+          </Link>
 
           {relatedTalentNames ? (
             <>

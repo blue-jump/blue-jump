@@ -1,6 +1,7 @@
 import { render, screen } from "@testing-library/react";
 import { describe, expect, it } from "vitest";
 
+import { URLS } from "@/constants";
 import { MOCK_COMMENTS } from "@/mocks";
 import { findUserById } from "@/mocks/sample-data.selectors";
 
@@ -26,6 +27,16 @@ describe("CommentItem", () => {
     expect(screen.getByText(COMMENT.body)).toBeInTheDocument();
   });
 
+  it("작성자 Identity에서 User Profile로 이동할 수 있다", () => {
+    render(<CommentItem comment={COMMENT} author={AUTHOR} />);
+
+    expect(
+      screen.getByRole("link", {
+        name: `${AUTHOR.nickname} 프로필 보기`,
+      }),
+    ).toHaveAttribute("href", URLS.CLIENT.PROFILE_DETAIL(AUTHOR.id));
+  });
+
   it("댓글 작성 시각을 time 요소로 제공한다", () => {
     render(<CommentItem comment={COMMENT} author={AUTHOR} />);
 
@@ -39,6 +50,7 @@ describe("CommentItem", () => {
 
     if (AUTHOR.profileImageUrl) {
       expect(screen.getByAltText(`${AUTHOR.nickname} 프로필`)).toBeInTheDocument();
+
       return;
     }
 

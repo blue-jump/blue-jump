@@ -26,9 +26,10 @@ function resolvePostFeedItems(posts: readonly Post[]): CommunityPostFeedItem[] {
         {
           post,
           author: {
+            id: author.id,
             nickname: author.nickname,
             profileImageUrl: author.profileImageUrl,
-          } satisfies Pick<User, "nickname" | "profileImageUrl">,
+          } satisfies Pick<User, "id" | "nickname" | "profileImageUrl">,
           talents: getTalentsByIds(post.talentIds).map(
             (talent) =>
               ({

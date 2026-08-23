@@ -74,6 +74,10 @@ export function getArchivesByTalentId(talentId: TalentId) {
   return MOCK_ARCHIVES.filter((archive) => archive.talentIds.includes(talentId));
 }
 
+export function getPostsByAuthorId(userId: string) {
+  return MOCK_POSTS.filter((post) => post.authorId === userId);
+}
+
 export function getCreativesByCreatorId(userId: string) {
   return MOCK_CREATIVES.filter((creative) => creative.creatorId === userId);
 }

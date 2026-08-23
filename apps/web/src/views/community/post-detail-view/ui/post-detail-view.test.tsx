@@ -178,4 +178,35 @@ describe("PostDetailView", () => {
       }),
     ).toBeInTheDocument();
   });
+
+  it("Comment 작성자에서 해당 User Profile로 이동할 수 있습니다.", () => {
+    render(<PostDetailView post={postWithComments} />);
+
+    const comments = getCommentsByPostId(postWithComments.id).filter((comment) =>
+      Boolean(findUserById(comment.authorId)),
+    );
+
+    expect(comments.length).toBeGreaterThan(0);
+
+    for (const comment of comments) {
+      const author = findUserById(comment.authorId);
+
+      if (!author) {
+        throw new Error(`Comment 작성자를 찾을 수 없습니다: ${comment.authorId}`);
+      }
+
+      const commentBody = screen.getByText(comment.body);
+      const commentArticle = commentBody.closest("article");
+
+      if (!commentArticle) {
+        throw new Error(`Comment Article을 찾을 수 없습니다: ${comment.id}`);
+      }
+
+      expect(
+        within(commentArticle).getByRole("link", {
+          name: `${author.nickname} 프로필 보기`,
+        }),
+      ).toHaveAttribute("href", URLS.CLIENT.PROFILE_DETAIL(author.id));
+    }
+  });
 });

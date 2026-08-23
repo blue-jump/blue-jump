@@ -11,6 +11,7 @@ export const URLS = {
     TALENTS: "/talents",
     TALENT: (slug: string) => `/talents/${slug}`,
     PROFILE: "/profile",
+    PROFILE_DETAIL: (userId: string) => `/profile/${userId}`,
     LOGIN: "/login",
   },
   API: {

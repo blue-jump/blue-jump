@@ -1,33 +1,29 @@
 import type { Meta, StoryObj } from "@blue-jump/storybook-config/nextjs";
 
-import type { Post, Talent, User } from "@/types";
+import { MOCK_POSTS } from "@/mocks/posts.mock";
+import { findUserById, getTalentsByIds } from "@/mocks/sample-data.selectors";
 
 import PostCard from "./post-card";
 
-const AUTHOR = {
-  nickname: "금자보고벌떡",
-  profileImageUrl: "/images/mock/users/geumsu.webp",
-} satisfies Pick<User, "nickname" | "profileImageUrl">;
+function buildStoryArgs(postId: string) {
+  const post = MOCK_POSTS.find((item) => item.id === postId);
 
-const JEGAL = {
-  id: "talent-jegal",
-  name: "제갈금자",
-} satisfies Pick<Talent, "id" | "name">;
+  if (!post) {
+    throw new Error(`PostCard Story에 사용할 Mock Post를 찾을 수 없습니다: ${postId}`);
+  }
 
-const MOGUGU = {
-  id: "talent-mogugu",
-  name: "모구구",
-} satisfies Pick<Talent, "id" | "name">;
+  const author = findUserById(post.authorId);
 
-const POST = {
-  id: "post-2",
-  authorId: "user-geumsu",
-  talentIds: ["talent-jegal", "talent-mogugu"],
-  category: "MEME",
-  title: "금자 또 시작했네ㅋㅋㅋㅋ",
-  body: "구구 한마디 할 때마다 금자 혈압 오르는 게 화면 밖에서도 보이는 것 같음",
-  createdAt: "2026-08-21T12:44:00.000Z",
-} satisfies Post;
+  if (!author) {
+    throw new Error(`PostCard Story에 사용할 Mock User를 찾을 수 없습니다: ${post.authorId}`);
+  }
+
+  return {
+    post,
+    author,
+    talents: getTalentsByIds(post.talentIds),
+  };
+}
 
 const meta = {
   title: "Entities/Post/PostCard",
@@ -43,17 +39,9 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
-  args: {
-    post: POST,
-    author: AUTHOR,
-    talents: [JEGAL],
-  },
+  args: buildStoryArgs("post-3"),
 };
 
 export const MultiTalent: Story = {
-  args: {
-    post: POST,
-    author: AUTHOR,
-    talents: [JEGAL, MOGUGU],
-  },
+  args: buildStoryArgs("post-2"),
 };

@@ -118,4 +118,14 @@ describe("CreativeDetail", () => {
       }),
     ).not.toBeInTheDocument();
   });
+
+  it("Creator에서 User Profile로 이동할 수 있습니다.", () => {
+    render(<CreativeDetail creative={creative} creator={creator} talents={talents} />);
+
+    expect(
+      screen.getByRole("link", {
+        name: creator.nickname,
+      }),
+    ).toHaveAttribute("href", URLS.CLIENT.PROFILE_DETAIL(creator.id));
+  });
 });
