@@ -1,1 +1,1 @@
-export { CreativeCard } from "./ui";
+export { CreativeCard, CreativeDetail } from "./ui";
