@@ -47,7 +47,7 @@ export default function TalentHero({ talent }: TalentHeroProps) {
         )}
       </div>
 
-      <div className="px-4 pb-6 sm:px-6 sm:pb-7 lg:px-8">
+      <div className="bg-(--talent-surface,var(--color-surface)) px-4 pb-6 sm:px-6 sm:pb-7 lg:px-8">
         <div className="-mt-10 flex flex-col gap-4 sm:-mt-14 sm:flex-row sm:items-end sm:gap-5">
           <div className="border-surface bg-muted relative size-24 shrink-0 overflow-hidden rounded-xl border-4 shadow-sm sm:size-28 lg:size-32">
             {talent.profileImageUrl ? (

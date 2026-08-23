@@ -103,61 +103,6 @@
 }
 
 /*
- * Talent Theme contract
- *
- * Individual Talent themes provide only:
- *
- * --ds-talent-primary
- * --ds-talent-primary-foreground
- * --ds-talent-accent
- * --ds-talent-accent-foreground
- * --ds-talent-decoration
- *
- * The common Web semantic contract remains unchanged.
- */
-
-:root[data-ds-theme="web"][data-ds-talent-theme],
-[data-ds-theme="web"] [data-ds-talent-theme] {
-  --ds-color-primary: var(--ds-talent-primary, var(--ds-color-brand));
-  --ds-color-primary-foreground: var(
-    --ds-talent-primary-foreground,
-    var(--ds-color-brand-foreground)
-  );
-
-  --ds-color-accent: var(--ds-talent-accent, var(--ds-color-brand-accent));
-  --ds-color-accent-foreground: var(
-    --ds-talent-accent-foreground,
-    var(--ds-color-brand-accent-foreground)
-  );
-
-  --ds-color-decoration: var(
-    --ds-talent-decoration,
-    color-mix(in oklab, var(--ds-color-accent) 18%, transparent)
-  );
-
-  --ds-color-interactive: var(--ds-color-primary);
-  --ds-color-interactive-hover: color-mix(in oklab, var(--ds-color-primary) 88%, #071a3a);
-  --ds-color-interactive-foreground: var(--ds-color-primary-foreground);
-
-  /*
-   * Tailwind theme variables are redeclared on the Talent scope so
-   * contextual colors follow the scoped semantic values.
-   */
-
-  --color-primary: var(--ds-color-primary);
-  --color-primary-foreground: var(--ds-color-primary-foreground);
-
-  --color-accent: var(--ds-color-accent);
-  --color-accent-foreground: var(--ds-color-accent-foreground);
-
-  --color-interactive: var(--ds-color-interactive);
-  --color-interactive-hover: var(--ds-color-interactive-hover);
-  --color-interactive-foreground: var(--ds-color-interactive-foreground);
-
-  --color-decoration: var(--ds-color-decoration);
-}
-
-/*
  * Dark mode is not part of the current sample scope.
  * The existing Web color-mode contract is nevertheless retained so
  * data-ds-mode="dark" does not become an invalid state.

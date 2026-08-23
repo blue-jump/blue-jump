@@ -2,7 +2,8 @@ import type { Meta, StoryObj } from "@blue-jump/storybook-config/nextjs";
 
 import type { Talent } from "@/types";
 
-import TalentHero from "./talent-hero";
+import TalentHero, { type TalentHeroProps } from "./talent-hero";
+import { buildTalentThemeProps } from "../../lib";
 
 const HAROHA = {
   id: "talent-haroha",
@@ -53,6 +54,14 @@ const GREAT_MOON_AROMA = {
   liveTitle: "직원들 불러다가 오늘도 뭐 하나 합니다",
 } satisfies Talent;
 
+function renderTalentHero({ talent }: TalentHeroProps) {
+  return (
+    <div {...buildTalentThemeProps(talent)}>
+      <TalentHero talent={talent} />
+    </div>
+  );
+}
+
 const meta: Meta<typeof TalentHero> = {
   title: "Entities/Talent/TalentHero",
   component: TalentHero,
@@ -60,6 +69,7 @@ const meta: Meta<typeof TalentHero> = {
     layout: "padded",
   },
   tags: ["autodocs"],
+  render: renderTalentHero,
 };
 
 export default meta;
