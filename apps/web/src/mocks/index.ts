@@ -13,6 +13,7 @@ export {
   getCommentsByPostId,
   getCreativesByCreatorId,
   getGatheringsByParticipantId,
+  getPostsByAuthorId,
   getProjectsByParticipantId,
   getReactionsByTarget,
   getTalentsByIds,
