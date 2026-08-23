@@ -6,9 +6,10 @@ import type { Talent } from "@/types";
 
 interface LiveTalentCardProps {
   talent: Talent;
+  eager?: boolean;
 }
 
-export default function LiveTalentCard({ talent }: LiveTalentCardProps) {
+export default function LiveTalentCard({ talent, eager = false }: LiveTalentCardProps) {
   const imageUrl = talent.coverImageUrl ?? talent.profileImageUrl;
 
   return (
@@ -23,6 +24,7 @@ export default function LiveTalentCard({ talent }: LiveTalentCardProps) {
             src={imageUrl}
             alt={`${talent.name} 라이브 커버`}
             fill
+            loading={eager ? "eager" : "lazy"}
             sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
             className="object-cover"
           />
