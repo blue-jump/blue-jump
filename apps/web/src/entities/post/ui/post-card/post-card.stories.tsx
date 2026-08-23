@@ -1,52 +1,59 @@
 import type { Meta, StoryObj } from "@blue-jump/storybook-config/nextjs";
 
-import { MOCK_POSTS } from "@/mocks/posts.mock";
-import { findUserById, getTalentsByIds } from "@/mocks/sample-data.selectors";
+import type { Post, Talent, User } from "@/types";
 
 import PostCard from "./post-card";
 
-function getPostCardArgs(postId: string) {
-  const post = MOCK_POSTS.find((post) => post.id === postId);
+const AUTHOR = {
+  nickname: "금자보고벌떡",
+  profileImageUrl: "/images/mock/users/geumsu.webp",
+} satisfies Pick<User, "nickname" | "profileImageUrl">;
 
-  if (!post) {
-    throw new Error(`PostCard Story에 사용할 Mock Post를 찾을 수 없습니다: ${postId}`);
-  }
+const JEGAL = {
+  id: "talent-jegal",
+  name: "제갈금자",
+} satisfies Pick<Talent, "id" | "name">;
 
-  const author = findUserById(post.authorId);
+const MOGUGU = {
+  id: "talent-mogugu",
+  name: "모구구",
+} satisfies Pick<Talent, "id" | "name">;
 
-  if (!author) {
-    throw new Error(`PostCard Story에 사용할 Mock User를 찾을 수 없습니다: ${post.authorId}`);
-  }
+const POST = {
+  id: "post-2",
+  authorId: "user-geumsu",
+  talentIds: ["talent-jegal", "talent-mogugu"],
+  category: "MEME",
+  title: "금자 또 시작했네ㅋㅋㅋㅋ",
+  body: "구구 한마디 할 때마다 금자 혈압 오르는 게 화면 밖에서도 보이는 것 같음",
+  createdAt: "2026-08-21T12:44:00.000Z",
+} satisfies Post;
 
-  return {
-    post,
-    author,
-    talents: getTalentsByIds(post.talentIds),
-  };
-}
-
-const meta: Meta<typeof PostCard> = {
+const meta = {
   title: "Entities/Post/PostCard",
   component: PostCard,
   parameters: {
-    layout: "centered",
+    layout: "padded",
   },
-  decorators: [
-    (Story) => (
-      <div className="w-136 max-w-[calc(100vw-2rem)]">
-        <Story />
-      </div>
-    ),
-  ],
-  args: getPostCardArgs("post-2"),
-};
+  tags: ["autodocs"],
+} satisfies Meta<typeof PostCard>;
 
 export default meta;
 
 type Story = StoryObj<typeof meta>;
 
-export const Default: Story = {};
+export const Default: Story = {
+  args: {
+    post: POST,
+    author: AUTHOR,
+    talents: [JEGAL],
+  },
+};
 
-export const ManyRelatedTalents: Story = {
-  args: getPostCardArgs("post-1"),
+export const MultiTalent: Story = {
+  args: {
+    post: POST,
+    author: AUTHOR,
+    talents: [JEGAL, MOGUGU],
+  },
 };

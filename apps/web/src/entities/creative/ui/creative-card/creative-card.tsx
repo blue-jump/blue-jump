@@ -1,24 +1,16 @@
 import Image from "next/image";
+import Link from "next/link";
 
-import type { Creative, CreativeType, Talent, User } from "@/types";
+import { URLS } from "@/constants";
+import type { Creative, Talent, User } from "@/types";
 
-interface CreativeCardProps {
+import { CREATIVE_TYPE_LABELS } from "../../constants";
+
+export interface CreativeCardProps {
   creative: Creative;
   creator: Pick<User, "nickname">;
   talents: Pick<Talent, "id" | "name">[];
 }
-
-const CREATIVE_TYPE_LABELS = {
-  FAN_ART: "팬아트",
-  COMIC: "만화",
-  MEME: "밈",
-  CLIP: "클립",
-  VIDEO: "영상",
-  MUSIC: "음악",
-  THREE_D: "3D",
-  DESIGN: "디자인",
-  TOOL: "도구",
-} satisfies Record<CreativeType, string>;
 
 export default function CreativeCard({ creative, creator, talents }: CreativeCardProps) {
   const relatedTalentNames = talents.map((talent) => talent.name).join(" · ");
@@ -45,7 +37,12 @@ export default function CreativeCard({ creative, creator, talents }: CreativeCar
         <p className="text-muted-foreground text-xs">{CREATIVE_TYPE_LABELS[creative.type]}</p>
 
         <h3 className="text-foreground mt-1 line-clamp-2 text-base leading-snug font-semibold">
-          {creative.title}
+          <Link
+            href={URLS.CLIENT.CREATIVE_DETAIL(creative.id)}
+            className="rounded-sm underline-offset-4 hover:underline"
+          >
+            {creative.title}
+          </Link>
         </h3>
 
         <div className="text-muted-foreground mt-2 flex flex-wrap gap-x-2 text-sm">

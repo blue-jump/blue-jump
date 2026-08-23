@@ -24,6 +24,14 @@ export function findUserById(userId: string) {
   return MOCK_USERS.find((user) => user.id === userId);
 }
 
+export function findPostById(postId: string) {
+  return MOCK_POSTS.find((post) => post.id === postId);
+}
+
+export function findCreativeById(creativeId: string) {
+  return MOCK_CREATIVES.find((creative) => creative.id === creativeId);
+}
+
 export function getTalentsByIds(talentIds: string[]) {
   const talentIdSet = new Set(talentIds);
 

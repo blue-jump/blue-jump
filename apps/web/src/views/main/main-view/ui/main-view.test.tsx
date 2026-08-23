@@ -1,6 +1,7 @@
 import { render, screen, within } from "@testing-library/react";
 import { describe, expect, it } from "vitest";
 
+import { URLS } from "@/constants";
 import {
   MOCK_ARCHIVES,
   MOCK_CREATIVES,
@@ -143,6 +144,60 @@ describe("MainView", () => {
 
     expect(communitySection).toHaveTextContent(latestPost!.title);
     expect(creativeSection).toHaveTextContent(latestCreative!.title);
+  });
+
+  it("Main의 Post와 Creative에서 각각 공통 Detail 화면으로 이동할 수 있습니다.", () => {
+    render(<MainView />);
+
+    const latestPost = getLatestResolvablePost();
+    const latestCreative = getLatestResolvableCreative();
+
+    expect(latestPost).toBeDefined();
+    expect(latestCreative).toBeDefined();
+
+    const communitySection = screen.getByRole("region", {
+      name: "최근 글",
+    });
+
+    const creativeSection = screen.getByRole("region", {
+      name: "팬 창작",
+    });
+
+    expect(
+      within(communitySection).getByRole("link", {
+        name: latestPost!.title,
+      }),
+    ).toHaveAttribute("href", URLS.CLIENT.POST(latestPost!.id));
+
+    expect(
+      within(creativeSection).getByRole("link", {
+        name: latestCreative!.title,
+      }),
+    ).toHaveAttribute("href", URLS.CLIENT.CREATIVE_DETAIL(latestCreative!.id));
+  });
+
+  it("Main에서 Community와 Creative 전체 목록으로 이동할 수 있습니다.", () => {
+    render(<MainView />);
+
+    const communitySection = screen.getByRole("region", {
+      name: "최근 글",
+    });
+
+    const creativeSection = screen.getByRole("region", {
+      name: "팬 창작",
+    });
+
+    expect(
+      within(communitySection).getByRole("link", {
+        name: "커뮤니티 전체",
+      }),
+    ).toHaveAttribute("href", URLS.CLIENT.COMMUNITY);
+
+    expect(
+      within(creativeSection).getByRole("link", {
+        name: "창작 전체",
+      }),
+    ).toHaveAttribute("href", URLS.CLIENT.CREATIVE);
   });
 
   it("진행 가능한 Project와 예정된 Gathering을 우선하여 표시합니다.", () => {

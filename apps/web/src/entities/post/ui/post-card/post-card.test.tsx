@@ -1,52 +1,61 @@
-import type { Meta, StoryObj } from "@blue-jump/storybook-config/nextjs";
+import { render, screen } from "@testing-library/react";
+import { describe, expect, it } from "vitest";
 
-import { MOCK_POSTS } from "@/mocks/posts.mock";
-import { findUserById, getTalentsByIds } from "@/mocks/sample-data.selectors";
+import { URLS } from "@/constants";
+import type { Post, Talent, User } from "@/types";
 
 import PostCard from "./post-card";
 
-function getPostCardArgs(postId: string) {
-  const post = MOCK_POSTS.find((post) => post.id === postId);
+const POST = {
+  id: "post-2",
+  authorId: "user-geumsu",
+  talentIds: ["talent-jegal", "talent-mogugu"],
+  category: "MEME",
+  title: "금자 또 시작했네ㅋㅋㅋㅋ",
+  body: "구구 한마디 할 때마다 금자 혈압 오르는 게 화면 밖에서도 보이는 것 같음",
+  createdAt: "2026-08-21T12:44:00.000Z",
+} satisfies Post;
 
-  if (!post) {
-    throw new Error(`PostCard Story에 사용할 Mock Post를 찾을 수 없습니다: ${postId}`);
-  }
+const AUTHOR = {
+  nickname: "금자보고벌떡",
+  profileImageUrl: "/images/mock/users/geumsu.webp",
+} satisfies Pick<User, "nickname" | "profileImageUrl">;
 
-  const author = findUserById(post.authorId);
-
-  if (!author) {
-    throw new Error(`PostCard Story에 사용할 Mock User를 찾을 수 없습니다: ${post.authorId}`);
-  }
-
-  return {
-    post,
-    author,
-    talents: getTalentsByIds(post.talentIds),
-  };
-}
-
-const meta: Meta<typeof PostCard> = {
-  title: "Entities/Post/PostCard",
-  component: PostCard,
-  parameters: {
-    layout: "centered",
+const TALENTS = [
+  {
+    id: "talent-jegal",
+    name: "제갈금자",
   },
-  decorators: [
-    (Story) => (
-      <div className="w-136 max-w-[calc(100vw-2rem)]">
-        <Story />
-      </div>
-    ),
-  ],
-  args: getPostCardArgs("post-2"),
-};
+  {
+    id: "talent-mogugu",
+    name: "모구구",
+  },
+] satisfies Pick<Talent, "id" | "name">[];
 
-export default meta;
+describe("PostCard", () => {
+  it("게시글 정보를 표시한다", () => {
+    render(<PostCard post={POST} author={AUTHOR} talents={TALENTS} />);
 
-type Story = StoryObj<typeof meta>;
+    expect(screen.getByText(POST.title)).toBeInTheDocument();
+    expect(screen.getByText(POST.body)).toBeInTheDocument();
+    expect(screen.getByText(AUTHOR.nickname)).toBeInTheDocument();
+    expect(screen.getByText("밈")).toBeInTheDocument();
+    expect(screen.getByText("제갈금자 · 모구구")).toBeInTheDocument();
+  });
 
-export const Default: Story = {};
+  it("게시글 제목에서 상세 화면으로 이동할 수 있다", () => {
+    render(<PostCard post={POST} author={AUTHOR} talents={TALENTS} />);
 
-export const ManyRelatedTalents: Story = {
-  args: getPostCardArgs("post-1"),
-};
+    expect(
+      screen.getByRole("link", {
+        name: POST.title,
+      }),
+    ).toHaveAttribute("href", URLS.CLIENT.POST(POST.id));
+  });
+
+  it("작성자 Profile 이미지에 대체 텍스트를 제공한다", () => {
+    render(<PostCard post={POST} author={AUTHOR} talents={TALENTS} />);
+
+    expect(screen.getByAltText(`${AUTHOR.nickname} 프로필`)).toBeInTheDocument();
+  });
+});

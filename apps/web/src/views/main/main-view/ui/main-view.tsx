@@ -1,3 +1,6 @@
+import Link from "next/link";
+
+import { URLS } from "@/constants";
 import { ArchiveCard } from "@/entities/archive";
 import { CreativeCard } from "@/entities/creative";
 import { GatheringCard } from "@/entities/gathering";
@@ -194,7 +197,7 @@ export default function MainView() {
               </span>
             </div>
 
-            <div className="mt-6 grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-7">
+            <div className="mt-6 grid grid-cols-2 gap-4 sm:grid-cols-3 sm:gap-5 md:grid-cols-4 lg:grid-cols-7">
               {MOCK_TALENTS.map((talent) => (
                 <TalentCard key={talent.id} talent={talent} />
               ))}
@@ -210,7 +213,16 @@ export default function MainView() {
                 최근 글
               </h3>
 
-              <span className="text-muted-foreground text-sm">{MOCK_POSTS.length}</span>
+              <div className="flex shrink-0 items-center gap-3">
+                <span className="text-muted-foreground text-sm">{MOCK_POSTS.length}</span>
+
+                <Link
+                  href={URLS.CLIENT.COMMUNITY}
+                  className="text-interactive hover:text-interactive-hover rounded-sm text-sm font-medium underline-offset-4 hover:underline"
+                >
+                  커뮤니티 전체
+                </Link>
+              </div>
             </div>
 
             {recentPosts.length > 0 ? (
@@ -233,7 +245,16 @@ export default function MainView() {
                 팬 창작
               </h3>
 
-              <span className="text-muted-foreground text-sm">{MOCK_CREATIVES.length}</span>
+              <div className="flex shrink-0 items-center gap-3">
+                <span className="text-muted-foreground text-sm">{MOCK_CREATIVES.length}</span>
+
+                <Link
+                  href={URLS.CLIENT.CREATIVE}
+                  className="text-interactive hover:text-interactive-hover rounded-sm text-sm font-medium underline-offset-4 hover:underline"
+                >
+                  창작 전체
+                </Link>
+              </div>
             </div>
 
             {recentCreatives.length > 0 ? (
