@@ -1,16 +1,23 @@
-import type { ReactionTargetType } from "@/types";
+import type { ReactionTargetType, TalentId } from "@/types";
 
 import { MOCK_ACTIVITY_TYPES } from "./activity-types.mock";
+import { MOCK_ARCHIVES } from "./archives.mock";
 import { MOCK_COMMENTS } from "./comments.mock";
 import { MOCK_CREATIVES } from "./creatives.mock";
 import { MOCK_GATHERINGS } from "./gatherings.mock";
+import { MOCK_POSTS } from "./posts.mock";
 import { MOCK_PROJECTS } from "./projects.mock";
 import { MOCK_REACTIONS } from "./reactions.mock";
+import { MOCK_SCHEDULES } from "./schedules.mock";
 import { MOCK_TALENTS } from "./talents.mock";
 import { MOCK_USERS } from "./users.mock";
 
 export function findTalentById(talentId: string) {
   return MOCK_TALENTS.find((talent) => talent.id === talentId);
+}
+
+export function findTalentBySlug(slug: string) {
+  return MOCK_TALENTS.find((talent) => talent.slug === slug);
 }
 
 export function findUserById(userId: string) {
@@ -37,6 +44,26 @@ export function getReactionsByTarget(targetType: ReactionTargetType, targetId: s
   return MOCK_REACTIONS.filter(
     (reaction) => reaction.targetType === targetType && reaction.targetId === targetId,
   );
+}
+
+export function getPostsByTalentId(talentId: TalentId) {
+  return MOCK_POSTS.filter((post) => post.talentIds.includes(talentId));
+}
+
+export function getCreativesByTalentId(talentId: TalentId) {
+  return MOCK_CREATIVES.filter((creative) => creative.talentIds.includes(talentId));
+}
+
+export function getProjectsByTalentId(talentId: TalentId) {
+  return MOCK_PROJECTS.filter((project) => project.talentIds.includes(talentId));
+}
+
+export function getSchedulesByTalentId(talentId: TalentId) {
+  return MOCK_SCHEDULES.filter((schedule) => schedule.talentIds.includes(talentId));
+}
+
+export function getArchivesByTalentId(talentId: TalentId) {
+  return MOCK_ARCHIVES.filter((archive) => archive.talentIds.includes(talentId));
 }
 
 export function getCreativesByCreatorId(userId: string) {

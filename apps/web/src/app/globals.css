@@ -86,6 +86,29 @@
   }
 }
 
+/*
+ * Talent Theme
+ *
+ * --talent-primary
+ *   Talent.signatureColor를 그대로 사용합니다.
+ *
+ * --talent-accent
+ *   밝은 signatureColor도 Accent로 사용할 수 있도록
+ *   현재 Foreground 방향으로 명도를 보정합니다.
+ *
+ * --talent-surface
+ *   Hero, Profile Highlight 등의 일부 Surface에서만 사용하는
+ *   매우 약한 Talent 색상입니다.
+ *
+ * Blue Jump의 Brand, Focus, Global Interaction 색상은 변경하지 않습니다.
+ */
+
+[data-talent-theme] {
+  --talent-accent: color-mix(in oklab, var(--talent-primary) 72%, var(--color-foreground));
+
+  --talent-surface: color-mix(in oklab, var(--talent-primary) 9%, var(--color-surface));
+}
+
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,

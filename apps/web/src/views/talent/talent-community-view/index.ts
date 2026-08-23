@@ -1,0 +1,1 @@
+export { TalentCommunityView } from "./ui";

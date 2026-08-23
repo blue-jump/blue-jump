@@ -1,1 +1,2 @@
-export { LiveTalentCard, TalentCard } from "./ui";
+export { buildTalentThemeProps } from "./lib";
+export { LiveTalentCard, TalentCard, TalentHero } from "./ui";
