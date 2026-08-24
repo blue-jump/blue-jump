@@ -1,1 +1,1 @@
-export { ProjectCard } from "./ui";
+export { ProjectCard, ProjectDetail } from "./ui";

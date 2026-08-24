@@ -2,10 +2,9 @@ import { notFound } from "next/navigation";
 
 import type { Metadata } from "next";
 
+import { SAMPLE_DEMO_USER_ID } from "@/constants";
 import { findUserById } from "@/mocks/sample-data.selectors";
 import { UserProfileView } from "@/views/profile";
-
-const DEMO_USER_ID = "user-geumsu";
 
 export const metadata: Metadata = {
   title: "팬 프로필",
@@ -13,7 +12,7 @@ export const metadata: Metadata = {
 };
 
 export default function UserProfilePage() {
-  const user = findUserById(DEMO_USER_ID);
+  const user = findUserById(SAMPLE_DEMO_USER_ID);
 
   if (!user) {
     notFound();

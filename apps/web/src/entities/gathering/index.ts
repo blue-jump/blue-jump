@@ -1,1 +1,1 @@
-export { GatheringCard } from "./ui";
+export { GatheringCard, GatheringDetail } from "./ui";

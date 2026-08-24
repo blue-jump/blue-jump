@@ -282,7 +282,16 @@ export default function MainView() {
                 프로젝트
               </h3>
 
-              <span className="text-muted-foreground text-sm">{MOCK_PROJECTS.length}</span>
+              <div className="flex shrink-0 items-center gap-3">
+                <span className="text-muted-foreground text-sm">{MOCK_PROJECTS.length}</span>
+
+                <Link
+                  href={URLS.CLIENT.PROJECTS}
+                  className="text-interactive hover:text-interactive-hover rounded-sm text-sm font-medium underline-offset-4 hover:underline"
+                >
+                  프로젝트 전체
+                </Link>
+              </div>
             </div>
 
             {activeProjects.length > 0 ? (
@@ -309,7 +318,16 @@ export default function MainView() {
                 모임
               </h3>
 
-              <span className="text-muted-foreground text-sm">{MOCK_GATHERINGS.length}</span>
+              <div className="flex shrink-0 items-center gap-3">
+                <span className="text-muted-foreground text-sm">{MOCK_GATHERINGS.length}</span>
+
+                <Link
+                  href={URLS.CLIENT.GATHERINGS}
+                  className="text-interactive hover:text-interactive-hover rounded-sm text-sm font-medium underline-offset-4 hover:underline"
+                >
+                  모임 전체
+                </Link>
+              </div>
             </div>
 
             {upcomingGatherings.length > 0 ? (
@@ -363,7 +381,16 @@ export default function MainView() {
                 아카이브
               </h3>
 
-              <span className="text-muted-foreground text-sm">{MOCK_ARCHIVES.length}</span>
+              <div className="flex shrink-0 items-center gap-3">
+                <span className="text-muted-foreground text-sm">{MOCK_ARCHIVES.length}</span>
+
+                <Link
+                  href={URLS.CLIENT.ARCHIVE}
+                  className="text-interactive hover:text-interactive-hover rounded-sm text-sm font-medium underline-offset-4 hover:underline"
+                >
+                  아카이브 전체
+                </Link>
+              </div>
             </div>
 
             {recentArchives.length > 0 ? (

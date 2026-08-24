@@ -30,19 +30,19 @@ export const NAVIGATION_ITEMS = [
     id: "projects",
     label: "프로젝트",
     href: URLS.CLIENT.PROJECTS,
-    available: false,
+    available: true,
   },
   {
     id: "gatherings",
     label: "모임",
     href: URLS.CLIENT.GATHERINGS,
-    available: false,
+    available: true,
   },
   {
     id: "archive",
     label: "아카이브",
     href: URLS.CLIENT.ARCHIVE,
-    available: false,
+    available: true,
   },
   {
     id: "talents",

@@ -1,6 +1,7 @@
 import { render, screen, within } from "@testing-library/react";
 import { describe, expect, it } from "vitest";
 
+import { URLS } from "@/constants";
 import { MOCK_ACTIVITY_TYPES, MOCK_TALENTS, MOCK_USERS } from "@/mocks";
 import {
   getActivityTypesByIds,
@@ -107,7 +108,7 @@ describe("UserProfileView", () => {
       within(section).getByRole("link", {
         name: new RegExp(favoriteTalent!.name),
       }),
-    ).toHaveAttribute("href", `/talents/${favoriteTalent!.slug}`);
+    ).toHaveAttribute("href", URLS.CLIENT.TALENT(favoriteTalent!.slug));
   });
 
   it("User가 제작한 Creative를 기존 CreativeCard로 표시합니다.", () => {
@@ -141,7 +142,7 @@ describe("UserProfileView", () => {
     expect(within(section).getByText(user.nickname)).toBeInTheDocument();
   });
 
-  it("User가 참여한 Project를 기존 ProjectCard로 표시합니다.", () => {
+  it("User가 참여한 Project를 기존 ProjectCard로 표시하고 Detail로 연결합니다.", () => {
     const user = requireUser("user-geumsu");
     const projects = getProjectsByParticipantId(user.id);
 
@@ -153,6 +154,12 @@ describe("UserProfileView", () => {
 
     for (const project of projects) {
       expect(within(section).getByText(project.title)).toBeInTheDocument();
+
+      expect(
+        within(section).getByRole("link", {
+          name: project.title,
+        }),
+      ).toHaveAttribute("href", URLS.CLIENT.PROJECT_DETAIL(project.id));
     }
   });
 
@@ -179,6 +186,50 @@ describe("UserProfileView", () => {
     expect(within(section).getByText(creative!.title)).toBeInTheDocument();
     expect(within(section).getByText(project!.title)).toBeInTheDocument();
     expect(within(section).getByText(gathering!.title)).toBeInTheDocument();
+  });
+
+  it("팬 활동 기록에서 기존 콘텐츠와 Project, Gathering Detail로 이동할 수 있습니다.", () => {
+    const user = requireUser("user-geumsu");
+
+    const post = getPostsByAuthorId(user.id)[0];
+    const creative = getCreativesByCreatorId(user.id)[0];
+    const project = getProjectsByParticipantId(user.id).find((item) => item.startedAt);
+    const gathering = getGatheringsByParticipantId(user.id)[0];
+
+    expect(post).toBeDefined();
+    expect(creative).toBeDefined();
+    expect(project).toBeDefined();
+    expect(gathering).toBeDefined();
+
+    render(<UserProfileView user={user} />);
+
+    const section = screen.getByRole("region", {
+      name: "팬 활동 기록",
+    });
+
+    expect(
+      within(section).getByRole("link", {
+        name: post!.title,
+      }),
+    ).toHaveAttribute("href", URLS.CLIENT.POST(post!.id));
+
+    expect(
+      within(section).getByRole("link", {
+        name: creative!.title,
+      }),
+    ).toHaveAttribute("href", URLS.CLIENT.CREATIVE_DETAIL(creative!.id));
+
+    expect(
+      within(section).getByRole("link", {
+        name: project!.title,
+      }),
+    ).toHaveAttribute("href", URLS.CLIENT.PROJECT_DETAIL(project!.id));
+
+    expect(
+      within(section).getByRole("link", {
+        name: gathering!.title,
+      }),
+    ).toHaveAttribute("href", URLS.CLIENT.GATHERING_DETAIL(gathering!.id));
   });
 
   it("Relation이 없는 Profile은 임의 데이터를 만들지 않고 Empty 상태를 표시합니다.", () => {

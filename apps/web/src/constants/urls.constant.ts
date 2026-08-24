@@ -1,19 +1,31 @@
 export const URLS = {
   CLIENT: {
     HOME: "/",
+
     COMMUNITY: "/community",
     POST: (postId: string) => `/community/${postId}`,
+
     CREATIVE: "/creative",
     CREATIVE_DETAIL: (creativeId: string) => `/creative/${creativeId}`,
+
     PROJECTS: "/projects",
+    PROJECT_DETAIL: (projectId: string) => `/projects/${projectId}`,
+
     GATHERINGS: "/gatherings",
+    GATHERING_DETAIL: (gatheringId: string) => `/gatherings/${gatheringId}`,
+
     ARCHIVE: "/archive",
+    ARCHIVE_DETAIL: (archiveId: string) => `/archive/${archiveId}`,
+
     TALENTS: "/talents",
     TALENT: (slug: string) => `/talents/${slug}`,
+
     PROFILE: "/profile",
     PROFILE_DETAIL: (userId: string) => `/profile/${userId}`,
+
     LOGIN: "/login",
   },
+
   API: {
     AUTH: {
       LOGOUT: "/api/auth/logout",

@@ -1,10 +1,12 @@
 import { render, screen } from "@testing-library/react";
 import { describe, expect, it } from "vitest";
 
+import { URLS } from "@/constants";
 import { MOCK_GATHERINGS } from "@/mocks/gatherings.mock";
 import { getTalentsByIds } from "@/mocks/sample-data.selectors";
 
 import GatheringCard from "./gathering-card";
+import { GATHERING_STATUS_LABELS } from "../../constants";
 
 const openGathering = MOCK_GATHERINGS.find((gathering) => gathering.id === "gathering-haroha-work");
 
@@ -68,16 +70,26 @@ describe("GatheringCard", () => {
     expect(screen.getByText(relatedTalentNames)).toBeInTheDocument();
   });
 
-  it("참가 가능한 모임은 OPEN 상태를 표시합니다.", () => {
+  it("모임 제목에서 상세 화면으로 이동할 수 있습니다.", () => {
     render(<GatheringCard gathering={openGathering} talents={openGatheringTalents} />);
 
-    expect(screen.getByText("참가 가능")).toBeInTheDocument();
+    expect(
+      screen.getByRole("link", {
+        name: openGathering.title,
+      }),
+    ).toHaveAttribute("href", URLS.CLIENT.GATHERING_DETAIL(openGathering.id));
   });
 
-  it("정원이 찬 모임은 FULL 상태를 표시합니다.", () => {
+  it("참가 가능한 모임은 모집 중 상태를 표시합니다.", () => {
+    render(<GatheringCard gathering={openGathering} talents={openGatheringTalents} />);
+
+    expect(screen.getByText(GATHERING_STATUS_LABELS.OPEN)).toBeInTheDocument();
+  });
+
+  it("정원이 찬 모임은 정원 마감 상태를 표시합니다.", () => {
     render(<GatheringCard gathering={fullGathering} talents={fullGatheringTalents} />);
 
-    expect(screen.getByText("마감")).toBeInTheDocument();
+    expect(screen.getByText(GATHERING_STATUS_LABELS.FULL)).toBeInTheDocument();
 
     expect(
       screen.getByText(`${fullGathering.participantIds.length} / ${fullGathering.capacity}명`),

@@ -32,10 +32,28 @@ export function findCreativeById(creativeId: string) {
   return MOCK_CREATIVES.find((creative) => creative.id === creativeId);
 }
 
+export function findProjectById(projectId: string) {
+  return MOCK_PROJECTS.find((project) => project.id === projectId);
+}
+
+export function findGatheringById(gatheringId: string) {
+  return MOCK_GATHERINGS.find((gathering) => gathering.id === gatheringId);
+}
+
+export function findArchiveById(archiveId: string) {
+  return MOCK_ARCHIVES.find((archive) => archive.id === archiveId);
+}
+
 export function getTalentsByIds(talentIds: string[]) {
   const talentIdSet = new Set(talentIds);
 
   return MOCK_TALENTS.filter((talent) => talentIdSet.has(talent.id));
+}
+
+export function getUsersByIds(userIds: string[]) {
+  const userIdSet = new Set(userIds);
+
+  return MOCK_USERS.filter((user) => userIdSet.has(user.id));
 }
 
 export function getActivityTypesByIds(activityTypeIds: string[]) {
