@@ -1,1 +1,1 @@
-export { ArchiveCard } from "./ui";
+export { ArchiveCard, ArchiveDetail } from "./ui";

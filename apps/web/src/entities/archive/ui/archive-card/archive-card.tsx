@@ -1,18 +1,14 @@
-import type { Archive, ArchiveCategory, Talent } from "@/types";
+import Link from "next/link";
 
-interface ArchiveCardProps {
+import { URLS } from "@/constants";
+import type { Archive, Talent } from "@/types";
+
+import { ARCHIVE_CATEGORY_LABELS } from "../../constants";
+
+export interface ArchiveCardProps {
   archive: Archive;
   talents: Pick<Talent, "id" | "name">[];
 }
-
-const ARCHIVE_CATEGORY_LABELS = {
-  MEME: "밈",
-  TERM: "용어",
-  BROADCAST: "방송",
-  EVENT: "이벤트",
-  PROJECT: "프로젝트",
-  HISTORY: "연혁",
-} satisfies Record<ArchiveCategory, string>;
 
 const ARCHIVE_YEAR_FORMATTER = new Intl.DateTimeFormat("ko-KR", {
   timeZone: "Asia/Seoul",
@@ -47,7 +43,12 @@ export default function ArchiveCard({ archive, talents }: ArchiveCardProps) {
         </p>
 
         <h3 className="text-foreground mt-1.5 text-lg leading-snug font-semibold">
-          {archive.title}
+          <Link
+            href={URLS.CLIENT.ARCHIVE_DETAIL(archive.id)}
+            className="rounded-sm underline-offset-4 hover:underline"
+          >
+            {archive.title}
+          </Link>
         </h3>
 
         <p className="text-muted-foreground mt-2 text-sm leading-6">{archive.summary}</p>
