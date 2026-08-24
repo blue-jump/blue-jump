@@ -1,15 +1,14 @@
-import type { Gathering, GatheringStatus, Talent } from "@/types";
+import Link from "next/link";
 
-interface GatheringCardProps {
+import { URLS } from "@/constants";
+import type { Gathering, Talent } from "@/types";
+
+import { GATHERING_STATUS_LABELS } from "../../constants";
+
+export interface GatheringCardProps {
   gathering: Gathering;
   talents: Pick<Talent, "id" | "name">[];
 }
-
-const GATHERING_STATUS_LABELS = {
-  OPEN: "참가 가능",
-  FULL: "마감",
-  COMPLETED: "종료",
-} satisfies Record<GatheringStatus, string>;
 
 const GATHERING_DATE_FORMATTER = new Intl.DateTimeFormat("ko-KR", {
   timeZone: "Asia/Seoul",
@@ -56,7 +55,14 @@ export default function GatheringCard({ gathering, talents }: GatheringCardProps
       </div>
 
       <div className="px-5 py-5">
-        <h3 className="text-foreground text-lg leading-snug font-semibold">{gathering.title}</h3>
+        <h3 className="text-foreground text-lg leading-snug font-semibold">
+          <Link
+            href={URLS.CLIENT.GATHERING_DETAIL(gathering.id)}
+            className="rounded-sm underline-offset-4 hover:underline"
+          >
+            {gathering.title}
+          </Link>
+        </h3>
 
         <p className="text-muted-foreground mt-2 line-clamp-2 text-sm leading-6">
           {gathering.description}
