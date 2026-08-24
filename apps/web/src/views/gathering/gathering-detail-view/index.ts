@@ -1,0 +1,1 @@
+export { GatheringDetailView } from "./ui";
