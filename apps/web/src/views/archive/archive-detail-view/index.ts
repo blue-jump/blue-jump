@@ -1,0 +1,1 @@
+export { ArchiveDetailView } from "./ui";
