@@ -176,7 +176,7 @@ describe("MainView", () => {
     ).toHaveAttribute("href", URLS.CLIENT.CREATIVE_DETAIL(latestCreative!.id));
   });
 
-  it("Main에서 Community와 Creative 전체 목록으로 이동할 수 있습니다.", () => {
+  it("Main에서 각 콘텐츠의 전체 목록으로 이동할 수 있습니다.", () => {
     render(<MainView />);
 
     const communitySection = screen.getByRole("region", {
@@ -185,6 +185,18 @@ describe("MainView", () => {
 
     const creativeSection = screen.getByRole("region", {
       name: "팬 창작",
+    });
+
+    const projectSection = screen.getByRole("region", {
+      name: "프로젝트",
+    });
+
+    const gatheringSection = screen.getByRole("region", {
+      name: "모임",
+    });
+
+    const archiveSection = screen.getByRole("region", {
+      name: "아카이브",
     });
 
     expect(
@@ -198,9 +210,27 @@ describe("MainView", () => {
         name: "창작 전체",
       }),
     ).toHaveAttribute("href", URLS.CLIENT.CREATIVE);
+
+    expect(
+      within(projectSection).getByRole("link", {
+        name: "프로젝트 전체",
+      }),
+    ).toHaveAttribute("href", URLS.CLIENT.PROJECTS);
+
+    expect(
+      within(gatheringSection).getByRole("link", {
+        name: "모임 전체",
+      }),
+    ).toHaveAttribute("href", URLS.CLIENT.GATHERINGS);
+
+    expect(
+      within(archiveSection).getByRole("link", {
+        name: "아카이브 전체",
+      }),
+    ).toHaveAttribute("href", URLS.CLIENT.ARCHIVE);
   });
 
-  it("진행 가능한 Project와 예정된 Gathering을 우선하여 표시합니다.", () => {
+  it("진행 가능한 Project와 예정된 Gathering을 우선하여 표시하고 Detail로 이동할 수 있습니다.", () => {
     render(<MainView />);
 
     const project = getFirstActiveProject(MOCK_PROJECTS);
@@ -219,9 +249,21 @@ describe("MainView", () => {
 
     expect(projectSection).toHaveTextContent(project!.title);
     expect(gatheringSection).toHaveTextContent(gathering!.title);
+
+    expect(
+      within(projectSection).getByRole("link", {
+        name: project!.title,
+      }),
+    ).toHaveAttribute("href", URLS.CLIENT.PROJECT_DETAIL(project!.id));
+
+    expect(
+      within(gatheringSection).getByRole("link", {
+        name: gathering!.title,
+      }),
+    ).toHaveAttribute("href", URLS.CLIENT.GATHERING_DETAIL(gathering!.id));
   });
 
-  it("Schedule은 시간순, Archive는 최근 발생일순으로 표시합니다.", () => {
+  it("Schedule은 시간순, Archive는 최근 발생일순으로 표시하고 Archive Detail로 이동할 수 있습니다.", () => {
     render(<MainView />);
 
     const earliestSchedule = [...MOCK_SCHEDULES].sort(
@@ -250,5 +292,11 @@ describe("MainView", () => {
 
     expect(scheduleItems[0]).toHaveTextContent(earliestSchedule!.title);
     expect(archiveItems[0]).toHaveTextContent(latestArchive!.title);
+
+    expect(
+      within(archiveSection).getByRole("link", {
+        name: latestArchive!.title,
+      }),
+    ).toHaveAttribute("href", URLS.CLIENT.ARCHIVE_DETAIL(latestArchive!.id));
   });
 });

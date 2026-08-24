@@ -36,6 +36,7 @@ function getRecentProjects(userId: User["id"]) {
   return [...getProjectsByParticipantId(userId)]
     .sort((leftProject, rightProject) => {
       const leftStartedAt = leftProject.startedAt ? new Date(leftProject.startedAt).getTime() : 0;
+
       const rightStartedAt = rightProject.startedAt
         ? new Date(rightProject.startedAt).getTime()
         : 0;
@@ -61,7 +62,6 @@ function buildUserActivities(user: User): UserActivityItem[] {
       timestampPrecision: "datetime" as const,
       href: URLS.CLIENT.POST(post.id),
     })),
-
     ...creatives.map((creative) => ({
       id: creative.id,
       kind: "CREATIVE" as const,
@@ -71,7 +71,6 @@ function buildUserActivities(user: User): UserActivityItem[] {
       timestampPrecision: "datetime" as const,
       href: URLS.CLIENT.CREATIVE_DETAIL(creative.id),
     })),
-
     ...projects.flatMap((project) => {
       if (!project.startedAt) {
         return [];
@@ -85,10 +84,10 @@ function buildUserActivities(user: User): UserActivityItem[] {
           referenceAt: project.startedAt,
           referenceLabel: "프로젝트 시작",
           timestampPrecision: "date" as const,
+          href: URLS.CLIENT.PROJECT_DETAIL(project.id),
         },
       ];
     }),
-
     ...gatherings.map((gathering) => ({
       id: gathering.id,
       kind: "GATHERING" as const,
@@ -96,6 +95,7 @@ function buildUserActivities(user: User): UserActivityItem[] {
       referenceAt: gathering.startsAt,
       referenceLabel: "모임 일정",
       timestampPrecision: "datetime" as const,
+      href: URLS.CLIENT.GATHERING_DETAIL(gathering.id),
     })),
   ];
 
@@ -115,7 +115,6 @@ function getProjectTalents(project: Project) {
 export default function UserProfileView({ user }: UserProfileViewProps) {
   const favoriteTalents = getTalentsByIds(user.favoriteTalentIds);
   const activityTypes = getActivityTypesByIds(user.activityTypeIds);
-
   const allCreatives = getCreativesByCreatorId(user.id);
   const allProjects = getProjectsByParticipantId(user.id);
   const allGatherings = getGatheringsByParticipantId(user.id);
