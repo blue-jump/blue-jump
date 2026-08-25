@@ -1,5 +1,7 @@
 "use client";
 
+import { FilterOption } from "@blue-jump/design-system/web";
+
 import type { PostCategory } from "@/types";
 
 import type { PostCategoryFilterValue } from "../../lib";
@@ -40,32 +42,18 @@ export default function PostCategoryFilter({ value, onValueChange }: PostCategor
     <div
       role="group"
       aria-label="게시글 카테고리"
-      className="-mx-4 overflow-x-auto px-4 sm:mx-0 sm:px-0"
+      className="border-border -mx-4 overflow-x-auto border-b px-4 sm:mx-0 sm:px-0"
     >
-      <div className="flex w-max min-w-full gap-2">
-        {POST_CATEGORY_OPTIONS.map((option) => {
-          const selected = option.value === value;
-
-          return (
-            <button
-              key={option.value}
-              type="button"
-              aria-pressed={selected}
-              onClick={() => onValueChange(option.value)}
-              className={[
-                "flex min-h-10 items-center gap-1.5 rounded-md border px-3 py-2 text-sm font-medium",
-                "duration-fast ease-standard transition-colors motion-reduce:transition-none",
-                selected
-                  ? "border-primary bg-primary/10 text-primary"
-                  : "border-border bg-surface text-muted-foreground hover:bg-muted hover:text-foreground",
-              ].join(" ")}
-            >
-              {selected ? <span aria-hidden="true">✓</span> : null}
-
-              <span>{option.label}</span>
-            </button>
-          );
-        })}
+      <div className="flex w-max min-w-full gap-6">
+        {POST_CATEGORY_OPTIONS.map((option) => (
+          <FilterOption
+            key={option.value}
+            selected={option.value === value}
+            onClick={() => onValueChange(option.value)}
+          >
+            {option.label}
+          </FilterOption>
+        ))}
       </div>
     </div>
   );

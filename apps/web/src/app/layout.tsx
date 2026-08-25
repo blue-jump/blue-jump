@@ -5,6 +5,7 @@ import type { Metadata } from "next";
 import type { ReactNode } from "react";
 
 import { serverEnv } from "@/config/server-env";
+import { PortalLayer } from "@/features/portal/enter-portal";
 import { Layout } from "@/shared/layouts";
 
 export const metadata: Metadata = {
@@ -27,6 +28,7 @@ export default function RootLayout({
   return (
     <html lang="ko" data-ds-theme="web" data-ds-mode="light">
       <body {...(isDev ? { suppressHydrationWarning: true } : {})}>
+        <PortalLayer />
         <Layout>{children}</Layout>
       </body>
     </html>

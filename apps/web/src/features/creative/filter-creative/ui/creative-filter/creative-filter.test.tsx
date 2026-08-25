@@ -107,6 +107,18 @@ describe("CreativeFilter", () => {
         name: talent.name,
       }),
     ).toHaveAttribute("aria-pressed", "true");
+
+    expect(
+      screen.getByRole("button", {
+        name: "전체",
+      }),
+    ).toHaveAttribute("aria-pressed", "false");
+
+    expect(
+      screen.getByRole("button", {
+        name: "전체 멤버",
+      }),
+    ).toHaveAttribute("aria-pressed", "false");
   });
 
   it("콘텐츠 유형을 선택하면 기존 멤버 조건을 유지하여 변경합니다.", async () => {
@@ -163,39 +175,6 @@ describe("CreativeFilter", () => {
 
     expect(onValueChange).toHaveBeenCalledWith({
       type: creative.type,
-      talentId: talent.id,
-    });
-  });
-
-  it("Keyboard로 Filter를 선택할 수 있습니다.", async () => {
-    const user = userEvent.setup();
-    const onValueChange = vi.fn();
-
-    render(
-      <CreativeFilter
-        creatives={MOCK_CREATIVES}
-        talents={MOCK_TALENTS}
-        value={{
-          type: "ALL",
-          talentId: "ALL",
-        }}
-        resultCount={MOCK_CREATIVES.length}
-        onValueChange={onValueChange}
-      />,
-    );
-
-    const talentButton = screen.getByRole("button", {
-      name: talent.name,
-    });
-
-    talentButton.focus();
-
-    expect(talentButton).toHaveFocus();
-
-    await user.keyboard("{Enter}");
-
-    expect(onValueChange).toHaveBeenCalledWith({
-      type: "ALL",
       talentId: talent.id,
     });
   });

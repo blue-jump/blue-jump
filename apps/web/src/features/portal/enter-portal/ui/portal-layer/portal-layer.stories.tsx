@@ -8,7 +8,6 @@ const meta = {
   parameters: {
     layout: "fullscreen",
   },
-  tags: ["autodocs"],
 } satisfies Meta<typeof PortalLayer>;
 
 export default meta;

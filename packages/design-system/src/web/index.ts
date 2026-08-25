@@ -1,6 +1,14 @@
-export type { ButtonProps, IconButtonProps, LinkButtonProps } from "./buttons";
-export { Button, IconButton, LinkButton } from "./buttons";
-export type { AvatarProps, BadgeProps, CardProps, ImageFrameProps } from "./display";
+export type {
+  ButtonProps,
+  ButtonSize,
+  ButtonVariant,
+  FilterOptionProps,
+  IconButtonProps,
+  IconButtonSize,
+  LinkButtonProps,
+} from "./buttons";
+export { Button, FilterOption, IconButton, LinkButton } from "./buttons";
+export type { AvatarProps, AvatarSize, BadgeProps, CardProps, ImageFrameProps } from "./display";
 export { Avatar, Badge, Card, ImageFrame } from "./display";
 export type {
   ContainerProps,
