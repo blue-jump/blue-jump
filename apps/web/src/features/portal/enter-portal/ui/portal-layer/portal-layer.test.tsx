@@ -21,6 +21,7 @@ function mockReducedMotion(matches: boolean) {
 
 describe("PortalLayer", () => {
   afterEach(() => {
+    vi.useRealTimers();
     vi.unstubAllGlobals();
   });
 
@@ -93,10 +94,12 @@ describe("PortalLayer", () => {
     });
 
     fireEvent.click(portalButton);
+
     fireEvent.keyDown(window, {
       code: "Space",
       key: " ",
     });
+
     fireEvent.click(portalButton);
 
     expect(portalButton).toBeDisabled();
@@ -134,8 +137,6 @@ describe("PortalLayer", () => {
         name: "블루점프 포털",
       }),
     ).not.toBeInTheDocument();
-
-    vi.useRealTimers();
   });
 
   it("Reduced Motion 환경에서는 Animation 없이 Main으로 진입합니다.", () => {
