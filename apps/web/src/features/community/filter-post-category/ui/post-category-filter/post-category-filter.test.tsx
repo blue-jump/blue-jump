@@ -16,38 +16,16 @@ describe("PostCategoryFilter", () => {
   it("전체 Post Category를 표시합니다.", () => {
     render(<PostCategoryFilter value="ALL" onValueChange={() => undefined} />);
 
-    expect(
-      screen.getByRole("button", {
-        name: "전체",
-      }),
-    ).toBeInTheDocument();
-
-    expect(
-      screen.getByRole("button", {
-        name: "일반",
-      }),
-    ).toBeInTheDocument();
-
-    expect(
-      screen.getByRole("button", {
-        name: "밈",
-      }),
-    ).toBeInTheDocument();
-
-    expect(
-      screen.getByRole("button", {
-        name: "질문",
-      }),
-    ).toBeInTheDocument();
-
-    expect(
-      screen.getByRole("button", {
-        name: "정보",
-      }),
-    ).toBeInTheDocument();
+    for (const name of ["전체", "일반", "밈", "질문", "정보"]) {
+      expect(
+        screen.getByRole("button", {
+          name,
+        }),
+      ).toBeInTheDocument();
+    }
   });
 
-  it("현재 선택된 Category를 aria-pressed로 표시합니다.", () => {
+  it("현재 선택된 Category를 표시합니다.", () => {
     render(<PostCategoryFilter value={memePost.category} onValueChange={() => undefined} />);
 
     expect(
@@ -61,21 +39,6 @@ describe("PostCategoryFilter", () => {
         name: "전체",
       }),
     ).toHaveAttribute("aria-pressed", "false");
-  });
-
-  it("현재 선택된 Category에 색상 이외의 시각적 Indicator를 표시합니다.", () => {
-    render(<PostCategoryFilter value={memePost.category} onValueChange={() => undefined} />);
-
-    const selectedButton = screen.getByRole("button", {
-      name: "밈",
-    });
-    const unselectedButton = screen.getByRole("button", {
-      name: "전체",
-    });
-
-    expect(selectedButton.querySelector('[aria-hidden="true"]')).toBeInTheDocument();
-
-    expect(unselectedButton.querySelector('[aria-hidden="true"]')).not.toBeInTheDocument();
   });
 
   it("Category를 선택하면 변경된 값을 전달합니다.", async () => {

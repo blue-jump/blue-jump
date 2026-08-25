@@ -1,5 +1,7 @@
 "use client";
 
+import { FilterOption } from "@blue-jump/design-system/web";
+
 import type { PostCategory } from "@/types";
 
 import type { PostCategoryFilterValue } from "../../lib";
@@ -43,31 +45,15 @@ export default function PostCategoryFilter({ value, onValueChange }: PostCategor
       className="border-border -mx-4 overflow-x-auto border-b px-4 sm:mx-0 sm:px-0"
     >
       <div className="flex w-max min-w-full gap-6">
-        {POST_CATEGORY_OPTIONS.map((option) => {
-          const selected = option.value === value;
-
-          return (
-            <button
-              key={option.value}
-              type="button"
-              aria-pressed={selected}
-              onClick={() => onValueChange(option.value)}
-              className={[
-                "relative min-h-11 shrink-0 pb-3 text-sm",
-                "duration-fast ease-standard transition-colors motion-reduce:transition-none",
-                selected
-                  ? "text-foreground font-semibold"
-                  : "text-muted-foreground hover:text-foreground font-medium",
-              ].join(" ")}
-            >
-              {option.label}
-
-              {selected ? (
-                <span aria-hidden="true" className="bg-brand absolute inset-x-0 bottom-0 h-0.5" />
-              ) : null}
-            </button>
-          );
-        })}
+        {POST_CATEGORY_OPTIONS.map((option) => (
+          <FilterOption
+            key={option.value}
+            selected={option.value === value}
+            onClick={() => onValueChange(option.value)}
+          >
+            {option.label}
+          </FilterOption>
+        ))}
       </div>
     </div>
   );

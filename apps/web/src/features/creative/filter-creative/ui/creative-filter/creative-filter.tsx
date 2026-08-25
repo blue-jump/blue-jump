@@ -1,5 +1,7 @@
 "use client";
 
+import { FilterOption } from "@blue-jump/design-system/web";
+
 import { CREATIVE_TYPE_LABELS } from "@/entities/creative";
 import type { Creative, Talent } from "@/types";
 
@@ -103,34 +105,5 @@ export default function CreativeFilter({
         ) : null}
       </div>
     </div>
-  );
-}
-
-interface FilterOptionProps {
-  selected: boolean;
-  children: React.ReactNode;
-  onClick: () => void;
-}
-
-function FilterOption({ selected, children, onClick }: FilterOptionProps) {
-  return (
-    <button
-      type="button"
-      aria-pressed={selected}
-      onClick={onClick}
-      className={[
-        "relative min-h-7 shrink-0 pb-2 text-sm",
-        "duration-fast ease-standard transition-colors motion-reduce:transition-none",
-        selected
-          ? "text-foreground font-semibold"
-          : "text-muted-foreground hover:text-foreground font-medium",
-      ].join(" ")}
-    >
-      {children}
-
-      {selected ? (
-        <span aria-hidden="true" className="bg-brand absolute inset-x-0 bottom-0 h-0.5" />
-      ) : null}
-    </button>
   );
 }

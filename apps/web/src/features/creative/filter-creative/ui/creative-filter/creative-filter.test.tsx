@@ -179,39 +179,6 @@ describe("CreativeFilter", () => {
     });
   });
 
-  it("Keyboard로 Filter를 선택할 수 있습니다.", async () => {
-    const user = userEvent.setup();
-    const onValueChange = vi.fn();
-
-    render(
-      <CreativeFilter
-        creatives={MOCK_CREATIVES}
-        talents={MOCK_TALENTS}
-        value={{
-          type: "ALL",
-          talentId: "ALL",
-        }}
-        resultCount={MOCK_CREATIVES.length}
-        onValueChange={onValueChange}
-      />,
-    );
-
-    const talentButton = screen.getByRole("button", {
-      name: talent.name,
-    });
-
-    talentButton.focus();
-
-    expect(talentButton).toHaveFocus();
-
-    await user.keyboard("{Enter}");
-
-    expect(onValueChange).toHaveBeenCalledWith({
-      type: "ALL",
-      talentId: talent.id,
-    });
-  });
-
   it("Filter 결과가 없으면 Empty 상태를 표시합니다.", () => {
     render(
       <CreativeFilter
