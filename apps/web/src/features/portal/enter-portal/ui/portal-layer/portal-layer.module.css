@@ -1,5 +1,100 @@
 .layer {
-  --portal-transition-duration: 720ms;
+  --portal-transition-duration: 680ms;
+  --portal-background: #041225;
+  --portal-logo: #35c6ed;
+  --portal-logo-secondary: #246bfd;
+
+  background: var(--portal-background);
+  box-shadow: inset 0 0 9rem rgb(0 0 0 / 0.28);
+}
+
+.portalButton {
+  display: grid;
+  place-items: center;
+  padding: 1rem;
+  border: 0;
+  background: transparent;
+  color: inherit;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.portalButton:disabled {
+  cursor: default;
+}
+
+.portalButton:focus-visible {
+  outline: 2px solid var(--color-focus);
+  outline-offset: 0.75rem;
+}
+
+.portalMark {
+  display: block;
+  color: var(--portal-logo);
+  transition:
+    color 180ms ease-out,
+    transform 180ms ease-out;
+}
+
+.portalLogo {
+  margin: 0;
+  white-space: pre;
+  font-family:
+    "SFMono-Regular", "Cascadia Mono", "Roboto Mono", Consolas, "Liberation Mono", monospace;
+  font-variant-ligatures: none;
+  font-weight: 400;
+  line-height: 1.2;
+  letter-spacing: -0.055em;
+  text-align: left;
+  text-rendering: geometricPrecision;
+  text-shadow: 0 0 0.8rem rgb(25 197 229 / 0.14);
+  user-select: none;
+}
+
+.desktopLogo {
+  display: none;
+  font-size: clamp(0.58rem, 1.45vw, 0.82rem);
+}
+
+.mobileLogo {
+  display: block;
+  font-size: clamp(0.48rem, 2.15vw, 0.68rem);
+}
+
+.portalCopy {
+  margin-top: clamp(2.25rem, 5vh, 3.5rem);
+  text-align: center;
+}
+
+.brandName {
+  margin: 0;
+  font-size: clamp(1.35rem, 4vw, 1.9rem);
+  font-weight: 600;
+  letter-spacing: 0.3em;
+  text-indent: 0.3em;
+}
+
+.instruction {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.8rem;
+  margin-top: 1.25rem;
+}
+
+.instructionLine {
+  width: 1.75rem;
+  height: 1px;
+  background: rgb(25 197 229 / 0.4);
+}
+
+.desktopInstruction,
+.touchInstruction {
+  margin: 0;
+  color: rgb(255 255 255 / 0.62);
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  white-space: nowrap;
 }
 
 .desktopInstruction {
@@ -10,31 +105,37 @@
   display: block;
 }
 
-.portalButton {
-  -webkit-tap-highlight-color: transparent;
+@media (hover: hover) and (pointer: fine) {
+  .portalButton:not(:disabled):hover .portalMark {
+    color: #55d7f5;
+    transform: translateY(-2px);
+  }
+
+  .desktopInstruction {
+    display: block;
+  }
+
+  .touchInstruction {
+    display: none;
+  }
 }
 
-.portalVisual,
-.portalCopy,
-.portalRing,
-.portalCore,
-.portalLight,
-.outerRipple {
-  will-change: transform, opacity;
+@media (min-width: 640px) {
+  .desktopLogo {
+    display: block;
+  }
+
+  .mobileLogo {
+    display: none;
+  }
 }
 
-/*
+/**
  * Portal Open
  *
- * Input
- * ↓
- * Response
- * ↓
- * Expansion
- * ↓
- * Ripple / Light
- * ↓
- * Layer 제거
+ * ASCII 형태가 잠깐 압축된 뒤
+ * 문자 간격과 RGB 계열의 shadow가 벌어지면서
+ * 화면 쪽으로 확장됩니다.
  */
 
 .layer[data-state="opening"] {
@@ -43,116 +144,49 @@
     forwards;
 }
 
-.layer[data-state="opening"] .portalVisual {
-  animation: portal-open var(--portal-transition-duration) cubic-bezier(0.22, 1, 0.36, 1) forwards;
-}
-
-.layer[data-state="opening"] .portalRing {
-  animation: portal-ring-open var(--portal-transition-duration) cubic-bezier(0.22, 1, 0.36, 1)
-    forwards;
-}
-
-.layer[data-state="opening"] .portalCore {
-  animation: portal-core-open var(--portal-transition-duration) cubic-bezier(0.22, 1, 0.36, 1)
-    forwards;
-}
-
-.layer[data-state="opening"] .portalLight {
-  animation: portal-light-open var(--portal-transition-duration) cubic-bezier(0.22, 1, 0.36, 1)
-    forwards;
-}
-
-.layer[data-state="opening"] .outerRipple {
-  animation: portal-ripple-open var(--portal-transition-duration) cubic-bezier(0.22, 1, 0.36, 1)
+.layer[data-state="opening"] .portalMark {
+  animation: portal-logo-open var(--portal-transition-duration) cubic-bezier(0.22, 1, 0.36, 1)
     forwards;
 }
 
 .layer[data-state="opening"] .portalCopy {
-  animation: portal-copy-exit 240ms ease-out forwards;
+  animation: portal-copy-exit 220ms ease-out forwards;
 }
 
-@keyframes portal-open {
+@keyframes portal-logo-open {
   0% {
     opacity: 1;
+    filter: blur(0);
     transform: scale(1);
   }
 
   18% {
-    transform: scale(0.94);
-  }
-
-  46% {
     opacity: 1;
-    transform: scale(1.08);
+    filter: blur(0);
+    transform: scale(0.96);
   }
 
-  100% {
-    opacity: 0;
-    transform: scale(2.35);
-  }
-}
-
-@keyframes portal-ring-open {
-  0% {
+  42% {
     opacity: 1;
-    transform: scale(1);
+    filter: blur(0);
+    text-shadow:
+      -0.35rem 0 rgb(36 107 253 / 0.38),
+      0.35rem 0 rgb(25 197 229 / 0.38);
+    transform: scale(1.04);
   }
 
-  24% {
-    transform: scale(0.92);
-  }
-
-  100% {
-    opacity: 0;
-    transform: scale(3.1);
-  }
-}
-
-@keyframes portal-core-open {
-  0% {
-    opacity: 1;
-    transform: scale(1);
-  }
-
-  20% {
-    transform: scale(0.88);
-  }
-
-  54% {
-    opacity: 1;
+  72% {
+    opacity: 0.72;
+    filter: blur(0.6px);
+    text-shadow:
+      -0.9rem 0 rgb(36 107 253 / 0.22),
+      0.9rem 0 rgb(25 197 229 / 0.22);
   }
 
   100% {
     opacity: 0;
-    transform: scale(2.7);
-  }
-}
-
-@keyframes portal-light-open {
-  0% {
-    opacity: 0.55;
-    transform: scale(0.9);
-  }
-
-  38% {
-    opacity: 0.9;
-  }
-
-  100% {
-    opacity: 0;
-    transform: scale(4.2);
-  }
-}
-
-@keyframes portal-ripple-open {
-  0% {
-    opacity: 0.3;
-    transform: scale(1);
-  }
-
-  100% {
-    opacity: 0;
-    transform: scale(3.7);
+    filter: blur(2px);
+    transform: scale(1.85);
   }
 }
 
@@ -164,13 +198,13 @@
 
   to {
     opacity: 0;
-    transform: translateY(0.5rem);
+    transform: translateY(0.4rem);
   }
 }
 
 @keyframes portal-layer-exit {
   0%,
-  58% {
+  56% {
     opacity: 1;
   }
 
@@ -179,23 +213,13 @@
   }
 }
 
-@media (hover: hover) and (pointer: fine) {
-  .desktopInstruction {
-    display: block;
-  }
-
-  .touchInstruction {
-    display: none;
-  }
-}
-
 @media (prefers-reduced-motion: reduce) {
+  .portalMark {
+    transition: none;
+  }
+
   .layer[data-state="opening"],
-  .layer[data-state="opening"] .portalVisual,
-  .layer[data-state="opening"] .portalRing,
-  .layer[data-state="opening"] .portalCore,
-  .layer[data-state="opening"] .portalLight,
-  .layer[data-state="opening"] .outerRipple,
+  .layer[data-state="opening"] .portalMark,
   .layer[data-state="opening"] .portalCopy {
     animation: none;
   }
