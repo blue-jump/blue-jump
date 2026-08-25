@@ -2,7 +2,7 @@ import fs from "node:fs";
 import path from "node:path";
 
 import dotenv from "dotenv";
-import { defineConfig, env } from "prisma/config";
+import { defineConfig } from "prisma/config";
 
 const workspaceRoot = path.resolve(process.cwd(), "../..");
 
@@ -32,6 +32,6 @@ export default defineConfig({
   },
 
   datasource: {
-    url: env("DIRECT_URL"),
+    url: process.env.DIRECT_URL,
   },
 });
