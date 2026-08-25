@@ -70,7 +70,8 @@ export default async function globalSetup() {
 
   const expiresAt = addDays(new Date(), 30);
 
-  const { disconnectScriptPrisma, scriptPrisma } = await import("@blue-jump/database/script-client");
+  const { disconnectScriptPrisma, scriptPrisma } =
+    await import("@blue-jump/database/script-client");
 
   try {
     const user = await scriptPrisma.user.findUnique({

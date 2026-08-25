@@ -4,21 +4,118 @@
 @source "../../../../packages/design-system/src/web";
 
 @layer base {
-  html {
-    min-height: 100%;
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
   }
 
-  body {
+  html {
     min-height: 100%;
     background: var(--color-background);
     color: var(--color-foreground);
+    font-family: var(--font-sans);
+    text-size-adjust: 100%;
   }
 
-  button {
+  body {
+    min-height: 100dvh;
+    margin: 0;
+    background: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-sans);
+    font-size: 1rem;
+    line-height: 1.65;
+    overflow-wrap: break-word;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  img,
+  picture,
+  video,
+  canvas,
+  svg {
+    display: block;
+    max-width: 100%;
+  }
+
+  img,
+  video {
+    height: auto;
+  }
+
+  button,
+  input,
+  textarea,
+  select {
+    font: inherit;
+  }
+
+  button,
+  [role="button"] {
     cursor: pointer;
   }
 
-  button:disabled {
+  button:disabled,
+  [role="button"][aria-disabled="true"] {
     cursor: not-allowed;
+  }
+
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  :where(
+    a,
+    button,
+    input,
+    textarea,
+    select,
+    summary,
+    [tabindex]:not([tabindex="-1"])
+  ):focus-visible {
+    outline: 2px solid var(--color-focus);
+    outline-offset: 2px;
+  }
+
+  ::selection {
+    background: color-mix(in oklab, var(--color-brand) 22%, transparent);
+    color: var(--color-foreground);
+  }
+}
+
+/*
+ * Talent Theme
+ *
+ * --talent-primary
+ *   Talent.signatureColor를 그대로 사용합니다.
+ *
+ * --talent-accent
+ *   밝은 signatureColor도 Accent로 사용할 수 있도록
+ *   현재 Foreground 방향으로 명도를 보정합니다.
+ *
+ * --talent-surface
+ *   Hero, Profile Highlight 등의 일부 Surface에서만 사용하는
+ *   매우 약한 Talent 색상입니다.
+ *
+ * Blue Jump의 Brand, Focus, Global Interaction 색상은 변경하지 않습니다.
+ */
+
+[data-talent-theme] {
+  --talent-accent: color-mix(in oklab, var(--talent-primary) 72%, var(--color-foreground));
+
+  --talent-surface: color-mix(in oklab, var(--talent-primary) 9%, var(--color-surface));
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
   }
 }

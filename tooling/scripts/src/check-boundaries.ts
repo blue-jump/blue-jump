@@ -62,7 +62,12 @@ const FORBIDDEN_RUNTIME_DEPENDENCIES: Record<string, string[]> = {
     "@blue-jump/design-system",
   ],
 
-  "@blue-jump/domain": ["@blue-jump/auth", "@blue-jump/storage", "@blue-jump/mailer", "@blue-jump/design-system"],
+  "@blue-jump/domain": [
+    "@blue-jump/auth",
+    "@blue-jump/storage",
+    "@blue-jump/mailer",
+    "@blue-jump/design-system",
+  ],
 
   "@blue-jump/auth": ["@blue-jump/storage", "@blue-jump/mailer", "@blue-jump/design-system"],
 
@@ -103,7 +108,12 @@ const PACKAGE_ALLOWED_RUNTIME_DEPENDENCIES: Record<string, string[]> = {
 
   "@blue-jump/domain": ["@blue-jump/core", "@blue-jump/database"],
 
-  "@blue-jump/auth": ["@blue-jump/core", "@blue-jump/database", "@blue-jump/domain", "@blue-jump/env"],
+  "@blue-jump/auth": [
+    "@blue-jump/core",
+    "@blue-jump/database",
+    "@blue-jump/domain",
+    "@blue-jump/env",
+  ],
 
   "@blue-jump/storage": ["@blue-jump/core"],
 

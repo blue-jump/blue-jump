@@ -2,6 +2,21 @@ import type { Meta, StoryObj } from "@blue-jump/storybook-config/react";
 
 import IconButton from "./icon-button";
 
+function MenuIcon() {
+  return (
+    <svg
+      aria-hidden="true"
+      viewBox="0 0 24 24"
+      className="size-5"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+    >
+      <path d="M4 7h16M4 12h16M4 17h16" />
+    </svg>
+  );
+}
+
 const meta = {
   title: "Web/Buttons/IconButton",
   component: IconButton,
@@ -9,27 +24,17 @@ const meta = {
     layout: "centered",
   },
   args: {
-    "aria-label": "검색",
-    children: <span aria-hidden="true">⌕</span>,
+    "aria-label": "메뉴 열기",
+    children: <MenuIcon />,
   },
   argTypes: {
     variant: {
       control: "select",
-      options: ["default", "outline", "ghost", "destructive"],
+      options: ["primary", "brand", "secondary", "outline", "ghost", "destructive"],
     },
     size: {
       control: "select",
       options: ["sm", "md", "lg"],
-    },
-    shape: {
-      control: "select",
-      options: ["square", "circle"],
-    },
-    loading: {
-      control: "boolean",
-    },
-    disabled: {
-      control: "boolean",
     },
   },
 } satisfies Meta<typeof IconButton>;
@@ -38,84 +43,76 @@ export default meta;
 
 type Story = StoryObj<typeof meta>;
 
-export const Default = {} satisfies Story;
+export const Default: Story = {};
 
-export const Outline = {
+export const Primary: Story = {
+  args: {
+    variant: "primary",
+  },
+};
+
+export const Brand: Story = {
+  args: {
+    variant: "brand",
+  },
+};
+
+export const Outline: Story = {
   args: {
     variant: "outline",
   },
-} satisfies Story;
+};
 
-export const Ghost = {
+export const Disabled: Story = {
   args: {
-    variant: "ghost",
+    disabled: true,
   },
-} satisfies Story;
+};
 
-export const Destructive = {
-  args: {
-    "aria-label": "삭제",
-    variant: "destructive",
-    children: <span aria-hidden="true">×</span>,
-  },
-} satisfies Story;
+export const Variants: Story = {
+  render: () => (
+    <div className="flex items-center gap-3">
+      <IconButton aria-label="Primary" variant="primary">
+        <MenuIcon />
+      </IconButton>
 
-export const Circle = {
-  args: {
-    shape: "circle",
-  },
-} satisfies Story;
+      <IconButton aria-label="Brand" variant="brand">
+        <MenuIcon />
+      </IconButton>
 
-export const Loading = {
-  args: {
-    "aria-label": "불러오는 중",
-    loading: true,
-    children: <span aria-hidden="true">…</span>,
-  },
-} satisfies Story;
+      <IconButton aria-label="Secondary" variant="secondary">
+        <MenuIcon />
+      </IconButton>
 
-const variants = ["default", "outline", "ghost", "destructive"] as const;
-const sizes = ["sm", "md", "lg"] as const;
-const shapes = ["square", "circle"] as const;
+      <IconButton aria-label="Outline" variant="outline">
+        <MenuIcon />
+      </IconButton>
 
-export const Variants = {
-  render: () => {
-    return (
-      <div className="flex items-center gap-3">
-        {variants.map((variant) => (
-          <IconButton key={variant} aria-label={variant} variant={variant}>
-            <span aria-hidden="true">⌕</span>
-          </IconButton>
-        ))}
-      </div>
-    );
-  },
-} satisfies Story;
+      <IconButton aria-label="Ghost" variant="ghost">
+        <MenuIcon />
+      </IconButton>
 
-export const Sizes = {
-  render: () => {
-    return (
-      <div className="flex items-center gap-3">
-        {sizes.map((size) => (
-          <IconButton key={size} aria-label={size} size={size}>
-            <span aria-hidden="true">⌕</span>
-          </IconButton>
-        ))}
-      </div>
-    );
-  },
-} satisfies Story;
+      <IconButton aria-label="Destructive" variant="destructive">
+        <MenuIcon />
+      </IconButton>
+    </div>
+  ),
+};
 
-export const Shapes = {
-  render: () => {
-    return (
-      <div className="flex items-center gap-3">
-        {shapes.map((shape) => (
-          <IconButton key={shape} aria-label={shape} shape={shape}>
-            <span aria-hidden="true">⌕</span>
-          </IconButton>
-        ))}
-      </div>
-    );
-  },
-} satisfies Story;
+export const Sizes: Story = {
+  render: () => (
+    <div className="flex items-center gap-3">
+      <IconButton aria-label="Small" size="sm">
+        <MenuIcon />
+      </IconButton>
+
+      <IconButton aria-label="Medium" size="md">
+        <MenuIcon />
+      </IconButton>
+
+      <IconButton aria-label="Large" size="lg">
+        <MenuIcon />
+      </IconButton>
+    </div>
+  ),
+};

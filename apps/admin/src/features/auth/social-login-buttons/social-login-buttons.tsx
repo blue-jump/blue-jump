@@ -16,10 +16,6 @@ const DEFAULT_SOCIAL_LOGIN_PROVIDERS = [
     providerId: "naver",
     href: URLS.API.AUTH.NAVER,
   },
-  {
-    providerId: "kakao",
-    href: URLS.API.AUTH.KAKAO,
-  },
 ] as const satisfies readonly SocialLoginProvider[];
 
 export interface SocialLoginButtonsProps {

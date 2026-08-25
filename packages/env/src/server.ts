@@ -37,9 +37,6 @@ export const serverEnvSchema = sharedEnvSchema
     NAVER_CLIENT_ID: z.string().min(1, "NAVER_CLIENT_ID is required"),
     NAVER_CLIENT_SECRET: z.string().min(1, "NAVER_CLIENT_SECRET is required"),
 
-    KAKAO_CLIENT_ID: z.string().min(1, "KAKAO_CLIENT_ID is required"),
-    KAKAO_CLIENT_SECRET: z.string().min(1, "KAKAO_CLIENT_SECRET is required"),
-
     MAIL_PROVIDER: mailProviderSchema,
     MAIL_FROM: optionalNonEmptyString,
     RESEND_API_KEY: optionalNonEmptyString,
@@ -84,9 +81,6 @@ export const serverEnv = serverEnvSchema.parse({
 
   NAVER_CLIENT_ID: process.env.NAVER_CLIENT_ID,
   NAVER_CLIENT_SECRET: process.env.NAVER_CLIENT_SECRET,
-
-  KAKAO_CLIENT_ID: process.env.KAKAO_CLIENT_ID,
-  KAKAO_CLIENT_SECRET: process.env.KAKAO_CLIENT_SECRET,
 
   MAIL_PROVIDER: process.env.MAIL_PROVIDER,
   MAIL_FROM: process.env.MAIL_FROM,

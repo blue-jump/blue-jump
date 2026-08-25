@@ -118,16 +118,16 @@ describe("Admin OAuth Callback Route", () => {
   });
 
   it("callback 처리 중 에러가 발생하면 로그인 실패 페이지로 redirect한다", async () => {
-    parseOAuthProviderIdMock.mockReturnValue("kakao");
+    parseOAuthProviderIdMock.mockReturnValue("naver");
     handleOAuthCallbackMock.mockRejectedValue(new Error("OAuth failed"));
 
     const request = new NextRequest(
-      `${adminAppUrl}${URLS.API.AUTH.KAKAO_CALLBACK}?code=test-code&state=test-state`,
+      `${adminAppUrl}${URLS.API.AUTH.NAVER_CALLBACK}?code=test-code&state=test-state`,
     );
 
     const response = await GET(request, {
       params: Promise.resolve({
-        provider: "kakao",
+        provider: "naver",
       }),
     });
 

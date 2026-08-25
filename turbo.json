@@ -24,8 +24,6 @@
         "GOOGLE_CLIENT_SECRET",
         "NAVER_CLIENT_ID",
         "NAVER_CLIENT_SECRET",
-        "KAKAO_CLIENT_ID",
-        "KAKAO_CLIENT_SECRET",
         "RESEND_API_KEY"
       ]
     },
@@ -62,8 +60,6 @@
         "GOOGLE_CLIENT_SECRET",
         "NAVER_CLIENT_ID",
         "NAVER_CLIENT_SECRET",
-        "KAKAO_CLIENT_ID",
-        "KAKAO_CLIENT_SECRET",
         "RESEND_API_KEY"
       ]
     },
@@ -92,8 +88,6 @@
         "GOOGLE_CLIENT_SECRET",
         "NAVER_CLIENT_ID",
         "NAVER_CLIENT_SECRET",
-        "KAKAO_CLIENT_ID",
-        "KAKAO_CLIENT_SECRET",
         "RESEND_API_KEY"
       ]
     },
@@ -116,8 +110,6 @@
         "GOOGLE_CLIENT_SECRET",
         "NAVER_CLIENT_ID",
         "NAVER_CLIENT_SECRET",
-        "KAKAO_CLIENT_ID",
-        "KAKAO_CLIENT_SECRET",
         "RESEND_API_KEY"
       ]
     },
@@ -153,8 +145,6 @@
         "GOOGLE_CLIENT_SECRET",
         "NAVER_CLIENT_ID",
         "NAVER_CLIENT_SECRET",
-        "KAKAO_CLIENT_ID",
-        "KAKAO_CLIENT_SECRET",
         "RESEND_API_KEY"
       ]
     },

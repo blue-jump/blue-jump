@@ -5,23 +5,26 @@ import Card from "./card";
 const meta = {
   title: "Web/Display/Card",
   component: Card,
+  parameters: {
+    layout: "centered",
+  },
   args: {
-    children: "서비스 카드 콘텐츠",
+    children: (
+      <div className="space-y-2">
+        <h3 className="text-lg font-semibold">오늘 블루점프에서</h3>
+
+        <p className="text-muted-foreground text-sm">새 글과 팬 창작물을 확인해 보세요.</p>
+      </div>
+    ),
   },
   argTypes: {
     variant: {
-      control: "inline-radio",
-      options: ["default", "muted", "elevated", "outline"],
+      control: "select",
+      options: ["default", "elevated", "soft"],
     },
     padding: {
-      control: "inline-radio",
+      control: "select",
       options: ["none", "sm", "md", "lg"],
-    },
-    fullWidth: {
-      control: "boolean",
-    },
-    interactive: {
-      control: "boolean",
     },
   },
 } satisfies Meta<typeof Card>;
@@ -30,51 +33,89 @@ export default meta;
 
 type Story = StoryObj<typeof meta>;
 
-export const Default = {
-  args: {
-    variant: "default",
-    padding: "md",
-  },
-} satisfies Story;
+export const Default: Story = {
+  decorators: [
+    (Story) => (
+      <div className="w-80">
+        <Story />
+      </div>
+    ),
+  ],
+};
 
-export const Muted = {
-  args: {
-    variant: "muted",
-    children: "은은한 서비스 카드",
-  },
-} satisfies Story;
-
-export const Elevated = {
+export const Elevated: Story = {
   args: {
     variant: "elevated",
-    padding: "lg",
-    children: "강조된 서비스 카드",
   },
-} satisfies Story;
-
-export const Outline = {
-  args: {
-    variant: "outline",
-    children: "외곽선 카드",
-  },
-} satisfies Story;
-
-export const Interactive = {
-  args: {
-    interactive: true,
-    children: "클릭 가능한 카드",
-  },
-} satisfies Story;
-
-export const Variants = {
-  render: () => {
-    return (
-      <div className="grid max-w-4xl gap-4 md:grid-cols-2">
-        <Card variant="default">Default</Card>
-        <Card variant="muted">Muted</Card>
-        <Card variant="elevated">Elevated</Card>
-        <Card variant="outline">Outline</Card>
+  decorators: [
+    (Story) => (
+      <div className="w-80">
+        <Story />
       </div>
-    );
+    ),
+  ],
+};
+
+export const Soft: Story = {
+  args: {
+    variant: "soft",
   },
-} satisfies Story;
+  decorators: [
+    (Story) => (
+      <div className="w-80">
+        <Story />
+      </div>
+    ),
+  ],
+};
+
+export const Variants: Story = {
+  render: () => (
+    <div className="grid w-240 grid-cols-3 gap-4">
+      <Card variant="default">
+        <div className="space-y-2">
+          <strong>Default</strong>
+          <p className="text-muted-foreground text-sm">기본적인 콘텐츠 영역입니다.</p>
+        </div>
+      </Card>
+
+      <Card variant="elevated">
+        <div className="space-y-2">
+          <strong>Elevated</strong>
+          <p className="text-muted-foreground text-sm">조금 더 강조가 필요한 영역입니다.</p>
+        </div>
+      </Card>
+
+      <Card variant="soft">
+        <div className="space-y-2">
+          <strong>Soft</strong>
+          <p className="text-muted-foreground text-sm">배경과 자연스럽게 이어지는 영역입니다.</p>
+        </div>
+      </Card>
+    </div>
+  ),
+};
+
+export const Padding: Story = {
+  render: () => (
+    <div className="grid w-240 grid-cols-4 gap-4">
+      <Card padding="none">
+        <div className="p-2">
+          <strong>None</strong>
+        </div>
+      </Card>
+
+      <Card padding="sm">
+        <strong>Small</strong>
+      </Card>
+
+      <Card padding="md">
+        <strong>Medium</strong>
+      </Card>
+
+      <Card padding="lg">
+        <strong>Large</strong>
+      </Card>
+    </div>
+  ),
+};

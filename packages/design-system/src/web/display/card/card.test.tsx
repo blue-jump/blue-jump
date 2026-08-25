@@ -1,64 +1,38 @@
 import { render, screen } from "@testing-library/react";
-
-import { createRef } from "react";
+import { describe, expect, it } from "vitest";
 
 import Card from "./card";
 
-describe("Web Card", () => {
-  it("콘텐츠를 렌더링한다", () => {
-    render(<Card>서비스 카드</Card>);
-
-    expect(screen.getByText("서비스 카드")).toBeInTheDocument();
-  });
-
-  it("기본 variant와 padding data attribute를 가진다", () => {
-    render(<Card>카드</Card>);
-
-    const card = screen.getByText("카드");
-
-    expect(card).toHaveAttribute("data-variant", "default");
-    expect(card).toHaveAttribute("data-padding", "md");
-  });
-
-  it("padding과 fullWidth primitive prop을 전달한다", () => {
+describe("Card", () => {
+  it("자식 콘텐츠를 렌더링한다", () => {
     render(
-      <Card padding="lg" fullWidth>
-        카드
+      <Card>
+        <h2>팬 프로젝트</h2>
+        <p>참여자를 모집하고 있습니다.</p>
       </Card>,
     );
 
-    const card = screen.getByText("카드");
-
-    expect(card).toHaveAttribute("data-padding", "lg");
-    expect(card).toHaveAttribute("data-full-width", "true");
+    expect(screen.getByRole("heading", { name: "팬 프로젝트" })).toBeInTheDocument();
+    expect(screen.getByText("참여자를 모집하고 있습니다.")).toBeInTheDocument();
   });
 
-  it("variant를 적용한다", () => {
-    render(<Card variant="elevated">카드</Card>);
+  it("HTML 속성을 전달한다", () => {
+    render(
+      <Card data-testid="card" aria-label="프로젝트 카드">
+        내용
+      </Card>,
+    );
 
-    expect(screen.getByText("카드")).toHaveAttribute("data-variant", "elevated");
+    expect(screen.getByTestId("card")).toHaveAttribute("aria-label", "프로젝트 카드");
   });
 
-  it("interactive 상태를 적용한다", () => {
-    render(<Card interactive>카드</Card>);
+  it("추가 className을 전달한다", () => {
+    render(
+      <Card data-testid="card" className="custom-class">
+        내용
+      </Card>,
+    );
 
-    const card = screen.getByText("카드");
-
-    expect(card).toHaveAttribute("data-interactive", "true");
-    expect(card).toHaveClass("cursor-pointer");
-  });
-
-  it("className을 병합한다", () => {
-    render(<Card className="custom-card">카드</Card>);
-
-    expect(screen.getByText("카드")).toHaveClass("custom-card");
-  });
-
-  it("ref를 전달한다", () => {
-    const ref = createRef<HTMLDivElement>();
-
-    render(<Card ref={ref}>카드</Card>);
-
-    expect(ref.current).toBeInstanceOf(HTMLDivElement);
+    expect(screen.getByTestId("card")).toHaveClass("custom-class");
   });
 });

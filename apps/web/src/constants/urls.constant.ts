@@ -1,11 +1,29 @@
 export const URLS = {
   CLIENT: {
     HOME: "/",
+
+    COMMUNITY: "/community",
+    POST: (postId: string) => `/community/${postId}`,
+
+    CREATIVE: "/creative",
+    CREATIVE_DETAIL: (creativeId: string) => `/creative/${creativeId}`,
+
+    PROJECTS: "/projects",
+    PROJECT_DETAIL: (projectId: string) => `/projects/${projectId}`,
+
+    GATHERINGS: "/gatherings",
+    GATHERING_DETAIL: (gatheringId: string) => `/gatherings/${gatheringId}`,
+
+    ARCHIVE: "/archive",
+    ARCHIVE_DETAIL: (archiveId: string) => `/archive/${archiveId}`,
+
+    TALENTS: "/talents",
+    TALENT: (slug: string) => `/talents/${slug}`,
+
+    PROFILE: "/profile",
+    PROFILE_DETAIL: (userId: string) => `/profile/${userId}`,
+
     LOGIN: "/login",
-    CONTENTS: "/contents",
-    CREATE_CONTENT: "/contents/create",
-    CONTENTS_DETAIL: (contentId: string) => `/contents/${contentId}`,
-    MY_PAGE: "/me",
   },
 
   API: {
@@ -13,7 +31,6 @@ export const URLS = {
       LOGOUT: "/api/auth/logout",
       GOOGLE: "/api/auth/google",
       NAVER: "/api/auth/naver",
-      KAKAO: "/api/auth/kakao",
       OAUTH: (providerId: string) => `/api/auth/${providerId}`,
       OAUTH_CALLBACK: (providerId: string) => `/api/auth/${providerId}/callback`,
     },

@@ -2,32 +2,33 @@ import type { Meta, StoryObj } from "@blue-jump/storybook-config/react";
 
 import ImageFrame from "./image-frame";
 
-const sampleImageUrl = "https://picsum.photos/id/1025/800/450";
+function Placeholder({ label = "Image" }: { label?: string }) {
+  return (
+    <div className="bg-secondary text-secondary-foreground flex size-full items-center justify-center text-sm font-medium">
+      {label}
+    </div>
+  );
+}
 
 const meta = {
   title: "Web/Display/ImageFrame",
   component: ImageFrame,
+  parameters: {
+    layout: "centered",
+  },
   args: {
-    src: sampleImageUrl,
-    alt: "샘플 이미지",
-    ratio: "video",
-    fit: "cover",
+    aspect: "landscape",
+    radius: "lg",
+    children: <Placeholder />,
   },
   argTypes: {
-    variant: {
-      control: "inline-radio",
-      options: ["default", "muted", "surface", "outline"],
+    aspect: {
+      control: "select",
+      options: ["auto", "square", "portrait", "landscape", "wide"],
     },
-    ratio: {
-      control: "inline-radio",
-      options: ["auto", "square", "video", "wide"],
-    },
-    fit: {
-      control: "inline-radio",
-      options: ["cover", "contain"],
-    },
-    fullWidth: {
-      control: "boolean",
+    radius: {
+      control: "select",
+      options: ["none", "md", "lg", "xl"],
     },
   },
 } satisfies Meta<typeof ImageFrame>;
@@ -36,62 +37,105 @@ export default meta;
 
 type Story = StoryObj<typeof meta>;
 
-export const Default = {
-  args: {
-    variant: "default",
-  },
-} satisfies Story;
-
-export const Surface = {
-  args: {
-    variant: "surface",
-  },
-} satisfies Story;
-
-export const Contain = {
-  args: {
-    fit: "contain",
-    variant: "surface",
-  },
-} satisfies Story;
-
-export const Fallback = {
-  args: {
-    src: undefined,
-    alt: undefined,
-    fallback: <span className="text-sm">이미지가 없습니다</span>,
-  },
-} satisfies Story;
-
-export const WithOverlay = {
-  args: {
-    children: (
-      <div className="bg-background/85 absolute inset-x-0 bottom-0 px-3 py-2 text-left text-sm font-medium">
-        서비스 이미지
+export const Default: Story = {
+  decorators: [
+    (Story) => (
+      <div className="w-80">
+        <Story />
       </div>
     ),
-  },
-} satisfies Story;
+  ],
+};
 
-export const Ratios = {
-  render: () => {
-    return (
-      <div className="grid max-w-4xl gap-4 md:grid-cols-3">
-        <ImageFrame src={sampleImageUrl} alt="Square" ratio="square" />
-        <ImageFrame src={sampleImageUrl} alt="Video" ratio="video" />
-        <ImageFrame src={sampleImageUrl} alt="Wide" ratio="wide" />
-      </div>
-    );
-  },
-} satisfies Story;
-
-export const ImageSlot = {
+export const Square: Story = {
   args: {
-    src: undefined,
-    alt: undefined,
-    ratio: "video",
-    imageSlot: (
-      <img src={sampleImageUrl} alt="커스텀 이미지 렌더러" className="size-full object-cover" />
-    ),
+    aspect: "square",
   },
-} satisfies Story;
+  decorators: [
+    (Story) => (
+      <div className="w-64">
+        <Story />
+      </div>
+    ),
+  ],
+};
+
+export const Portrait: Story = {
+  args: {
+    aspect: "portrait",
+  },
+  decorators: [
+    (Story) => (
+      <div className="w-56">
+        <Story />
+      </div>
+    ),
+  ],
+};
+
+export const Wide: Story = {
+  args: {
+    aspect: "wide",
+  },
+  decorators: [
+    (Story) => (
+      <div className="w-96">
+        <Story />
+      </div>
+    ),
+  ],
+};
+
+export const AspectRatios: Story = {
+  render: () => (
+    <div className="flex items-start gap-6">
+      <div className="w-40 space-y-2">
+        <ImageFrame aspect="square">
+          <Placeholder label="Square" />
+        </ImageFrame>
+
+        <p className="text-caption text-muted-foreground text-center">1 : 1</p>
+      </div>
+
+      <div className="w-40 space-y-2">
+        <ImageFrame aspect="portrait">
+          <Placeholder label="Portrait" />
+        </ImageFrame>
+
+        <p className="text-caption text-muted-foreground text-center">4 : 5</p>
+      </div>
+
+      <div className="w-48 space-y-2">
+        <ImageFrame aspect="landscape">
+          <Placeholder label="Landscape" />
+        </ImageFrame>
+
+        <p className="text-caption text-muted-foreground text-center">4 : 3</p>
+      </div>
+
+      <div className="w-56 space-y-2">
+        <ImageFrame aspect="wide">
+          <Placeholder label="Wide" />
+        </ImageFrame>
+
+        <p className="text-caption text-muted-foreground text-center">16 : 9</p>
+      </div>
+    </div>
+  ),
+};
+
+export const Radius: Story = {
+  render: () => (
+    <div className="grid grid-cols-4 gap-4">
+      {(["none", "md", "lg", "xl"] as const).map((radius) => (
+        <div key={radius} className="w-40 space-y-2">
+          <ImageFrame aspect="square" radius={radius}>
+            <Placeholder label={radius} />
+          </ImageFrame>
+
+          <p className="text-caption text-muted-foreground text-center">{radius}</p>
+        </div>
+      ))}
+    </div>
+  ),
+};

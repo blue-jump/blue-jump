@@ -1,89 +1,38 @@
-"use client";
-
 import { cva, type VariantProps } from "class-variance-authority";
 
-import { forwardRef, type HTMLAttributes } from "react";
+import type { ComponentPropsWithRef } from "react";
 
 import { cn } from "../../../utils";
 
-const baseCardVariants = cva(
-  ["border-border rounded-lg border", "bg-surface text-surface-foreground", "transition-colors"],
-  {
-    variants: {
-      padding: {
-        none: "p-0",
-        sm: "p-3",
-        md: "p-4",
-        lg: "p-6",
-      },
-      fullWidth: {
-        true: "w-full",
-      },
-    },
-    defaultVariants: {
-      padding: "md",
-    },
-  },
-);
-
-export interface BaseCardProps
-  extends HTMLAttributes<HTMLDivElement>, VariantProps<typeof baseCardVariants> {}
-
-const BaseCard = forwardRef<HTMLDivElement, BaseCardProps>(
-  ({ className, padding, fullWidth, ...props }, ref) => {
-    return (
-      <div
-        ref={ref}
-        data-padding={padding ?? "md"}
-        data-full-width={fullWidth ? "true" : "false"}
-        className={cn(baseCardVariants({ padding, fullWidth }), className)}
-        {...props}
-      />
-    );
-  },
-);
-
-BaseCard.displayName = "Card";
-
-const cardVariants = cva(["overflow-hidden", "rounded-xl"], {
+const cardVariants = cva(["overflow-hidden rounded-xl", "text-surface-foreground"], {
   variants: {
     variant: {
-      default: "border-border/80 shadow-sm",
-      muted: "bg-muted/50 border-transparent shadow-none",
-      elevated: "border-transparent shadow-md",
-      outline: "bg-background shadow-none",
+      default: "border-border bg-surface border shadow-xs",
+      elevated: "bg-surface border border-transparent shadow-md",
+      soft: "bg-muted border border-transparent shadow-none",
     },
-    interactive: {
-      true: [
-        "cursor-pointer",
-        "md:hover:border-primary/30 md:hover:shadow-md",
-        "active:translate-y-px",
-      ],
-      false: null,
+    padding: {
+      none: "",
+      sm: "p-3",
+      md: "p-4",
+      lg: "p-6",
     },
   },
   defaultVariants: {
     variant: "default",
-    interactive: false,
+    padding: "md",
   },
 });
 
-export interface CardProps extends BaseCardProps, VariantProps<typeof cardVariants> {}
+export type CardVariant = NonNullable<VariantProps<typeof cardVariants>["variant"]>;
 
-const Card = forwardRef<HTMLDivElement, CardProps>(
-  ({ className, variant, interactive = false, ...props }, ref) => {
-    return (
-      <BaseCard
-        ref={ref}
-        data-variant={variant ?? "default"}
-        data-interactive={interactive ? "true" : "false"}
-        className={cn(cardVariants({ variant, interactive }), className)}
-        {...props}
-      />
-    );
-  },
-);
+export type CardPadding = NonNullable<VariantProps<typeof cardVariants>["padding"]>;
 
-Card.displayName = "Card";
+export interface CardProps extends ComponentPropsWithRef<"div"> {
+  variant?: CardVariant;
+  padding?: CardPadding;
+}
 
-export default Card;
+export default function Card({ variant, padding, className, ...props }: CardProps) {
+  return <div className={cn(cardVariants({ variant, padding }), className)} {...props} />;
+}

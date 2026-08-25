@@ -4,15 +4,18 @@ import type { Metadata } from "next";
 
 import type { ReactNode } from "react";
 
-import { ToastProvider } from "@blue-jump/design-system/toast";
-
 import { serverEnv } from "@/config/server-env";
-import { Shell } from "@/shared/layout";
+import { PortalLayer } from "@/features/portal/enter-portal";
+import { Layout } from "@/shared/layouts";
 
 export const metadata: Metadata = {
   metadataBase: new URL(serverEnv.WEB_APP_URL),
-  title: "Web",
-  description: "Service application",
+  applicationName: "BLUE JUMP",
+  title: {
+    default: "BLUE JUMP",
+    template: "%s | BLUE JUMP",
+  },
+  description: "버튜버와 팬의 활동, 창작, 프로젝트와 기록을 연결하는 블루점프 팬 커뮤니티입니다.",
 };
 
 export default function RootLayout({
@@ -24,12 +27,9 @@ export default function RootLayout({
 
   return (
     <html lang="ko" data-ds-theme="web" data-ds-mode="light">
-      <body
-        {...(isDev ? { suppressHydrationWarning: true } : {})} // Brave 브라우저에서 발생하는 개발 환경 문제 (`cz-shortcut-listen="true"` 주입 문제)
-      >
-        <Shell>{children}</Shell>
-
-        <ToastProvider />
+      <body {...(isDev ? { suppressHydrationWarning: true } : {})}>
+        <PortalLayer />
+        <Layout>{children}</Layout>
       </body>
     </html>
   );

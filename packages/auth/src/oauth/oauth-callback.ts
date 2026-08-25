@@ -6,7 +6,6 @@ import { findOrCreateOAuthUserService } from "@blue-jump/domain/user/server";
 import { createOAuthInvalidStateError, createOAuthMissingCodeError } from "../auth.error";
 import { createAuthSession } from "../session";
 import { getGoogleOAuthProfileByCode } from "./google.provider";
-import { getKakaoOAuthProfileByCode } from "./kakao.provider";
 import { getNaverOAuthProfileByCode } from "./naver.provider";
 import type { OAuthProfile } from "./oauth-profile";
 import type { OAuthProviderId } from "./oauth-provider";
@@ -63,13 +62,6 @@ export async function resolveOAuthCallbackProfile(
       return getNaverOAuthProfileByCode({
         code: params.code,
         state: params.state,
-        appBaseUrl: params.appBaseUrl,
-        callbackPath: params.callbackPath,
-      });
-
-    case "kakao":
-      return getKakaoOAuthProfileByCode({
-        code: params.code,
         appBaseUrl: params.appBaseUrl,
         callbackPath: params.callbackPath,
       });
