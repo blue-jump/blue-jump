@@ -43,105 +43,56 @@ export default function CreativeFilter({
 
   return (
     <div>
-      <div>
-        <p className="text-foreground text-sm font-semibold">콘텐츠 유형</p>
+      <div className="border-border divide-border divide-y border-y">
+        <div className="py-4 sm:grid sm:grid-cols-[7rem_minmax(0,1fr)] sm:items-start sm:gap-4">
+          <p className="text-foreground text-sm font-semibold">콘텐츠 유형</p>
 
-        <div
-          role="group"
-          aria-label="창작 콘텐츠 유형"
-          className="-mx-4 mt-3 overflow-x-auto px-4 sm:mx-0 sm:px-0"
-        >
-          <div className="flex w-max min-w-full gap-2">
-            <button
-              type="button"
-              aria-pressed={value.type === "ALL"}
-              onClick={() => changeType("ALL")}
-              className={[
-                "flex min-h-10 items-center gap-1.5 rounded-md border px-3 py-2 text-sm font-medium",
-                "duration-fast ease-standard transition-colors motion-reduce:transition-none",
-                value.type === "ALL"
-                  ? "border-primary bg-primary/10 text-primary"
-                  : "border-border bg-surface text-muted-foreground hover:bg-muted hover:text-foreground",
-              ].join(" ")}
-            >
-              {value.type === "ALL" ? <span aria-hidden="true">✓</span> : null}
-              <span>전체</span>
-            </button>
+          <div
+            role="group"
+            aria-label="창작 콘텐츠 유형"
+            className="-mx-4 mt-3 overflow-x-auto px-4 sm:mx-0 sm:mt-0 sm:px-0"
+          >
+            <div className="flex w-max min-w-full gap-6">
+              <FilterOption selected={value.type === "ALL"} onClick={() => changeType("ALL")}>
+                전체
+              </FilterOption>
 
-            {availableTypes.map((type) => {
-              const selected = value.type === type;
-
-              return (
-                <button
+              {availableTypes.map((type) => (
+                <FilterOption
                   key={type}
-                  type="button"
-                  aria-pressed={selected}
+                  selected={value.type === type}
                   onClick={() => changeType(type)}
-                  className={[
-                    "flex min-h-10 items-center gap-1.5 rounded-md border px-3 py-2 text-sm font-medium",
-                    "duration-fast ease-standard transition-colors motion-reduce:transition-none",
-                    selected
-                      ? "border-primary bg-primary/10 text-primary"
-                      : "border-border bg-surface text-muted-foreground hover:bg-muted hover:text-foreground",
-                  ].join(" ")}
                 >
-                  {selected ? <span aria-hidden="true">✓</span> : null}
-                  <span>{CREATIVE_TYPE_LABELS[type]}</span>
-                </button>
-              );
-            })}
+                  {CREATIVE_TYPE_LABELS[type]}
+                </FilterOption>
+              ))}
+            </div>
           </div>
         </div>
-      </div>
 
-      <div className="border-border mt-6 border-t pt-5">
-        <p className="text-foreground text-sm font-semibold">관련 멤버</p>
+        <div className="py-4 sm:grid sm:grid-cols-[7rem_minmax(0,1fr)] sm:items-start sm:gap-4">
+          <p className="text-foreground text-sm font-semibold">관련 멤버</p>
 
-        <div
-          role="group"
-          aria-label="관련 멤버"
-          className="-mx-4 mt-3 overflow-x-auto px-4 sm:mx-0 sm:px-0"
-        >
-          <div className="flex w-max min-w-full gap-2">
-            <button
-              type="button"
-              aria-pressed={value.talentId === "ALL"}
-              onClick={() => changeTalent("ALL")}
-              className={[
-                "flex min-h-10 items-center gap-1.5 rounded-md border px-3 py-2 text-sm font-medium",
-                "duration-fast ease-standard transition-colors motion-reduce:transition-none",
-                value.talentId === "ALL"
-                  ? "border-primary bg-primary/10 text-primary"
-                  : "border-border bg-surface text-muted-foreground hover:bg-muted hover:text-foreground",
-              ].join(" ")}
-            >
-              {value.talentId === "ALL" ? <span aria-hidden="true">✓</span> : null}
+          <div
+            role="group"
+            aria-label="관련 멤버"
+            className="-mx-4 mt-3 overflow-x-auto px-4 sm:mx-0 sm:mt-0 sm:px-0"
+          >
+            <div className="flex w-max min-w-full gap-6">
+              <FilterOption selected={value.talentId === "ALL"} onClick={() => changeTalent("ALL")}>
+                전체 멤버
+              </FilterOption>
 
-              <span>전체 멤버</span>
-            </button>
-
-            {talents.map((talent) => {
-              const selected = value.talentId === talent.id;
-
-              return (
-                <button
+              {talents.map((talent) => (
+                <FilterOption
                   key={talent.id}
-                  type="button"
-                  aria-pressed={selected}
+                  selected={value.talentId === talent.id}
                   onClick={() => changeTalent(talent.id)}
-                  className={[
-                    "flex min-h-10 items-center gap-1.5 rounded-md border px-3 py-2 text-sm font-medium",
-                    "duration-fast ease-standard transition-colors motion-reduce:transition-none",
-                    selected
-                      ? "border-primary bg-primary/10 text-primary"
-                      : "border-border bg-surface text-muted-foreground hover:bg-muted hover:text-foreground",
-                  ].join(" ")}
                 >
-                  {selected ? <span aria-hidden="true">✓</span> : null}
-                  <span>{talent.name}</span>
-                </button>
-              );
-            })}
+                  {talent.name}
+                </FilterOption>
+              ))}
+            </div>
           </div>
         </div>
       </div>
@@ -152,5 +103,34 @@ export default function CreativeFilter({
         ) : null}
       </div>
     </div>
+  );
+}
+
+interface FilterOptionProps {
+  selected: boolean;
+  children: React.ReactNode;
+  onClick: () => void;
+}
+
+function FilterOption({ selected, children, onClick }: FilterOptionProps) {
+  return (
+    <button
+      type="button"
+      aria-pressed={selected}
+      onClick={onClick}
+      className={[
+        "relative min-h-7 shrink-0 pb-2 text-sm",
+        "duration-fast ease-standard transition-colors motion-reduce:transition-none",
+        selected
+          ? "text-foreground font-semibold"
+          : "text-muted-foreground hover:text-foreground font-medium",
+      ].join(" ")}
+    >
+      {children}
+
+      {selected ? (
+        <span aria-hidden="true" className="bg-brand absolute inset-x-0 bottom-0 h-0.5" />
+      ) : null}
+    </button>
   );
 }

@@ -40,9 +40,9 @@ export default function PostCategoryFilter({ value, onValueChange }: PostCategor
     <div
       role="group"
       aria-label="게시글 카테고리"
-      className="-mx-4 overflow-x-auto px-4 sm:mx-0 sm:px-0"
+      className="border-border -mx-4 overflow-x-auto border-b px-4 sm:mx-0 sm:px-0"
     >
-      <div className="flex w-max min-w-full gap-2">
+      <div className="flex w-max min-w-full gap-6">
         {POST_CATEGORY_OPTIONS.map((option) => {
           const selected = option.value === value;
 
@@ -53,16 +53,18 @@ export default function PostCategoryFilter({ value, onValueChange }: PostCategor
               aria-pressed={selected}
               onClick={() => onValueChange(option.value)}
               className={[
-                "flex min-h-10 items-center gap-1.5 rounded-md border px-3 py-2 text-sm font-medium",
+                "relative min-h-11 shrink-0 pb-3 text-sm",
                 "duration-fast ease-standard transition-colors motion-reduce:transition-none",
                 selected
-                  ? "border-primary bg-primary/10 text-primary"
-                  : "border-border bg-surface text-muted-foreground hover:bg-muted hover:text-foreground",
+                  ? "text-foreground font-semibold"
+                  : "text-muted-foreground hover:text-foreground font-medium",
               ].join(" ")}
             >
-              {selected ? <span aria-hidden="true">✓</span> : null}
+              {option.label}
 
-              <span>{option.label}</span>
+              {selected ? (
+                <span aria-hidden="true" className="bg-brand absolute inset-x-0 bottom-0 h-0.5" />
+              ) : null}
             </button>
           );
         })}

@@ -107,6 +107,18 @@ describe("CreativeFilter", () => {
         name: talent.name,
       }),
     ).toHaveAttribute("aria-pressed", "true");
+
+    expect(
+      screen.getByRole("button", {
+        name: "전체",
+      }),
+    ).toHaveAttribute("aria-pressed", "false");
+
+    expect(
+      screen.getByRole("button", {
+        name: "전체 멤버",
+      }),
+    ).toHaveAttribute("aria-pressed", "false");
   });
 
   it("콘텐츠 유형을 선택하면 기존 멤버 조건을 유지하여 변경합니다.", async () => {

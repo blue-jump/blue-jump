@@ -63,14 +63,19 @@ describe("PostCategoryFilter", () => {
     ).toHaveAttribute("aria-pressed", "false");
   });
 
-  it("현재 선택된 Category에 색상 이외의 선택 표시를 제공합니다.", () => {
+  it("현재 선택된 Category에 색상 이외의 시각적 Indicator를 표시합니다.", () => {
     render(<PostCategoryFilter value={memePost.category} onValueChange={() => undefined} />);
 
-    const button = screen.getByRole("button", {
+    const selectedButton = screen.getByRole("button", {
       name: "밈",
     });
+    const unselectedButton = screen.getByRole("button", {
+      name: "전체",
+    });
 
-    expect(button).toHaveTextContent("✓");
+    expect(selectedButton.querySelector('[aria-hidden="true"]')).toBeInTheDocument();
+
+    expect(unselectedButton.querySelector('[aria-hidden="true"]')).not.toBeInTheDocument();
   });
 
   it("Category를 선택하면 변경된 값을 전달합니다.", async () => {
